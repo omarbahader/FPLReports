@@ -11,7 +11,7 @@
   h1{font-size:22px;color:var(--green);}h2{font-size:15px;margin:24px 0 10px;color:var(--green);border-bottom:2px solid var(--accent);padding-bottom:5px;}
   .sub{color:var(--muted);font-size:12px;margin-bottom:16px;}
   .card{background:var(--card);border-radius:10px;padding:18px;margin:14px 0;border-left:5px solid var(--accent);}
-  .card.p1{border-left-color:var(--red);}.card.p2{border-left-color:var(--amber);}.card.p3{border-left-color:var(--green);}
+  .card.p1{border-left-color:var(--red);}.card.p2{border-left-color:var(--amber);}.card.p3{border-left-color:var(--green);}.card.crit{border-left-color:var(--red);background:rgba(255,23,81,.05);}
   .trade-header{font-size:15px;font-weight:700;margin-bottom:6px;}
   .out{color:var(--red);font-weight:700;}.in{color:var(--green);font-weight:700;}
   .arrow{color:var(--green);margin:0 8px;font-size:18px;}
@@ -20,17 +20,21 @@
   .meta-item span{color:var(--muted);font-size:10px;display:block;text-transform:uppercase;}
   p{margin:5px 0;color:#d0d0e0;font-size:13px;}
   .badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:9px;font-weight:700;text-transform:uppercase;}
-  .b-urgent{background:var(--red);color:#fff;}.b-high{background:var(--amber);color:#000;}.b-med{background:var(--green);color:#000;}
+  .b-urgent{background:var(--red);color:#fff;}.b-high{background:var(--amber);color:#000;}.b-med{background:var(--green);color:#000;}.b-crit{background:var(--red);color:#fff;}
   .budget-box{background:var(--card);border:1px solid var(--accent);border-radius:8px;padding:14px;margin:12px 0;}
   .budget-row{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:1px solid #2a2a4a;}
   .budget-row:last-child{border:none;font-weight:700;color:var(--green);font-size:13px;}
   .insight{border-left:4px solid var(--green);padding:10px 14px;background:var(--card);margin:10px 0;font-size:13px;border-radius:0 8px 8px 0;}
-  .insight.warn{border-left-color:var(--amber);}.insight strong{color:var(--green);}.insight.warn strong{color:var(--amber);}
+  .insight.warn{border-left-color:var(--red);background:rgba(255,23,81,.05);}.insight strong{color:var(--green);}.insight.warn strong{color:var(--red);}
+  .insight.amber{border-left-color:var(--amber);background:rgba(231,160,0,.05);}.insight.amber strong{color:var(--amber);}
   .tl{display:flex;gap:0;margin:14px 0;flex-wrap:wrap;}
   .tl-item{flex:1;min-width:100px;text-align:center;padding:10px 6px;background:var(--card);border-right:1px solid var(--accent);}
   .tl-item:last-child{border-right:none;}
   .tl-gw{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
   .tl-act{font-size:11px;font-weight:600;margin-top:3px;}
+  .chips-box{background:rgba(255,23,81,.08);border:1px solid var(--red);border-radius:8px;padding:14px;margin:12px 0;}
+  .chips-box h3{color:var(--red);font-size:13px;margin-bottom:8px;}
+  .chip-used{display:inline-block;text-decoration:line-through;color:var(--muted);background:rgba(255,23,81,.15);padding:2px 8px;border-radius:4px;font-size:11px;margin:2px 3px;}
   .nav{margin-bottom:16px;font-size:12px;color:var(--muted);}
   .nav a{color:var(--green);text-decoration:none;}
   @media(max-width:600px){.meta{flex-direction:column;}.tl{flex-direction:column;}}
@@ -42,52 +46,69 @@
 <h1>Transfer Strategy</h1>
 <p class="sub">Team: <strong>Mbappe Salah</strong> &bull; Adam B &bull; Bank: £2.5m &bull; GW29</p>
 
-<div class="insight"><strong>Context:</strong> This is the strongest squad of the three teams. João Pedro, Semenyo, Virgil, Palmer and B.Fernandes form an elite core. The approach here is fine-tuning rather than surgery — improve the one defensive weak link and maximise Bench Boost value for DGW33.</div>
+<div class="chips-box">
+  <h3>⚠️ ALL CHIPS EXHAUSTED — Pure transfer game from here</h3>
+  <div style="margin-top:6px">
+    <span class="chip-used">Bench Boost (GW2)</span>
+    <span class="chip-used">Triple Captain (GW10)</span>
+    <span class="chip-used">Free Hit (GW11)</span>
+    <span class="chip-used">Wildcard 1 (GW12)</span>
+    <span class="chip-used">Wildcard 2 (GW23)</span>
+  </div>
+</div>
+
+<div class="insight warn"><strong>No chip escape for BGW31:</strong> Gabriel (ARS), Semenyo (MCI), and Rice (ARS) all blank in GW31. With no Free Hit or Wildcards remaining, this cannot be bypassed. The strategy is to captain a non-blanker (João Pedro, Palmer, or B.Fernandes), accept the reduced XI, and rely on Šeško auto-subbing in from the bench. A hit to cover one blanker is not worth it — João Pedro and Palmer are your firepower in GW31.</div>
+
+<h2>BGW31 Survival Plan (No Chip)</h2>
+<div class="insight amber"><strong>GW31 XI projection (7 players playing):</strong> Petrović, Hill, Virgil, Palmer, B.Fernandes, Ekitiké, João Pedro — plus Diouf (if still held) or Senesi. Auto-sub brings in Šeško from bench. Captain João Pedro (F:9.5, EVE away FDR3) or Palmer (F:6.2, EVE away FDR3). This should still net 50–60 pts from a strong non-blanking core.</div>
 
 <h2>Timeline</h2>
 <div class="tl">
-  <div class="tl-item"><div class="tl-gw">GW31</div><div class="tl-act" style="color:var(--green)">FREE HIT</div></div>
-  <div class="tl-item"><div class="tl-gw">GW32</div><div class="tl-act" style="color:var(--amber)">Trade #1</div></div>
-  <div class="tl-item"><div class="tl-gw">GW33 DGW</div><div class="tl-act" style="color:var(--blue)">BENCH BOOST</div></div>
-  <div class="tl-item"><div class="tl-gw">GW34+</div><div class="tl-act" style="color:var(--muted)">Trade #2</div></div>
+  <div class="tl-item"><div class="tl-gw">GW30</div><div class="tl-act" style="color:var(--amber)">Trade #1</div></div>
+  <div class="tl-item"><div class="tl-gw">GW31 BGW</div><div class="tl-act" style="color:var(--red)">Hold — no chip</div></div>
+  <div class="tl-item"><div class="tl-gw">GW32</div><div class="tl-act" style="color:var(--amber)">Trade #2</div></div>
+  <div class="tl-item"><div class="tl-gw">GW33+</div><div class="tl-act" style="color:var(--green)">Accumulate FTs</div></div>
 </div>
 
 <!-- Trade 1 -->
-<div class="card p1">
-  <span class="badge b-urgent">Priority 1 — GW32</span>
+<div class="card p2">
+  <span class="badge b-high">Priority 1 — GW30</span>
   <div class="trade-header" style="margin-top:8px"><span class="out">Diouf (WHU)</span><span class="arrow">→</span><span class="in">Senesi (BOU)</span></div>
-  <p>Diouf (F:6.0) faces MCI at home in GW30 (FDR 4) — a difficult match after which his form may regress. WHU have challenging fixtures through GW33. Senesi (£5.0m, F:5.5) offers comparable returns with better upcoming fixtures and is already on BOU alongside Hill.</p>
+  <p>Diouf (F:6.0) faces MCI at home in GW30 (FDR 4) — a tough match that will likely slow his returns. WHU have difficult fixtures ahead and he's the structural weak link in the backline. Senesi (£5.0m, F:5.5) at Bournemouth has the same fixtures as Hill (BOU), offering better value with FDR2 run-in.</p>
   <div class="meta">
     <div class="meta-item"><span>Sell</span>£4.0m</div>
     <div class="meta-item"><span>Buy</span>£5.0m</div>
     <div class="meta-item"><span>Cost</span>£1.0m</div>
     <div class="meta-item"><span>Bank After</span>£1.5m</div>
+    <div class="meta-item"><span>FTs used</span>1 of 2</div>
   </div>
+  <p style="color:var(--green);font-size:12px;margin-top:6px">✓ Diouf plays GW31 (WHU vs BRE) so this upgrade can wait until after GW30 if you prefer to use Diouf's GW30 fixture first, then sell before GW31 deadline.</p>
 </div>
 
 <!-- Trade 2 -->
-<div class="card p2">
-  <span class="badge b-high">Priority 2 — GW34</span>
+<div class="card p3">
+  <span class="badge b-med">Priority 2 — GW32</span>
   <div class="trade-header" style="margin-top:8px"><span class="out">Mbeumo (MUN) [bench]</span><span class="arrow">→</span><span class="in">Iwobi (FUL)</span></div>
-  <p>Mbeumo (F:3.8) is sitting on the bench and delivering little. Iwobi (F:6.8) has the best form of any mid-price midfielder and Fulham have excellent fixtures post-GW33. Upgrading bench quality improves the eventual Bench Boost payout.</p>
+  <p>Mbeumo (F:3.8) is occupying a bench spot and providing very little. Iwobi (F:6.8, £6.3m) has been one of the best mid-price midfielders in the game and Fulham have an excellent fixture run post-GW31. This trade also saves £2.4m, which can be held in reserve for the season run-in.</p>
   <div class="meta">
     <div class="meta-item"><span>Sell</span>£8.7m</div>
-    <div class="meta-item"><span>Buy</span>£6.4m</div>
-    <div class="meta-item"><span>Saves</span>£2.3m</div>
-    <div class="meta-item"><span>Bank After</span>£3.8m</div>
+    <div class="meta-item"><span>Buy</span>£6.3m</div>
+    <div class="meta-item"><span>Saves</span>£2.4m</div>
+    <div class="meta-item"><span>Bank After</span>£3.9m</div>
+    <div class="meta-item"><span>FTs used</span>1 FT</div>
   </div>
 </div>
 
-<!-- Trade 3 -->
-<div class="card p3">
-  <span class="badge b-med">Priority 3 — GW35+ (optional)</span>
+<h2>Optional — GW33+</h2>
+<div class="card p1" style="border-left-color:var(--muted)">
+  <span class="badge" style="background:rgba(160,160,184,.2);color:var(--muted)">Optional — GW33+</span>
   <div class="trade-header" style="margin-top:8px"><span class="out">Henderson (CRY) [bench GK]</span><span class="arrow">→</span><span class="in">Martinez (AVL)</span></div>
-  <p>Henderson is a good keeper but CRY face tough fixtures. Martinez (£5.1m) at AVL has the best fixtures of any premium GK and provides clean sheet security for the Bench Boost. Use the freed budget from Trade #2 to afford this.</p>
+  <p>Henderson will blank GW31 (CRY) which is a minor bench annoyance. Martinez (£5.1m, AVL) has the best fixtures of any GK from GW32 onwards. With £3.9m in the bank post Trade #2, this is affordable without sacrificing elsewhere. Low priority — Henderson is acceptable for now.</p>
   <div class="meta">
     <div class="meta-item"><span>Sell</span>£5.0m</div>
     <div class="meta-item"><span>Buy</span>£5.1m</div>
     <div class="meta-item"><span>Cost</span>£0.1m</div>
-    <div class="meta-item"><span>Bank After</span>£3.7m</div>
+    <div class="meta-item"><span>Bank After</span>£3.8m</div>
   </div>
 </div>
 
@@ -95,12 +116,14 @@
 <div class="budget-box">
   <div class="budget-row"><span>Starting bank</span><span>£2.5m</span></div>
   <div class="budget-row"><span>Trade #1: Diouf → Senesi</span><span style="color:var(--red)">−£1.0m</span></div>
-  <div class="budget-row"><span>Trade #2: Mbeumo → Iwobi</span><span style="color:var(--green)">+£2.3m</span></div>
-  <div class="budget-row"><span>Trade #3: Henderson → Martinez</span><span style="color:var(--red)">−£0.1m</span></div>
-  <div class="budget-row"><span>Final bank</span><span>£3.7m</span></div>
+  <div class="budget-row"><span>Trade #2: Mbeumo → Iwobi</span><span style="color:var(--green)">+£2.4m</span></div>
+  <div class="budget-row"><span>Optional: Henderson → Martinez</span><span style="color:var(--red)">−£0.1m</span></div>
+  <div class="budget-row"><span>Final bank</span><span>£3.8m</span></div>
 </div>
 
-<div class="insight warn"><strong>Bench Boost prep:</strong> By GW33, with Šeško, Iwobi, Martinez and O'Reilly (bench), all four bench players should have GW33 fixtures. This makes the Bench Boost highly effective.</div>
+<div class="insight amber"><strong>GW31 captain pick is critical:</strong> With 3 starters blanking, João Pedro (CHE, EVE away) is the captain recommendation — F:9.5, double-digit haul ceiling. Palmer (CHE, same fixture) is the VC. B.Fernandes (MUN vs BOU, FDR3) is a third option. Do not take a hit to replace a blanker — the cost is greater than the expected return.</div>
 
-<p style="font-size:11px;color:var(--muted);margin-top:20px;text-align:center">Transfer Strategy — Mbappe Salah &bull; All trades use 1 FT each &bull; Zero hits</p>
+<div class="insight"><strong>Season outlook:</strong> Despite the low points total (640), the current squad is genuinely top-quality. João Pedro, Semenyo, Virgil, Palmer and B.Fernandes all give you ceiling every week. With £2.5m in the bank and a clean structure, recovery to a competitive rank is very achievable — especially with 9 gameweeks remaining.</div>
+
+<p style="font-size:11px;color:var(--muted);margin-top:20px;text-align:center">Transfer Strategy — Mbappe Salah &bull; Adam B &bull; 2 priority trades &bull; 0 hits</p>
 </body></html>

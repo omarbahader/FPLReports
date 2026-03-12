@@ -25,12 +25,19 @@
   .budget-row{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:1px solid #2a2a4a;}
   .budget-row:last-child{border:none;font-weight:700;color:var(--green);font-size:13px;}
   .insight{border-left:4px solid var(--green);padding:10px 14px;background:var(--card);margin:10px 0;font-size:13px;border-radius:0 8px 8px 0;}
-  .insight.warn{border-left-color:var(--red);}.insight.warn strong{color:var(--red);}.insight strong{color:var(--green);}
+  .insight.warn{border-left-color:var(--red);background:rgba(255,23,81,.05);}.insight.warn strong{color:var(--red);}
+  .insight.amber{border-left-color:var(--amber);background:rgba(231,160,0,.05);}.insight.amber strong{color:var(--amber);}
+  .insight strong{color:var(--green);}
   .tl{display:flex;gap:0;margin:14px 0;flex-wrap:wrap;}
   .tl-item{flex:1;min-width:100px;text-align:center;padding:10px 6px;background:var(--card);border-right:1px solid var(--accent);}
   .tl-item:last-child{border-right:none;}
   .tl-gw{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
   .tl-act{font-size:11px;font-weight:600;margin-top:3px;}
+  .wc-box{background:rgba(78,205,196,.06);border:1px solid #4ecdc4;border-radius:10px;padding:16px;margin:14px 0;}
+  .wc-box h3{color:#4ecdc4;font-size:14px;margin-bottom:8px;}
+  .option{background:var(--card);border-radius:8px;padding:12px;margin-bottom:10px;border-left:3px solid var(--amber);}
+  .option.preferred{border-left-color:var(--green);}
+  .option-title{font-size:12px;font-weight:700;margin-bottom:4px;}
   .nav{margin-bottom:16px;font-size:12px;color:var(--muted);}
   .nav a{color:var(--green);text-decoration:none;}
   @media(max-width:600px){.meta{flex-direction:column;}.tl{flex-direction:column;}}
@@ -40,69 +47,95 @@
 <div class="nav"><a href="index.html">← Hub</a> &bull; <a href="GW29_Yamal1.html">GW29 Analysis</a></div>
 
 <h1>Transfer Strategy</h1>
-<p class="sub">Team: <strong>Yamal 1#</strong> &bull; Rami B &bull; Bank: £0.0m &bull; GW29</p>
+<p class="sub">Team: <strong>Yamal 1#</strong> &bull; Rami B &bull; Bank: £0.0m &bull; GW29 &bull; Chip: Wildcard 2 only</p>
 
-<div class="insight warn"><strong>Critical constraint:</strong> £0.0m in the bank means every upgrade must be self-funded by selling a player first. Trades must be sequenced carefully — sell the weaker asset first to generate budget, then buy the upgrade. No trades can run simultaneously.</div>
+<div class="insight warn"><strong>Critical constraints:</strong> £0.0m in the bank means every upgrade must be self-funded. Free Hit (used GW11), Bench Boost (used GW18), and Triple Captain (used GW13) are all gone. Only Wildcard 2 remains — the biggest decision of the remaining season.</div>
 
-<h2>Timeline</h2>
-<div class="tl">
-  <div class="tl-item"><div class="tl-gw">GW30</div><div class="tl-act" style="color:var(--red)">GK Fix — URGENT</div></div>
-  <div class="tl-item"><div class="tl-gw">GW31</div><div class="tl-act" style="color:var(--green)">FREE HIT</div></div>
-  <div class="tl-item"><div class="tl-gw">GW32</div><div class="tl-act" style="color:var(--amber)">Trade #2</div></div>
-  <div class="tl-item"><div class="tl-gw">GW33 DGW</div><div class="tl-act" style="color:var(--blue)">BENCH BOOST</div></div>
-  <div class="tl-item"><div class="tl-gw">GW34+</div><div class="tl-act" style="color:var(--muted)">Trade #3</div></div>
+<h2>⚠️ The Big Decision: Wildcard 2 Timing</h2>
+
+<div class="wc-box">
+  <h3>🃏 Wildcard 2 — Use Before GW31 or Hold for GW32?</h3>
+
+  <div class="option preferred">
+    <div class="option-title" style="color:var(--green)">OPTION A (Recommended): Hold WC2 — activate GW32 for post-blank rebuild</div>
+    <p>Use 2 free transfers in GW30 to fix urgent issues (GK crisis + form liability). Accept the GW31 blank as a write-off — João Pedro and B.Fernandes are both playing and can captain their way to 50+ pts. Then activate WC2 in GW32 to rebuild a clean, blank-free squad targeting GW33–38.</p>
+    <p style="color:var(--green);font-size:12px;margin-top:6px">Advantage: WC2 in GW32 lets you build in full knowledge of GW33 fixtures. More time to plan. Avoids hasty transfers.</p>
+  </div>
+
+  <div class="option">
+    <div class="option-title" style="color:var(--amber)">OPTION B: Activate WC2 Before GW31 Deadline</div>
+    <p>Wildcard allows unlimited free transfers for one gameweek. Use it to build a complete BGW31-safe squad: remove all 4 blankers (Semenyo, Haaland, Gabriel, Rice), fix the GKs, and solve Rogers + Kroupi Jr in one go. You would field a full 11 in GW31.</p>
+    <p style="color:var(--amber);font-size:12px;margin-top:6px">Risk: Wildcard planning under time pressure often leads to suboptimal squads. MCI/ARS assets are too good to sell permanently — you'd likely bring them back in GW32. Zero budget makes targets limited.</p>
+  </div>
 </div>
+
+<h2>Pre-Wildcard Fixes — GW30 Deadline (URGENT)</h2>
+
+<div class="insight warn"><strong>GK crisis must be resolved regardless of WC2 timing.</strong> Roefs is a doubt with hamstring concerns. Wright (0.0 form, 0 pts) is an unusable backup. Both GKs need replacing before GW30 starts.</div>
 
 <!-- Trade 1 -->
 <div class="card p1">
   <span class="badge b-urgent">Priority 1 — BEFORE GW30 DEADLINE</span>
   <div class="trade-header" style="margin-top:8px"><span class="out">Roefs (SUN) + Wright (AVL)</span><span class="arrow">→</span><span class="in">Petrović (BOU) + Hermansen (WHU)</span></div>
-  <p>This is a double GK fix — one trade cleans up both positions. Sell Roefs (£4.8m, doubt) and buy Petrović (£4.5m, F:5.2) as the new first-choice GK. Then use the £0.3m saved to swap Wright (£3.9m, 0 pts) for Hermansen (£4.2m). The net cost is zero — Roefs (£4.8m) and Wright (£3.9m) out totals £8.7m; Petrović (£4.5m) and Hermansen (£4.2m) in totals £8.7m. Exactly breaks even.</p>
+  <p>Sell Roefs (£4.8m, doubt) → Petrović (£4.5m, F:5.2) as first-choice GK. Sell Wright (£3.9m, 0 pts) → Hermansen (£4.2m). The combined sell prices (£8.7m) exactly fund the combined buy prices (£8.7m). Net cost: £0.0m.</p>
   <div class="meta">
     <div class="meta-item"><span>Sell (2 GKs)</span>£8.7m total</div>
     <div class="meta-item"><span>Buy (2 GKs)</span>£8.7m total</div>
     <div class="meta-item"><span>FTs used</span>2 (costs 1 hit)</div>
     <div class="meta-item"><span>Bank After</span>£0.0m</div>
   </div>
-  <p style="color:var(--amber); font-size:12px; margin-top:8px">⚠️ This double trade costs a 4-point hit if you've already used your free transfer. The hit is worth it — a doubt GK starting your XI is a guaranteed 0 which is worse than −4.</p>
+  <p style="color:var(--amber);font-size:12px;margin-top:8px">⚠️ This double trade requires a −4pt hit. The hit is worth it — a doubted GK in your XI risks a 1pt return or worse, compared to Petrović's consistent 4–6 pts per gameweek.</p>
+  <p style="color:var(--muted);font-size:12px;margin-top:4px">Note: If activating WC2 before GW31 instead, these trades are free within the Wildcard window — no hit required. Adjust accordingly.</p>
 </div>
+
+<h2>Post-GK Fix — Recommended Transfer Plan (Hold WC2)</h2>
 
 <!-- Trade 2 -->
 <div class="card p2">
-  <span class="badge b-high">Priority 2 — GW32</span>
-  <div class="trade-header" style="margin-top:8px"><span class="out">Rogers (AVL)</span><span class="arrow">→</span><span class="in">Wilson (FUL)</span></div>
-  <p>Rogers (F:1.8) is severely underperforming his £7.5m price tag. Wilson (FUL, F:5.5, £6.0m) has the easiest upcoming fixtures (FUL vs BUR, FDR 1) and consistently delivers. Selling Rogers also frees £1.5m — critical given the zero bank position.</p>
+  <span class="badge b-high">Priority 2 — GW31/GW32</span>
+  <div class="trade-header" style="margin-top:8px"><span class="out">Rogers (AVL)</span><span class="arrow">→</span><span class="in">Wilson (FUL) or Iwobi (FUL)</span></div>
+  <p>Rogers (F:1.8, £7.5m) is severely underperforming. Selling him frees £1.5m. Wilson (F:5.5, £6.0m) or Iwobi (F:6.8, £6.3m) both at Fulham give much better return for £1.2–1.5m less. If WC2 is being activated GW31, incorporate this into the WC rebuild instead.</p>
   <div class="meta">
     <div class="meta-item"><span>Sell</span>£7.5m</div>
-    <div class="meta-item"><span>Buy</span>£6.0m</div>
-    <div class="meta-item"><span>Saves</span>£1.5m</div>
-    <div class="meta-item"><span>Bank After</span>£1.5m</div>
+    <div class="meta-item"><span>Buy (Iwobi)</span>£6.3m</div>
+    <div class="meta-item"><span>Saves</span>£1.2m</div>
+    <div class="meta-item"><span>Bank After</span>£1.2m</div>
   </div>
 </div>
 
 <!-- Trade 3 -->
 <div class="card p3">
-  <span class="badge b-med">Priority 3 — GW34</span>
-  <div class="trade-header" style="margin-top:8px"><span class="out">Kroupi Jr (BOU)</span><span class="arrow">→</span><span class="in">Welbeck (BHA) or Šeško (MUN)</span></div>
-  <p>Kroupi Jr (F:1.5) is providing nothing as the third forward. With £1.5m in the bank after Trade #2, Welbeck (£6.1m) or if another player is sold first, Šeško (£7.3m) is achievable. Welbeck offers good value; Šeško is the premium option pairing with B.Fernandes.</p>
+  <span class="badge b-med">Priority 3 — GW32+</span>
+  <div class="trade-header" style="margin-top:8px"><span class="out">Kroupi Jr (BOU)</span><span class="arrow">→</span><span class="in">Šeško (MUN) or Welbeck (BHA)</span></div>
+  <p>Kroupi Jr (F:1.5) is delivering nothing as a forward slot. With £1.2m in the bank after Trade #2, Welbeck (£6.1m) is self-funding. Šeško (£7.3m) requires an extra £0.3m spend — affordable with the bank. Both are better options pairing with João Pedro in the attack.</p>
   <div class="meta">
     <div class="meta-item"><span>Sell</span>£4.7m</div>
     <div class="meta-item"><span>Buy (Welbeck)</span>£6.1m</div>
-    <div class="meta-item"><span>Cost</span>£0.3m (with £1.5m bank)</div>
-    <div class="meta-item"><span>Bank After</span>£1.2m</div>
+    <div class="meta-item"><span>Net Cost</span>£0.2m with bank</div>
+    <div class="meta-item"><span>Bank After</span>£1.0m</div>
   </div>
 </div>
 
-<h2>Final Budget Ledger</h2>
-<div class="budget-box">
-  <div class="budget-row"><span>Starting bank</span><span>£0.0m</span></div>
-  <div class="budget-row"><span>Trade #1: Roefs+Wright → Petrović+Hermansen (−4pt hit)</span><span>£0.0m</span></div>
-  <div class="budget-row"><span>Trade #2: Rogers → Wilson</span><span style="color:var(--green)">+£1.5m</span></div>
-  <div class="budget-row"><span>Trade #3: Kroupi Jr → Welbeck</span><span style="color:var(--red)">−£0.3m</span></div>
-  <div class="budget-row"><span>Final bank</span><span>£1.2m</span></div>
+<h2>Timeline (Hold WC2 for GW32)</h2>
+<div class="tl">
+  <div class="tl-item"><div class="tl-gw">GW30</div><div class="tl-act" style="color:var(--red)">GK Fix (-4pt hit)</div></div>
+  <div class="tl-item"><div class="tl-gw">GW31 BGW</div><div class="tl-act" style="color:var(--amber)">Rogers → Iwobi</div></div>
+  <div class="tl-item"><div class="tl-gw">GW32</div><div class="tl-act" style="color:var(--blue)">WILDCARD 2</div></div>
+  <div class="tl-item"><div class="tl-gw">GW33+</div><div class="tl-act" style="color:var(--green)">Full rebuild</div></div>
 </div>
 
-<div class="insight warn"><strong>GW31 Free Hit is essential:</strong> Semenyo, Haaland (both MCI) and Gabriel, Rice (both ARS) all blank GW31. With six players off the pitch and zero bank to patch with permanent transfers, the Free Hit is the only viable solution. Plan the 15-man FH squad carefully around the non-blanking teams.</div>
+<h2>Final Budget Ledger (Hold WC2 path)</h2>
+<div class="budget-box">
+  <div class="budget-row"><span>Starting bank</span><span>£0.0m</span></div>
+  <div class="budget-row"><span>GK fix: Roefs+Wright → Petrović+Hermansen (−4pt hit)</span><span>£0.0m</span></div>
+  <div class="budget-row"><span>Trade #2: Rogers → Iwobi</span><span style="color:var(--green)">+£1.2m</span></div>
+  <div class="budget-row"><span>Trade #3: Kroupi Jr → Welbeck</span><span style="color:var(--red)">−£0.2m</span></div>
+  <div class="budget-row"><span>Final bank (pre-WC2)</span><span>£1.0m</span></div>
+</div>
 
-<p style="font-size:11px;color:var(--muted);margin-top:20px;text-align:center">Transfer Strategy — Yamal 1# &bull; Rami B</p>
+<div class="insight amber"><strong>WC2 activation (GW32):</strong> With Rogers → Iwobi done, the Wildcard targets become: bring in a DGW33-ready striker to replace Kroupi Jr, upgrade a bench slot, and position for the season run-in. The £1.0m in the bank will grow further if another player is sold before the WC window. A post-GW31 WC lets you rebuild with full fixture data for GW32–38.</div>
+
+<div class="insight warn"><strong>GW31 blank acceptance:</strong> Semenyo, Haaland, Gabriel, Rice, and O'Reilly all blank. If holding WC2, captain João Pedro (CHE, EVE away FDR3, F:9.5) and accept the reduced XI. B.Fernandes (MUN vs BOU, FDR3) is VC. Saliba auto-sub from bench if available. Target 45–55 pts from 7 active players.</div>
+
+<p style="font-size:11px;color:var(--muted);margin-top:20px;text-align:center">Transfer Strategy — Yamal 1# &bull; Rami B &bull; WC2 held for GW32</p>
 </body></html>
