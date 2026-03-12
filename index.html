@@ -3,452 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SlowBuild — FPL Analytics Hub</title>
+<title>FPL Analytics Hub</title>
 <style>
-  :root {
-    --bg: #1a1a2e;
-    --card: #16213e;
-    --accent: #0f3460;
-    --green: #01fc7a;
-    --red: #ff1751;
-    --amber: #e7a000;
-    --text: #f0f0f0;
-    --muted: #a0a0b8;
-    --blue: #4da6ff;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    line-height: 1.6;
-  }
-
-  /* ===== HEADER ===== */
-  .header {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--bg) 100%);
-    border-bottom: 1px solid rgba(1, 252, 122, .15);
-    padding: 32px 24px 24px;
-    text-align: center;
-  }
-
-  .header-inner {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .team-name {
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--green);
-    letter-spacing: 1px;
-  }
-
-  .team-name span {
-    color: var(--text);
-    font-weight: 300;
-  }
-
-  .manager {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-
-  .status-bar {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 16px;
-    flex-wrap: wrap;
-  }
-
-  .status-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    background: rgba(15, 52, 96, .6);
-    border: 1px solid rgba(1, 252, 122, .2);
-  }
-
-  .status-chip .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-
-  .dot-green { background: var(--green); }
-  .dot-amber { background: var(--amber); }
-  .dot-red { background: var(--red); }
-  .dot-blue { background: var(--blue); }
-
-  /* ===== MAIN ===== */
-  .main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 24px;
-  }
-
-  /* ===== SECTION ===== */
-  .section {
-    margin-bottom: 32px;
-  }
-
-  .section-title {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--green);
-    margin-bottom: 14px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(1, 252, 122, .15);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .section-icon {
-    font-size: 16px;
-  }
-
-  /* ===== CARD GRID ===== */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 14px;
-  }
-
-  /* ===== CARD ===== */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--accent);
-    border-radius: 12px;
-    padding: 20px;
-    text-decoration: none;
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    transition: border-color .2s, box-shadow .2s, transform .15s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card:hover {
-    border-color: var(--green);
-    box-shadow: 0 0 20px rgba(1, 252, 122, .1), 0 4px 16px rgba(0,0,0,.3);
-    transform: translateY(-2px);
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--green);
-    opacity: 0;
-    transition: opacity .2s;
-  }
-
-  .card:hover::before { opacity: 1; }
-
-  .card-icon {
-    font-size: 24px;
-    line-height: 1;
-  }
-
-  .card-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  .card-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  .card-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: auto;
-    padding-top: 8px;
-    border-top: 1px solid rgba(15, 52, 96, .6);
-    font-size: 10px;
-    color: var(--muted);
-  }
-
-  .card-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-  }
-
-  .badge-html { background: rgba(1, 252, 122, .15); color: var(--green); }
-  .badge-js { background: rgba(231, 160, 0, .15); color: var(--amber); }
-  .badge-md { background: rgba(77, 166, 255, .15); color: var(--blue); }
-  .badge-json { background: rgba(160, 160, 184, .15); color: var(--muted); }
-
-  /* ===== TOOLS SECTION ===== */
-  .tools-toggle {
-    background: none;
-    border: 1px solid var(--accent);
-    color: var(--muted);
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: border-color .2s, color .2s;
-    font-family: inherit;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 14px;
-  }
-
-  .tools-toggle:hover {
-    border-color: var(--green);
-    color: var(--text);
-  }
-
-  .tools-toggle .arrow {
-    transition: transform .2s;
-    display: inline-block;
-  }
-
-  .tools-toggle.open .arrow {
-    transform: rotate(180deg);
-  }
-
-  .tools-content {
-    display: none;
-  }
-
-  .tools-content.open {
-    display: grid;
-  }
-
-  /* ===== FOOTER ===== */
-  .footer {
-    text-align: center;
-    padding: 32px 24px;
-    font-size: 11px;
-    color: var(--muted);
-    border-top: 1px solid rgba(15, 52, 96, .4);
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .footer a {
-    color: var(--green);
-    text-decoration: none;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 640px) {
-    .header { padding: 24px 16px 20px; }
-    .team-name { font-size: 24px; }
-    .main { padding: 16px; }
-    .card-grid { grid-template-columns: 1fr; }
-    .status-bar { gap: 8px; }
-    .status-chip { font-size: 11px; padding: 5px 10px; }
+  :root{--bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--green:#01fc7a;--red:#ff1751;--amber:#e7a000;--text:#f0f0f0;--muted:#a0a0b8;--blue:#4da6ff;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  .header{background:linear-gradient(135deg,var(--accent) 0%,var(--bg) 100%);border-bottom:1px solid rgba(1,252,122,.15);padding:28px 24px 20px;text-align:center;}
+  .header-inner{max-width:960px;margin:0 auto;}
+  .hub-title{font-size:28px;font-weight:800;color:var(--green);letter-spacing:1px;}
+  .hub-sub{font-size:13px;color:var(--muted);margin-top:4px;}
+  .season-badge{display:inline-block;background:rgba(15,52,96,.6);border:1px solid rgba(1,252,122,.2);padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;margin-top:10px;}
+  .tabs-wrapper{max-width:960px;margin:0 auto;padding:20px 24px 0;}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;}
+  .tab{padding:10px 20px;border-radius:8px 8px 0 0;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--accent);border-bottom:none;background:rgba(15,52,96,.3);color:var(--muted);transition:all .2s;}
+  .tab:hover{color:var(--text);}
+  .tab.active{background:var(--card);color:var(--green);border-color:rgba(1,252,122,.3);}
+  .tab .manager{display:block;font-size:10px;font-weight:400;color:var(--muted);margin-top:1px;}
+  .main{max-width:960px;margin:0 auto;padding:0 24px 24px;}
+  .team-panel{display:none;background:var(--card);border:1px solid rgba(1,252,122,.2);border-radius:0 8px 8px 8px;padding:20px;}
+  .team-panel.active{display:block;}
+  .team-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
+  .tm{background:rgba(15,52,96,.5);border-radius:6px;padding:8px 14px;text-align:center;flex:1;min-width:80px;}
+  .tm-n{font-size:18px;font-weight:700;}.tm-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
+  .section{margin-bottom:24px;}
+  .section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(1,252,122,.12);display:flex;align-items:center;gap:6px;}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+  .rcard{background:var(--bg);border:1px solid var(--accent);border-radius:10px;padding:16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:6px;transition:border-color .2s,box-shadow .2s,transform .15s;position:relative;overflow:hidden;}
+  .rcard:hover{border-color:var(--green);box-shadow:0 0 18px rgba(1,252,122,.1);transform:translateY(-2px);}
+  .rcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--green);opacity:0;transition:opacity .2s;}
+  .rcard:hover::before{opacity:1;}
+  .rcard-icon{font-size:22px;}.rcard-title{font-size:14px;font-weight:700;}
+  .rcard-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+  .rcard-meta{display:flex;align-items:center;gap:6px;margin-top:auto;padding-top:8px;border-top:1px solid rgba(15,52,96,.5);font-size:10px;color:var(--muted);}
+  .tag{display:inline-block;padding:2px 7px;border-radius:8px;font-size:9px;font-weight:700;text-transform:uppercase;}
+  .tag-weekly{background:rgba(77,166,255,.15);color:var(--blue);}
+  .tag-trades{background:rgba(231,160,0,.15);color:var(--amber);}
+  .tag-chip{background:rgba(1,252,122,.15);color:var(--green);}
+  .tag-intel{background:rgba(255,23,81,.15);color:var(--red);}
+  .shared-section{max-width:960px;margin:0 auto 24px;padding:0 24px;}
+  .shared-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(1,252,122,.12);}
+  .shared-inner{background:var(--card);border:1px solid var(--accent);border-radius:8px;padding:16px;}
+  footer{text-align:center;padding:24px;font-size:11px;color:var(--muted);border-top:1px solid rgba(15,52,96,.4);}
+  footer a{color:var(--green);text-decoration:none;}
+  @media(max-width:640px){
+    .header{padding:20px 16px 16px;}.hub-title{font-size:22px;}
+    .tabs-wrapper,.main,.shared-section{padding-left:12px;padding-right:12px;}
+    .tab{padding:8px 12px;font-size:12px;}
+    .card-grid{grid-template-columns:1fr;}
+    .team-meta{gap:8px;}
   }
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header class="header">
   <div class="header-inner">
-    <div class="team-name">SlowBuild <span>FPL</span></div>
-    <div class="manager">Manager: Omar B &bull; 2025/26 Season</div>
-    <div class="status-bar">
-      <div class="status-chip"><span class="dot dot-green"></span> GW30 Active</div>
-      <div class="status-chip"><span class="dot dot-blue"></span> Free Hit available</div>
-      <div class="status-chip"><span class="dot dot-blue"></span> Bench Boost available</div>
-      <div class="status-chip"><span class="dot dot-amber"></span> 0 FT (rolls to 1)</div>
-    </div>
+    <div class="hub-title">FPL Analytics Hub</div>
+    <div class="hub-sub">2025/26 Season &bull; Live squad data &bull; Three-team tracker</div>
+    <div class="season-badge">&#128202; GW29 &bull; BGW31 &bull; DGW33 incoming</div>
   </div>
 </header>
 
-<!-- ===== MAIN ===== -->
-<main class="main">
+<div class="tabs-wrapper">
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('slowbuild',this)">SlowBuild<span class="manager">Omar B</span></div>
+    <div class="tab" onclick="switchTab('mbappesalah',this)">Mbappe Salah<span class="manager">Adam B</span></div>
+    <div class="tab" onclick="switchTab('yamal1',this)">Yamal 1#<span class="manager">Rami B</span></div>
+  </div>
+</div>
 
-  <!-- ===== WEEKLY ANALYSIS ===== -->
-  <section class="section">
-    <div class="section-title"><span class="section-icon">&#128202;</span> Weekly Analysis</div>
+<div class="main">
+
+  <!-- SLOWBUILD -->
+  <div id="panel-slowbuild" class="team-panel active">
+    <div class="team-meta">
+      <div class="tm"><div class="tm-n" style="color:var(--green)">1,340</div><div class="tm-l">Points</div></div>
+      <div class="tm"><div class="tm-n" style="color:var(--amber)">8.7M</div><div class="tm-l">Overall Rank</div></div>
+      <div class="tm"><div class="tm-n">£0.7m</div><div class="tm-l">Bank</div></div>
+      <div class="tm"><div class="tm-n" style="color:var(--blue)">FH + BB</div><div class="tm-l">Chips Left</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">&#128202; Weekly Analysis</div>
+      <div class="card-grid">
+        <a href="GW29_SlowBuild.html" class="rcard">
+          <div class="rcard-icon">&#128203;</div>
+          <div class="rcard-title">GW29 Weekly Review</div>
+          <div class="rcard-desc">Squad analysis with player verdicts, GW30 captaincy and risk flags. Five low-form players flagged for surgery.</div>
+          <div class="rcard-meta"><span class="tag tag-weekly">Weekly</span><span>GW29 live data</span></div>
+        </a>
+        <!-- ADD NEW SLOWBUILD WEEKLY CARD HERE -->
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">&#128260; Transfer Strategy</div>
+      <div class="card-grid">
+        <a href="Trades_SlowBuild.html" class="rcard">
+          <div class="rcard-icon">&#128200;</div>
+          <div class="rcard-title">Priority Trade Plan</div>
+          <div class="rcard-desc">4-trade sequence: Kolo Muani → Šeško, Robertson → Truffert, Foden → Wilson, Chalobah → Thiaw. Frees £4.1m, zero hits.</div>
+          <div class="rcard-meta"><span class="tag tag-trades">Transfers</span><span>4 trades &bull; 0 hits</span></div>
+        </a>
+        <!-- ADD NEW SLOWBUILD TRADES CARD HERE -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MBAPPE SALAH -->
+  <div id="panel-mbappesalah" class="team-panel">
+    <div class="team-meta">
+      <div class="tm"><div class="tm-n" style="color:var(--amber)">640</div><div class="tm-l">Points</div></div>
+      <div class="tm"><div class="tm-n" style="color:var(--red)">12.5M</div><div class="tm-l">Overall Rank</div></div>
+      <div class="tm"><div class="tm-n" style="color:var(--green)">£2.5m</div><div class="tm-l">Bank</div></div>
+      <div class="tm"><div class="tm-n" style="color:var(--blue)">FH + BB</div><div class="tm-l">Chips Left</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">&#128202; Weekly Analysis</div>
+      <div class="card-grid">
+        <a href="GW29_MbappeSalah.html" class="rcard">
+          <div class="rcard-icon">&#129351;</div>
+          <div class="rcard-title">GW29 Weekly Review</div>
+          <div class="rcard-desc">Elite squad — João Pedro (9.5), Semenyo (8.2), Virgil (9.0). One of the strongest line-ups in the mini-league.</div>
+          <div class="rcard-meta"><span class="tag tag-weekly">Weekly</span><span>GW29 live data</span></div>
+        </a>
+        <!-- ADD NEW MBAPPE WEEKLY CARD HERE -->
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">&#128260; Transfer Strategy</div>
+      <div class="card-grid">
+        <a href="Trades_MbappeSalah.html" class="rcard">
+          <div class="rcard-icon">&#128200;</div>
+          <div class="rcard-title">Fine-Tuning Trade Plan</div>
+          <div class="rcard-desc">3 surgical trades targeting Bench Boost optimisation for DGW33. Diouf → Senesi, Mbeumo → Iwobi, Henderson → Martinez.</div>
+          <div class="rcard-meta"><span class="tag tag-trades">Transfers</span><span>3 trades &bull; 0 hits</span></div>
+        </a>
+        <!-- ADD NEW MBAPPE TRADES CARD HERE -->
+      </div>
+    </div>
+  </div>
+
+  <!-- YAMAL 1# -->
+  <div id="panel-yamal1" class="team-panel">
+    <div class="team-meta">
+      <div class="tm"><div class="tm-n" style="color:var(--green)">1,368</div><div class="tm-l">Points</div></div>
+      <div class="tm"><div class="tm-n" style="color:var(--amber)">8.1M</div><div class="tm-l">Overall Rank</div></div>
+      <div class="tm"><div class="tm-n" style="color:var(--red)">£0.0m</div><div class="tm-l">Bank</div></div>
+      <div class="tm"><div class="tm-n" style="color:var(--blue)">FH + BB</div><div class="tm-l">Chips Left</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">&#128202; Weekly Analysis</div>
+      <div class="card-grid">
+        <a href="GW29_Yamal1.html" class="rcard">
+          <div class="rcard-icon">&#128680;</div>
+          <div class="rcard-title">GW29 Weekly Review</div>
+          <div class="rcard-desc">GK crisis — Roefs (doubt) backed by Wright (0 pts, 0 form). Rogers (1.8) and Kroupi Jr (1.5) also flagged. Zero bank limits options.</div>
+          <div class="rcard-meta"><span class="tag tag-weekly">Weekly</span><span>GW29 live data</span></div>
+        </a>
+        <!-- ADD NEW YAMAL WEEKLY CARD HERE -->
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">&#128260; Transfer Strategy</div>
+      <div class="card-grid">
+        <a href="Trades_Yamal1.html" class="rcard">
+          <div class="rcard-icon">&#128200;</div>
+          <div class="rcard-title">Triage Trade Plan</div>
+          <div class="rcard-desc">Fix both GKs before GW30 deadline (possible hit), then Rogers → Wilson, Kroupi Jr → Welbeck. Self-funded from zero bank.</div>
+          <div class="rcard-meta"><span class="tag tag-trades">Transfers</span><span>3-4 trades &bull; possible hit</span></div>
+        </a>
+        <!-- ADD NEW YAMAL TRADES CARD HERE -->
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SHARED REPORTS -->
+<div class="shared-section">
+  <div class="shared-title">&#127942; Shared Intelligence — All Teams</div>
+  <div class="shared-inner">
     <div class="card-grid">
-
-      <a href="FPL_GW30_Strategic_Review.html" class="card">
-        <div class="card-icon">&#128203;</div>
-        <div class="card-title">GW30 Strategic Review</div>
-        <div class="card-desc">Full squad analysis with player-by-player verdicts, FDR outlook, captaincy picks, and risk flags for the current gameweek.</div>
-        <div class="card-meta">
-          <span class="card-badge badge-html">HTML</span>
-          <span>15 players reviewed</span>
-        </div>
+      <a href="FPL_Top10_Strategy_Report.html" class="rcard">
+        <div class="rcard-icon">&#128081;</div>
+        <div class="rcard-title">Top-10 Manager Intelligence</div>
+        <div class="rcard-desc">50 lineup snapshots across GW25-29. Template players, captain patterns, chip discipline and formation trends from the elite.</div>
+        <div class="rcard-meta"><span class="tag tag-intel">Intelligence</span><span>50 lineups</span></div>
       </a>
-
-      <!-- ADD NEW WEEKLY REPORT CARD HERE -->
-
+      <a href="FPL_Chip_CostBenefit.html" class="rcard">
+        <div class="rcard-icon">&#9878;&#65039;</div>
+        <div class="rcard-title">Chip Cost-Benefit Analysis</div>
+        <div class="rcard-desc">Free Hit BGW31 vs Bench Boost DGW33 scenario modelling with point projections. Applies to all three teams.</div>
+        <div class="rcard-meta"><span class="tag tag-chip">Chips</span><span>+37-58 pts advantage</span></div>
+      </a>
+      <a href="FPL_FreeHit_GW31_Plan.html" class="rcard">
+        <div class="rcard-icon">&#9889;</div>
+        <div class="rcard-title">Free Hit GW31 Squad</div>
+        <div class="rcard-desc">Optimal 15-man Free Hit squad for BGW31. Live API data, fixture picks, captaincy strategy and bench planning.</div>
+        <div class="rcard-meta"><span class="tag tag-chip">Chips</span><span>3-5-2 formation</span></div>
+      </a>
+      <!-- ADD NEW SHARED CARD HERE -->
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ===== LEAGUE INTELLIGENCE ===== -->
-  <section class="section">
-    <div class="section-title"><span class="section-icon">&#127942;</span> League Intelligence</div>
-    <div class="card-grid">
-
-      <a href="FPL_Top10_Strategy_Report.html" class="card">
-        <div class="card-icon">&#128081;</div>
-        <div class="card-title">Top-10 Manager Intelligence</div>
-        <div class="card-desc">Analysis of the top 10 overall managers' lineups across GW25-29. Captain patterns, template players, formation trends, and chip discipline.</div>
-        <div class="card-meta">
-          <span class="card-badge badge-html">HTML</span>
-          <span>50 lineups analysed</span>
-        </div>
-      </a>
-
-      <!-- ADD NEW LEAGUE REPORT CARD HERE -->
-
-    </div>
-  </section>
-
-  <!-- ===== TRANSFER STRATEGY ===== -->
-  <section class="section">
-    <div class="section-title"><span class="section-icon">&#128260;</span> Transfer Strategy</div>
-    <div class="card-grid">
-
-      <a href="FPL_Priority_Trade_Plan.html" class="card">
-        <div class="card-icon">&#128200;</div>
-        <div class="card-title">Priority Trade Plan</div>
-        <div class="card-desc">4-trade sequence (GW32–35) based on top-10 template gaps. Budget ledger, timeline, and player comparisons for each move.</div>
-        <div class="card-meta">
-          <span class="card-badge badge-html">HTML</span>
-          <span>4 trades &bull; 0 hits</span>
-        </div>
-      </a>
-
-      <!-- ADD NEW TRANSFER CARD HERE -->
-
-    </div>
-  </section>
-
-  <!-- ===== CHIP STRATEGY ===== -->
-  <section class="section">
-    <div class="section-title"><span class="section-icon">&#127183;</span> Chip Strategy</div>
-    <div class="card-grid">
-
-      <a href="FPL_Chip_CostBenefit.html" class="card">
-        <div class="card-icon">&#9878;&#65039;</div>
-        <div class="card-title">Chip Cost-Benefit Analysis</div>
-        <div class="card-desc">Free Hit vs Bench Boost deployment comparison. Scenario modelling with point projections for BGW31 and DGW33.</div>
-        <div class="card-meta">
-          <span class="card-badge badge-html">HTML</span>
-          <span>+37 to +58 pts advantage</span>
-        </div>
-      </a>
-
-      <a href="FPL_FreeHit_GW31_Plan.html" class="card">
-        <div class="card-icon">&#9889;</div>
-        <div class="card-title">Free Hit GW31 Squad</div>
-        <div class="card-desc">Optimal 15-man Free Hit squad for Blank Gameweek 31. Live API data, fixture analysis, captaincy picks, and full bench strategy.</div>
-        <div class="card-meta">
-          <span class="card-badge badge-html">HTML</span>
-          <span>3-5-2 formation</span>
-        </div>
-      </a>
-
-      <!-- ADD NEW CHIP STRATEGY CARD HERE -->
-
-    </div>
-  </section>
-
-  <!-- ===== TOOLS & UTILITIES ===== -->
-  <section class="section">
-    <div class="section-title"><span class="section-icon">&#128736;&#65039;</span> Tools &amp; Utilities</div>
-
-    <button class="tools-toggle" id="toolsToggle" onclick="toggleTools()">
-      <span class="arrow">&#9660;</span> Show collector scripts &amp; utilities
-    </button>
-
-    <div class="card-grid tools-content" id="toolsContent">
-
-      <a href="fpl_data_collector.js" class="card">
-        <div class="card-icon">&#128230;</div>
-        <div class="card-title">Data Collector Script</div>
-        <div class="card-desc">Browser console script that hits 4 FPL API endpoints and downloads a structured JSON snapshot of your full squad, FDR grid, and transfer targets.</div>
-        <div class="card-meta">
-          <span class="card-badge badge-js">JS</span>
-          <span>Paste in browser console</span>
-        </div>
-      </a>
-
-      <a href="fpl_top10_collector.js" class="card">
-        <div class="card-icon">&#128202;</div>
-        <div class="card-title">Top-10 Collector Script</div>
-        <div class="card-desc">Fetches top N managers from any league and pulls their last 5 gameweeks of lineups. Configurable league ID, batch size, and rate limiting.</div>
-        <div class="card-meta">
-          <span class="card-badge badge-js">JS</span>
-          <span>Paste in browser console</span>
-        </div>
-      </a>
-
-      <a href="FPL_Analysis_Prompt.md" class="card">
-        <div class="card-icon">&#128221;</div>
-        <div class="card-title">Reusable Analysis Prompt</div>
-        <div class="card-desc">Drop your JSON snapshot into Claude alongside this prompt to generate a full strategic review without navigating any pages.</div>
-        <div class="card-meta">
-          <span class="card-badge badge-md">MD</span>
-          <span>Claude prompt template</span>
-        </div>
-      </a>
-
-      <!-- ADD NEW TOOL CARD HERE -->
-
-    </div>
-  </section>
-
-</main>
-
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  Powered by <a href="https://fantasy.premierleague.com" target="_blank" rel="noopener">FPL API</a> + Claude
-  &bull; SlowBuild 2025/26
-</footer>
+<footer>Powered by <a href="https://fantasy.premierleague.com" target="_blank" rel="noopener">FPL API</a> + Claude &bull; 2025/26 Season</footer>
 
 <script>
-  function toggleTools() {
-    const btn = document.getElementById('toolsToggle');
-    const content = document.getElementById('toolsContent');
-    const isOpen = content.classList.toggle('open');
-    btn.classList.toggle('open', isOpen);
-    btn.innerHTML = '<span class="arrow">' + (isOpen ? '\u25B2' : '\u25BC') + '</span> ' + (isOpen ? 'Hide' : 'Show') + ' collector scripts & utilities';
+  function switchTab(id, el) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.team-panel').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('panel-' + id).classList.add('active');
   }
 </script>
-
 </body>
 </html>

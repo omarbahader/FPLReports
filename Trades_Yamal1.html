@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transfer Strategy — Yamal 1#</title>
+<style>
+  :root{--bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--green:#01fc7a;--red:#ff1751;--amber:#e7a000;--text:#f0f0f0;--muted:#a0a0b8;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);padding:20px;max-width:1000px;margin:0 auto;}
+  h1{font-size:22px;color:var(--green);}h2{font-size:15px;margin:24px 0 10px;color:var(--green);border-bottom:2px solid var(--accent);padding-bottom:5px;}
+  .sub{color:var(--muted);font-size:12px;margin-bottom:16px;}
+  .card{background:var(--card);border-radius:10px;padding:18px;margin:14px 0;border-left:5px solid var(--accent);}
+  .card.p1{border-left-color:var(--red);}.card.p2{border-left-color:var(--amber);}.card.p3{border-left-color:var(--green);}
+  .trade-header{font-size:15px;font-weight:700;margin-bottom:6px;}
+  .out{color:var(--red);font-weight:700;}.in{color:var(--green);font-weight:700;}
+  .arrow{color:var(--green);margin:0 8px;font-size:18px;}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0;}
+  .meta-item{background:rgba(15,52,96,.5);padding:5px 10px;border-radius:4px;font-size:11px;}
+  .meta-item span{color:var(--muted);font-size:10px;display:block;text-transform:uppercase;}
+  p{margin:5px 0;color:#d0d0e0;font-size:13px;}
+  .badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:9px;font-weight:700;text-transform:uppercase;}
+  .b-urgent{background:var(--red);color:#fff;}.b-high{background:var(--amber);color:#000;}.b-med{background:var(--green);color:#000;}
+  .budget-box{background:var(--card);border:1px solid var(--accent);border-radius:8px;padding:14px;margin:12px 0;}
+  .budget-row{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:1px solid #2a2a4a;}
+  .budget-row:last-child{border:none;font-weight:700;color:var(--green);font-size:13px;}
+  .insight{border-left:4px solid var(--green);padding:10px 14px;background:var(--card);margin:10px 0;font-size:13px;border-radius:0 8px 8px 0;}
+  .insight.warn{border-left-color:var(--red);}.insight.warn strong{color:var(--red);}.insight strong{color:var(--green);}
+  .tl{display:flex;gap:0;margin:14px 0;flex-wrap:wrap;}
+  .tl-item{flex:1;min-width:100px;text-align:center;padding:10px 6px;background:var(--card);border-right:1px solid var(--accent);}
+  .tl-item:last-child{border-right:none;}
+  .tl-gw{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+  .tl-act{font-size:11px;font-weight:600;margin-top:3px;}
+  .nav{margin-bottom:16px;font-size:12px;color:var(--muted);}
+  .nav a{color:var(--green);text-decoration:none;}
+  @media(max-width:600px){.meta{flex-direction:column;}.tl{flex-direction:column;}}
+</style>
+</head>
+<body>
+<div class="nav"><a href="index.html">← Hub</a> &bull; <a href="GW29_Yamal1.html">GW29 Analysis</a></div>
+
+<h1>Transfer Strategy</h1>
+<p class="sub">Team: <strong>Yamal 1#</strong> &bull; Rami B &bull; Bank: £0.0m &bull; GW29</p>
+
+<div class="insight warn"><strong>Critical constraint:</strong> £0.0m in the bank means every upgrade must be self-funded by selling a player first. Trades must be sequenced carefully — sell the weaker asset first to generate budget, then buy the upgrade. No trades can run simultaneously.</div>
+
+<h2>Timeline</h2>
+<div class="tl">
+  <div class="tl-item"><div class="tl-gw">GW30</div><div class="tl-act" style="color:var(--red)">GK Fix — URGENT</div></div>
+  <div class="tl-item"><div class="tl-gw">GW31</div><div class="tl-act" style="color:var(--green)">FREE HIT</div></div>
+  <div class="tl-item"><div class="tl-gw">GW32</div><div class="tl-act" style="color:var(--amber)">Trade #2</div></div>
+  <div class="tl-item"><div class="tl-gw">GW33 DGW</div><div class="tl-act" style="color:var(--blue)">BENCH BOOST</div></div>
+  <div class="tl-item"><div class="tl-gw">GW34+</div><div class="tl-act" style="color:var(--muted)">Trade #3</div></div>
+</div>
+
+<!-- Trade 1 -->
+<div class="card p1">
+  <span class="badge b-urgent">Priority 1 — BEFORE GW30 DEADLINE</span>
+  <div class="trade-header" style="margin-top:8px"><span class="out">Roefs (SUN) + Wright (AVL)</span><span class="arrow">→</span><span class="in">Petrović (BOU) + Hermansen (WHU)</span></div>
+  <p>This is a double GK fix — one trade cleans up both positions. Sell Roefs (£4.8m, doubt) and buy Petrović (£4.5m, F:5.2) as the new first-choice GK. Then use the £0.3m saved to swap Wright (£3.9m, 0 pts) for Hermansen (£4.2m). The net cost is zero — Roefs (£4.8m) and Wright (£3.9m) out totals £8.7m; Petrović (£4.5m) and Hermansen (£4.2m) in totals £8.7m. Exactly breaks even.</p>
+  <div class="meta">
+    <div class="meta-item"><span>Sell (2 GKs)</span>£8.7m total</div>
+    <div class="meta-item"><span>Buy (2 GKs)</span>£8.7m total</div>
+    <div class="meta-item"><span>FTs used</span>2 (costs 1 hit)</div>
+    <div class="meta-item"><span>Bank After</span>£0.0m</div>
+  </div>
+  <p style="color:var(--amber); font-size:12px; margin-top:8px">⚠️ This double trade costs a 4-point hit if you've already used your free transfer. The hit is worth it — a doubt GK starting your XI is a guaranteed 0 which is worse than −4.</p>
+</div>
+
+<!-- Trade 2 -->
+<div class="card p2">
+  <span class="badge b-high">Priority 2 — GW32</span>
+  <div class="trade-header" style="margin-top:8px"><span class="out">Rogers (AVL)</span><span class="arrow">→</span><span class="in">Wilson (FUL)</span></div>
+  <p>Rogers (F:1.8) is severely underperforming his £7.5m price tag. Wilson (FUL, F:5.5, £6.0m) has the easiest upcoming fixtures (FUL vs BUR, FDR 1) and consistently delivers. Selling Rogers also frees £1.5m — critical given the zero bank position.</p>
+  <div class="meta">
+    <div class="meta-item"><span>Sell</span>£7.5m</div>
+    <div class="meta-item"><span>Buy</span>£6.0m</div>
+    <div class="meta-item"><span>Saves</span>£1.5m</div>
+    <div class="meta-item"><span>Bank After</span>£1.5m</div>
+  </div>
+</div>
+
+<!-- Trade 3 -->
+<div class="card p3">
+  <span class="badge b-med">Priority 3 — GW34</span>
+  <div class="trade-header" style="margin-top:8px"><span class="out">Kroupi Jr (BOU)</span><span class="arrow">→</span><span class="in">Welbeck (BHA) or Šeško (MUN)</span></div>
+  <p>Kroupi Jr (F:1.5) is providing nothing as the third forward. With £1.5m in the bank after Trade #2, Welbeck (£6.1m) or if another player is sold first, Šeško (£7.3m) is achievable. Welbeck offers good value; Šeško is the premium option pairing with B.Fernandes.</p>
+  <div class="meta">
+    <div class="meta-item"><span>Sell</span>£4.7m</div>
+    <div class="meta-item"><span>Buy (Welbeck)</span>£6.1m</div>
+    <div class="meta-item"><span>Cost</span>£0.3m (with £1.5m bank)</div>
+    <div class="meta-item"><span>Bank After</span>£1.2m</div>
+  </div>
+</div>
+
+<h2>Final Budget Ledger</h2>
+<div class="budget-box">
+  <div class="budget-row"><span>Starting bank</span><span>£0.0m</span></div>
+  <div class="budget-row"><span>Trade #1: Roefs+Wright → Petrović+Hermansen (−4pt hit)</span><span>£0.0m</span></div>
+  <div class="budget-row"><span>Trade #2: Rogers → Wilson</span><span style="color:var(--green)">+£1.5m</span></div>
+  <div class="budget-row"><span>Trade #3: Kroupi Jr → Welbeck</span><span style="color:var(--red)">−£0.3m</span></div>
+  <div class="budget-row"><span>Final bank</span><span>£1.2m</span></div>
+</div>
+
+<div class="insight warn"><strong>GW31 Free Hit is essential:</strong> Semenyo, Haaland (both MCI) and Gabriel, Rice (both ARS) all blank GW31. With six players off the pitch and zero bank to patch with permanent transfers, the Free Hit is the only viable solution. Plan the 15-man FH squad carefully around the non-blanking teams.</div>
+
+<p style="font-size:11px;color:var(--muted);margin-top:20px;text-align:center">Transfer Strategy — Yamal 1# &bull; Rami B</p>
+</body></html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GW29 Weekly Analysis — SlowBuild</title>
+<style>
+  :root{--bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--green:#01fc7a;--red:#ff1751;--amber:#e7a000;--text:#f0f0f0;--muted:#a0a0b8;--blue:#4da6ff;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);padding:20px;max-width:1000px;margin:0 auto;}
+  h1{font-size:22px;color:var(--green);}h2{font-size:15px;margin:24px 0 10px;color:var(--green);border-bottom:2px solid var(--accent);padding-bottom:5px;}
+  .sub{color:var(--muted);font-size:12px;margin-bottom:16px;}
+  table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0;}
+  th{background:var(--accent);color:var(--green);padding:7px 5px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px;}
+  td{padding:6px 5px;border-bottom:1px solid #2a2a4a;}tr:hover{background:rgba(15,52,96,.3);}
+  .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:700;text-transform:uppercase;}
+  .sell{background:var(--red);color:#fff;}.keep{background:var(--green);color:#000;}.monitor{background:var(--amber);color:#000;}.bench{background:var(--accent);color:var(--muted);}
+  .card{background:var(--card);border-radius:10px;padding:16px;margin:12px 0;border:1px solid var(--accent);}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0;}
+  .stat{text-align:center;padding:10px;background:rgba(15,52,96,.4);border-radius:8px;}
+  .stat-n{font-size:22px;font-weight:700;}.stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;}
+  .insight{border-left:4px solid var(--green);padding:10px 14px;background:var(--card);margin:10px 0;font-size:13px;border-radius:0 8px 8px 0;}
+  .insight.warn{border-left-color:var(--red);}.insight strong{color:var(--green);}.insight.warn strong{color:var(--red);}
+  p{margin:5px 0;color:#d0d0e0;font-size:13px;}
+  .fdr1,.fdr2{color:var(--green);font-weight:700;}.fdr3{color:var(--amber);}.fdr4,.fdr5{color:var(--red);font-weight:700;}
+  .nav{margin-bottom:16px;font-size:12px;color:var(--muted);}
+  .nav a{color:var(--green);text-decoration:none;}
+  @media(max-width:600px){.grid3{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="nav"><a href="index.html">← Hub</a></div>
+
+<h1>GW29 Weekly Analysis</h1>
+<p class="sub">Team: <strong>SlowBuild</strong> &bull; Manager: Omar B &bull; Current GW: 29</p>
+
+<div class="grid3">
+  <div class="stat"><div class="stat-n" style="color:var(--green)">1,340</div><div class="stat-l">Total Points</div></div>
+  <div class="stat"><div class="stat-n" style="color:var(--amber)">8,699,162</div><div class="stat-l">Overall Rank</div></div>
+  <div class="stat"><div class="stat-n">£0.7m</div><div class="stat-l">In The Bank</div></div>
+</div>
+
+<h2>Squad Analysis (GW29 → GW30 Outlook)</h2>
+<table>
+  <tr><th>#</th><th>Player</th><th>Team</th><th>Pos</th><th>Price</th><th>Form</th><th>TP</th><th>GW30 Fix</th><th>GW31</th><th>Verdict</th></tr>
+  <tr><td>1</td><td>Donnarumma</td><td>MCI</td><td>GK</td><td>£5.6m</td><td>4.5</td><td>102</td><td class="fdr2">WHU (A) 2</td><td class="fdr5" style="color:var(--red)">BLANK</td><td><span class="badge monitor">Monitor</span></td></tr>
+  <tr><td>2</td><td>James</td><td>CHE</td><td>DEF</td><td>£5.6m</td><td>3.5</td><td>111</td><td class="fdr3">NEW (H) 3</td><td class="fdr3">EVE (A) 3</td><td><span class="badge keep">Keep</span></td></tr>
+  <tr><td>3</td><td>Robertson</td><td>LIV</td><td>DEF</td><td>£5.7m</td><td style="color:var(--red)">2.2</td><td>34</td><td class="fdr3">TOT (H) 3</td><td class="fdr3">BHA (A) 3</td><td><span class="badge sell">Sell</span></td></tr>
+  <tr><td>4</td><td>Virgil</td><td>LIV</td><td>DEF</td><td>£6.2m</td><td style="color:var(--green)">9.0</td><td>130</td><td class="fdr3">TOT (H) 3</td><td class="fdr3">BHA (A) 3</td><td><span class="badge keep">Keep ★</span></td></tr>
+  <tr><td>5</td><td>Chalobah</td><td>CHE</td><td>DEF</td><td>£5.6m</td><td style="color:var(--red)">2.0</td><td>129</td><td class="fdr3">NEW (H) 3</td><td class="fdr3">EVE (A) 3</td><td><span class="badge sell">Sell</span></td></tr>
+  <tr><td>6</td><td>Foden ©</td><td>MCI</td><td>MID</td><td>£8.1m</td><td style="color:var(--red)">2.0</td><td>111</td><td class="fdr2">WHU (A) 2</td><td class="fdr5" style="color:var(--red)">BLANK</td><td><span class="badge sell">Sell</span></td></tr>
+  <tr><td>7</td><td>Enzo</td><td>CHE</td><td>MID</td><td>£6.7m</td><td style="color:var(--red)">2.2</td><td>125</td><td class="fdr3">NEW (H) 3</td><td class="fdr3">EVE (A) 3</td><td><span class="badge sell">Sell</span></td></tr>
+  <tr><td>8</td><td>Semenyo (v)</td><td>MCI</td><td>MID</td><td>£8.3m</td><td style="color:var(--green)">8.2</td><td>172</td><td class="fdr2">WHU (A) 2</td><td class="fdr5" style="color:var(--red)">BLANK</td><td><span class="badge keep">Keep ★</span></td></tr>
+  <tr><td>9</td><td>Mbeumo</td><td>MUN</td><td>MID</td><td>£8.7m</td><td>3.8</td><td>118</td><td class="fdr3">AVL (H) 3</td><td class="fdr3">BOU (A) 3</td><td><span class="badge keep">Keep</span></td></tr>
+  <tr><td>10</td><td>Ekitiké</td><td>LIV</td><td>FWD</td><td>£9.1m</td><td>5.2</td><td>123</td><td class="fdr3">TOT (H) 3</td><td class="fdr3">BHA (A) 3</td><td><span class="badge keep">Keep</span></td></tr>
+  <tr><td>11</td><td>Kolo Muani</td><td>TOT</td><td>FWD</td><td>£6.9m</td><td style="color:var(--red)">2.5</td><td>37</td><td class="fdr4">LIV (A) 4</td><td class="fdr2">NFO (H) 2</td><td><span class="badge sell">Sell</span></td></tr>
+  <tr style="opacity:.65"><td>12</td><td>Raya</td><td>ARS</td><td>GK</td><td>£6.0m</td><td>3.2</td><td>—</td><td>—</td><td class="fdr5" style="color:var(--red)">BLANK</td><td><span class="badge bench">Bench</span></td></tr>
+  <tr style="opacity:.65"><td>13</td><td>Saliba</td><td>ARS</td><td>DEF</td><td>£6.1m</td><td>2.6</td><td>—</td><td>—</td><td class="fdr5" style="color:var(--red)">BLANK</td><td><span class="badge bench">Bench</span></td></tr>
+  <tr style="opacity:.65"><td>14</td><td>Obi</td><td>MUN</td><td>FWD</td><td>£4.2m</td><td style="color:var(--red)">0.0</td><td>—</td><td>—</td><td>—</td><td><span class="badge sell">Dead weight</span></td></tr>
+  <tr style="opacity:.65"><td>15</td><td>Rice</td><td>ARS</td><td>MID</td><td>£7.4m</td><td>5.2</td><td>—</td><td>—</td><td class="fdr5" style="color:var(--red)">BLANK</td><td><span class="badge bench">Bench</span></td></tr>
+</table>
+
+<h2>Key Issues</h2>
+<div class="insight warn"><strong>Captain misfire:</strong> Foden captained with form 2.0 while Semenyo (8.2) was on the bench as vice. The captain pick cost significant points this week.</div>
+<div class="insight warn"><strong>GW31 Blank exposure:</strong> Donnarumma, Foden, Semenyo (all MCI) blank. Plus Raya, Saliba, Rice (all ARS) on bench also blank. Use Free Hit GW31 to navigate.</div>
+<div class="insight warn"><strong>5 players with form ≤2.5:</strong> Robertson (2.2), Chalobah (2.0), Foden (2.0), Enzo (2.2), Kolo Muani (2.5). Squad needs significant surgery.</div>
+<div class="insight"><strong>Bright spots:</strong> Virgil (F:9.0) and Semenyo (F:8.2) are standout assets. Ekitiké (5.2) steady. Rice (5.2) is high quality but wasted on the bench.</div>
+
+<h2>GW30 Captaincy</h2>
+<div class="card">
+  <p><strong style="color:var(--green)">Captain: Semenyo (MCI)</strong> — Form 8.2, WHU away (FDR 2). Easiest fixture on the board for a premium asset in blistering form. No brainer after being wrongly benched as VC.</p>
+  <p><strong style="color:var(--amber)">Vice: Virgil (LIV)</strong> — Form 9.0, vs TOT at home (FDR 3). Highest form defender in the game.</p>
+</div>
+
+<p style="font-size:11px;color:var(--muted);margin-top:20px;text-align:center">GW29 Live Data — SlowBuild &bull; <a href="Trades_SlowBuild.html" style="color:var(--green)">View Transfer Plan →</a></p>
+</body></html>
