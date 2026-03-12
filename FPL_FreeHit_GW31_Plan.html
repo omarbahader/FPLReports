@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FPL Free Hit GW31 — Squad Builder</title>
+<style>
+  :root { --bg:#1a1a2e; --card:#16213e; --accent:#0f3460; --green:#01fc7a; --red:#ff1751; --amber:#e7a000; --text:#f0f0f0; --muted:#a0a0b8; --blue:#4da6ff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.6; max-width:1080px; margin:0 auto; }
+  h1 { font-size:22px; color:var(--green); }
+  h2 { font-size:16px; margin:28px 0 10px; color:var(--green); border-bottom:2px solid var(--accent); padding-bottom:6px; }
+  h3 { font-size:14px; margin:16px 0 6px; color:var(--blue); }
+  .sub { color:var(--muted); font-size:12px; margin-bottom:20px; }
+  table { width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:12.5px; }
+  th { background:var(--accent); color:var(--green); padding:8px 6px; text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:.5px; }
+  td { padding:7px 6px; border-bottom:1px solid #2a2a4a; vertical-align:top; }
+  tr:hover { background:rgba(15,52,96,.3); }
+  .card { background:var(--card); border-radius:10px; padding:20px; margin:14px 0; border:1px solid var(--accent); }
+  .badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+  .keep { background:var(--green); color:#000; }
+  .out { background:var(--red); color:#fff; }
+  .in { background:var(--blue); color:#000; }
+  .insight { background:var(--card); border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0; font-size:13px; }
+  .insight strong { color:var(--green); }
+  .insight.warn { border-left-color:var(--red); }
+  .insight.warn strong { color:var(--red); }
+  p { margin:6px 0; color:#d0d0e0; font-size:13px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+  .stat { text-align:center; padding:12px; background:rgba(15,52,96,.4); border-radius:8px; }
+  .stat-num { font-size:24px; font-weight:700; }
+  .stat-lbl { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+  .fdr1 { color:#01fc7a; } .fdr2 { color:#01fc7a; } .fdr3 { color:var(--amber); } .fdr4 { color:var(--red); } .fdr5 { color:#8b0000; }
+  .formation-box { background:linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); border:2px solid var(--green); border-radius:12px; padding:24px; margin:20px 0; }
+  .pitch-row { display:flex; justify-content:center; gap:16px; margin:10px 0; flex-wrap:wrap; }
+  .player-card { background:var(--card); border:1px solid var(--accent); border-radius:8px; padding:8px 12px; text-align:center; min-width:100px; }
+  .player-card.captain { border-color:var(--green); border-width:2px; }
+  .player-card .name { font-size:12px; font-weight:700; }
+  .player-card .team { font-size:10px; color:var(--muted); }
+  .player-card .price { font-size:10px; color:var(--green); }
+  .player-card .fixture { font-size:10px; color:var(--amber); margin-top:2px; }
+  .bench-row { opacity:.7; }
+  .captain-badge { background:var(--green); color:#000; font-size:9px; font-weight:700; padding:1px 6px; border-radius:10px; display:inline-block; margin-top:2px; }
+</style>
+</head>
+<body>
+
+<h1>Free Hit Squad — Blank Gameweek 31</h1>
+<p class="sub">SlowBuild &bull; Chip: FREE HIT &bull; Temporary squad for one week only &bull; Real squad returns GW32</p>
+
+<!-- ==================== SITUATION ==================== -->
+<h2>The Problem: 5 Players Blank</h2>
+
+<div class="insight warn">
+  <strong>4 teams have no fixture in GW31:</strong> Arsenal, Man City, Crystal Palace, Wolves (EFL Cup Final weekend). This wipes out 5 of your starters.
+</div>
+
+<table>
+  <tr><th>Player</th><th>Team</th><th>Position</th><th>Price</th><th>Form</th><th>Status</th></tr>
+  <tr>
+    <td style="color:var(--red); font-weight:700">Gabriel</td>
+    <td>ARS</td><td>DEF</td><td>£6.3m</td><td>5.8</td>
+    <td><span class="badge out">BLANKS</span> No fixture</td>
+  </tr>
+  <tr>
+    <td style="color:var(--red); font-weight:700">Timber</td>
+    <td>ARS</td><td>DEF</td><td>£5.9m</td><td>5.0</td>
+    <td><span class="badge out">BLANKS</span> No fixture</td>
+  </tr>
+  <tr>
+    <td style="color:var(--red); font-weight:700">O'Reilly</td>
+    <td>CRY</td><td>MID</td><td>£5.1m</td><td>5.0</td>
+    <td><span class="badge out">BLANKS</span> No fixture</td>
+  </tr>
+  <tr>
+    <td style="color:var(--red); font-weight:700">Semenyo</td>
+    <td>WOL</td><td>MID</td><td>£5.5m</td><td>3.8</td>
+    <td><span class="badge out">BLANKS</span> No fixture</td>
+  </tr>
+  <tr>
+    <td style="color:var(--red); font-weight:700">Haaland</td>
+    <td>MCI</td><td>FWD</td><td>£14.8m</td><td>4.2</td>
+    <td><span class="badge out">BLANKS</span> No fixture</td>
+  </tr>
+</table>
+
+<p>The remaining 10 players in your squad DO have a GW31 fixture and can be kept or swapped depending on matchup:</p>
+
+<table>
+  <tr><th>Player</th><th>Team</th><th>Pos</th><th>GW31 Fixture</th><th>FDR</th><th>Form</th><th>Verdict</th></tr>
+  <tr><td>Petrović</td><td>BOU</td><td>GK</td><td>vs MUN (H)</td><td class="fdr3">3</td><td>5.2</td><td><span class="badge keep">KEEP</span> Top form GK</td></tr>
+  <tr><td>Senesi</td><td>BOU</td><td>DEF</td><td>vs MUN (H)</td><td class="fdr3">3</td><td>5.5</td><td><span class="badge keep">KEEP</span> Solid form</td></tr>
+  <tr><td>Scott</td><td>BOU</td><td>MID</td><td>vs MUN (H)</td><td class="fdr3">3</td><td>3.0</td><td><span class="badge keep">KEEP</span> Has fixture</td></tr>
+  <tr><td>Bruno Fernandes</td><td>MUN</td><td>MID</td><td>vs BOU (A)</td><td class="fdr3">3</td><td>6.2</td><td><span class="badge keep">KEEP</span> Premium, top form</td></tr>
+  <tr><td>Palmer</td><td>CHE</td><td>MID</td><td>vs EVE (A)</td><td class="fdr3">3</td><td>6.2</td><td><span class="badge keep">KEEP</span> Premium, top form</td></tr>
+  <tr><td>Enzo</td><td>CHE</td><td>MID</td><td>vs EVE (A)</td><td class="fdr3">3</td><td>2.2</td><td><span class="badge out">SWAP</span> Poor form — upgrade for FH</td></tr>
+  <tr><td>Mukiele</td><td>SUN</td><td>DEF</td><td>vs NEW (A)</td><td class="fdr4">4</td><td>0.8</td><td><span class="badge out">SWAP</span> Injured + tough away fixture</td></tr>
+  <tr><td>Ekitiké</td><td>LIV</td><td>FWD</td><td>vs BHA (A)</td><td class="fdr3">3</td><td>4.6</td><td><span class="badge keep">KEEP</span> Premium asset</td></tr>
+  <tr><td>Rice</td><td>MUN</td><td>MID</td><td>vs BOU (A)</td><td class="fdr3">3</td><td>3.5</td><td><span class="badge keep">KEEP</span> Has fixture</td></tr>
+  <tr><td>Semenyo</td><td>WOL</td><td>MID</td><td>—</td><td>—</td><td>3.8</td><td><span class="badge out">BLANKS</span></td></tr>
+</table>
+
+<!-- ==================== GW31 FIXTURES ==================== -->
+<h2>GW31 Fixture Map (8 matches, 16 teams play)</h2>
+
+<table>
+  <tr><th>Home</th><th>vs</th><th>Away</th><th>Home FDR</th><th>Away FDR</th><th>Key Targets</th></tr>
+  <tr>
+    <td style="font-weight:700">BOU</td><td>vs</td><td>MUN</td>
+    <td class="fdr3">3</td><td class="fdr3">3</td>
+    <td>Petrović, Senesi, Hill, Truffert | Bruno, Šeško</td>
+  </tr>
+  <tr>
+    <td>BHA</td><td>vs</td><td style="font-weight:700">LIV</td>
+    <td class="fdr3">3</td><td class="fdr3">3</td>
+    <td>Verbruggen, Welbeck | Virgil, Mac Allister, Ekitiké</td>
+  </tr>
+  <tr style="background:rgba(1,252,122,.08)">
+    <td style="font-weight:700; color:var(--green)">FUL</td><td>vs</td><td>BUR</td>
+    <td class="fdr1" style="font-weight:700">1</td><td class="fdr3">3</td>
+    <td style="color:var(--green)">Iwobi (6.8 form!), Wilson (5.5), Bassey</td>
+  </tr>
+  <tr>
+    <td>EVE</td><td>vs</td><td style="font-weight:700">CHE</td>
+    <td class="fdr3">3</td><td class="fdr3">3</td>
+    <td>Pickford, Tarkowski | Palmer, João Pedro</td>
+  </tr>
+  <tr>
+    <td>LEE</td><td>vs</td><td>BRE</td>
+    <td class="fdr3">3</td><td class="fdr3">3</td>
+    <td>Van den Berg, Damsgaard | Kelleher</td>
+  </tr>
+  <tr style="background:rgba(1,252,122,.08)">
+    <td style="font-weight:700; color:var(--green)">NEW</td><td>vs</td><td>SUN</td>
+    <td class="fdr2" style="font-weight:700">2</td><td class="fdr4">4</td>
+    <td style="color:var(--green)">Thiaw (4.8), Isak, Gordon — easy home fixture</td>
+  </tr>
+  <tr style="background:rgba(1,252,122,.08)">
+    <td style="font-weight:700; color:var(--green)">AVL</td><td>vs</td><td>WHU</td>
+    <td class="fdr2" style="font-weight:700">2</td><td class="fdr4">4</td>
+    <td style="color:var(--green)">Martinez, Rogers, Watkins — easy home fixture</td>
+  </tr>
+  <tr style="background:rgba(1,252,122,.08)">
+    <td style="font-weight:700; color:var(--green)">TOT</td><td>vs</td><td>NFO</td>
+    <td class="fdr2" style="font-weight:700">2</td><td class="fdr3">3</td>
+    <td style="color:var(--green)">Son, Solanke, Johnson — strong home fixture</td>
+  </tr>
+</table>
+
+<div class="insight">
+  <strong>Best fixtures (FDR 1-2 home):</strong> Fulham vs BUR (FDR 1), Newcastle vs SUN (FDR 2), Aston Villa vs WHU (FDR 2), Tottenham vs NFO (FDR 2). These four home teams are the primary hunting ground for Free Hit picks.
+</div>
+
+<!-- ==================== TOP TARGETS ==================== -->
+<h2>Player Shortlist by Position (Live API Data)</h2>
+
+<h3>Goalkeepers</h3>
+<table>
+  <tr><th>Player</th><th>Team</th><th>Price</th><th>Form</th><th>TP</th><th>Sel%</th><th>Fixture</th><th>Verdict</th></tr>
+  <tr style="background:rgba(1,252,122,.08)"><td style="font-weight:700">Petrović</td><td>BOU</td><td>£4.5m</td><td style="color:var(--green)">5.2</td><td>94</td><td>5.0%</td><td>vs MUN (H)</td><td><span class="badge keep">KEEP — already yours</span></td></tr>
+  <tr><td>Martinez</td><td>AVL</td><td>£5.1m</td><td>3.2</td><td>97</td><td>4.4%</td><td>vs WHU (H, FDR 2)</td><td>Great fixture, proven keeper</td></tr>
+  <tr><td>Pickford</td><td>EVE</td><td>£5.6m</td><td>2.5</td><td>117</td><td>13.3%</td><td>vs CHE (H)</td><td>Highest TP among active GKs</td></tr>
+  <tr><td>Verbruggen</td><td>BHA</td><td>£4.5m</td><td>3.4</td><td>91</td><td>5.4%</td><td>vs LIV (H)</td><td>Tough fixture vs LIV</td></tr>
+</table>
+
+<h3>Defenders</h3>
+<table>
+  <tr><th>Player</th><th>Team</th><th>Price</th><th>Form</th><th>TP</th><th>Sel%</th><th>Fixture</th><th>Verdict</th></tr>
+  <tr style="background:rgba(1,252,122,.08)"><td style="font-weight:700">Virgil van Dijk</td><td>LIV</td><td>£6.2m</td><td style="color:var(--green)">7.2</td><td>130</td><td>32.5%</td><td>vs BHA (A)</td><td><span class="badge in">MUST-OWN</span> Best form in the game</td></tr>
+  <tr style="background:rgba(1,252,122,.08)"><td style="font-weight:700">Truffert</td><td>BOU</td><td>£4.6m</td><td style="color:var(--green)">6.2</td><td>107</td><td>2.5%</td><td>vs MUN (H)</td><td><span class="badge in">TARGET</span> Huge form, attacking returns</td></tr>
+  <tr><td>Senesi</td><td>BOU</td><td>£5.0m</td><td>5.5</td><td>126</td><td>17.4%</td><td>vs MUN (H)</td><td><span class="badge keep">KEEP — already yours</span></td></tr>
+  <tr><td>Hill</td><td>BOU</td><td>£4.2m</td><td>6.2</td><td>75</td><td>7.4%</td><td>vs MUN (H)</td><td>Budget option, same BOU defence</td></tr>
+  <tr><td>Diouf</td><td>WHU</td><td>£4.0m</td><td>6.0</td><td>79</td><td>2.2%</td><td>vs AVL (A, FDR 4)</td><td>Great form but tough fixture</td></tr>
+  <tr><td>Van den Berg</td><td>BRE</td><td>£4.5m</td><td>5.2</td><td>83</td><td>1.2%</td><td>vs LEE (A)</td><td>Decent away fixture</td></tr>
+  <tr><td>Thiaw</td><td>NEW</td><td>£5.0m</td><td>4.8</td><td>105</td><td>4.2%</td><td>vs SUN (H, FDR 2)</td><td><span class="badge in">TARGET</span> Easy derby, CS potential</td></tr>
+  <tr><td>Ballard</td><td>SUN</td><td>£4.6m</td><td>5.2</td><td>114</td><td>3.7%</td><td>vs NEW (A, FDR 4)</td><td>Good form but tough away fixture</td></tr>
+</table>
+
+<h3>Midfielders</h3>
+<table>
+  <tr><th>Player</th><th>Team</th><th>Price</th><th>Form</th><th>TP</th><th>Sel%</th><th>Fixture</th><th>Verdict</th></tr>
+  <tr style="background:rgba(1,252,122,.08)"><td style="font-weight:700">Bruno Fernandes</td><td>MUN</td><td>£10.1m</td><td style="color:var(--green)">6.2</td><td>166</td><td>40.5%</td><td>vs BOU (A)</td><td><span class="badge keep">KEEP — Captain candidate</span></td></tr>
+  <tr style="background:rgba(1,252,122,.08)"><td style="font-weight:700">Palmer</td><td>CHE</td><td>£10.6m</td><td style="color:var(--green)">6.2</td><td>92</td><td>16.2%</td><td>vs EVE (A)</td><td><span class="badge keep">KEEP — Premium in form</span></td></tr>
+  <tr style="background:rgba(1,252,122,.08)"><td style="font-weight:700">Iwobi</td><td>FUL</td><td>£6.4m</td><td style="color:var(--green)">6.8</td><td>91</td><td>2.2%</td><td>vs BUR (H, FDR 1)</td><td><span class="badge in">TOP TARGET</span> Best form + easiest fixture</td></tr>
+  <tr style="background:rgba(1,252,122,.08)"><td style="font-weight:700">Wilson</td><td>FUL</td><td>£6.0m</td><td>5.5</td><td>140</td><td>23.2%</td><td>vs BUR (H, FDR 1)</td><td><span class="badge in">TARGET</span> High TP, easiest fixture</td></tr>
+  <tr><td>Mac Allister</td><td>LIV</td><td>£6.3m</td><td>5.8</td><td>76</td><td>2.1%</td><td>vs BHA (A)</td><td>Good form, LIV double-up with VVD</td></tr>
+  <tr><td>Anderson</td><td>NFO</td><td>£5.5m</td><td>5.8</td><td>131</td><td>7.0%</td><td>vs TOT (A)</td><td>High TP but tough away</td></tr>
+  <tr><td>Gibbs-White</td><td>NFO</td><td>£7.3m</td><td>5.5</td><td>122</td><td>3.8%</td><td>vs TOT (A)</td><td>Pricey for an away fixture</td></tr>
+  <tr><td>Damsgaard</td><td>BRE</td><td>£5.6m</td><td>5.8</td><td>85</td><td>0.8%</td><td>vs LEE (A)</td><td>Differential, decent form</td></tr>
+  <tr><td>Anthony</td><td>BUR</td><td>£5.0m</td><td>6.0</td><td>100</td><td>1.9%</td><td>vs FUL (A)</td><td>Budget mid, good form</td></tr>
+</table>
+
+<h3>Forwards</h3>
+<table>
+  <tr><th>Player</th><th>Team</th><th>Price</th><th>Form</th><th>TP</th><th>Sel%</th><th>Fixture</th><th>Verdict</th></tr>
+  <tr style="background:rgba(1,252,122,.08)"><td style="font-weight:700">João Pedro</td><td>CHE</td><td>£7.7m</td><td style="color:var(--green)">9.5</td><td>160</td><td>47.4%</td><td>vs EVE (A)</td><td><span class="badge in">MUST-OWN</span> Best form in the league, absurd 9.5</td></tr>
+  <tr style="background:rgba(1,252,122,.08)"><td style="font-weight:700">Šeško</td><td>MUN</td><td>£7.3m</td><td style="color:var(--green)">6.5</td><td>89</td><td>5.9%</td><td>vs BOU (A)</td><td><span class="badge in">TARGET</span> Excellent form, pairs with Bruno</td></tr>
+  <tr><td>Ekitiké</td><td>LIV</td><td>£9.1m</td><td>4.6</td><td>123</td><td>34.0%</td><td>vs BHA (A)</td><td><span class="badge keep">KEEP — already yours</span></td></tr>
+  <tr><td>Bowen</td><td>WHU</td><td>£7.5m</td><td>5.0</td><td>135</td><td>7.6%</td><td>vs AVL (A, FDR 4)</td><td>Good but tough fixture</td></tr>
+  <tr><td>Welbeck</td><td>BHA</td><td>£6.1m</td><td>4.4</td><td>92</td><td>3.8%</td><td>vs LIV (H)</td><td>Tough fixture vs LIV</td></tr>
+  <tr><td>Solanke</td><td>TOT</td><td>£7.7m</td><td>4.2</td><td>109</td><td>7.0%</td><td>vs NFO (H, FDR 2)</td><td>Easy home fixture, decent option</td></tr>
+  <tr><td>Watkins</td><td>AVL</td><td>£8.0m</td><td>3.8</td><td>101</td><td>6.9%</td><td>vs WHU (H, FDR 2)</td><td>Easy fixture but mediocre form</td></tr>
+</table>
+
+<!-- ==================== RECOMMENDED FREE HIT SQUAD ==================== -->
+<h2>Recommended Free Hit XV</h2>
+<p>Formation: <strong>3-5-2</strong> — Maximise midfield exposure to the best fixtures. Budget: unlimited (Free Hit = full £100m).</p>
+
+<div class="formation-box">
+
+  <!-- GK -->
+  <div style="text-align:center; margin-bottom:6px; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:2px">Goalkeeper</div>
+  <div class="pitch-row">
+    <div class="player-card">
+      <div class="name">Petrović</div>
+      <div class="team">BOU</div>
+      <div class="price">£4.5m</div>
+      <div class="fixture">vs MUN (H)</div>
+      <div style="font-size:10px; color:var(--green)">Form: 5.2 — KEEP</div>
+    </div>
+  </div>
+
+  <!-- DEF -->
+  <div style="text-align:center; margin:12px 0 6px; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:2px">Defence</div>
+  <div class="pitch-row">
+    <div class="player-card">
+      <div class="name">Virgil van Dijk</div>
+      <div class="team">LIV</div>
+      <div class="price">£6.2m</div>
+      <div class="fixture">vs BHA (A)</div>
+      <div style="font-size:10px; color:var(--green)">Form: 7.2 — IN</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Senesi</div>
+      <div class="team">BOU</div>
+      <div class="price">£5.0m</div>
+      <div class="fixture">vs MUN (H)</div>
+      <div style="font-size:10px; color:var(--green)">KEEP</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Thiaw</div>
+      <div class="team">NEW</div>
+      <div class="price">£5.0m</div>
+      <div class="fixture">vs SUN (H, FDR 2)</div>
+      <div style="font-size:10px; color:var(--green)">Form: 4.8 — IN</div>
+    </div>
+  </div>
+
+  <!-- MID -->
+  <div style="text-align:center; margin:12px 0 6px; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:2px">Midfield</div>
+  <div class="pitch-row">
+    <div class="player-card captain">
+      <div class="name">Bruno Fernandes</div>
+      <div class="team">MUN</div>
+      <div class="price">£10.1m</div>
+      <div class="fixture">vs BOU (A)</div>
+      <div class="captain-badge">CAPTAIN</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Palmer</div>
+      <div class="team">CHE</div>
+      <div class="price">£10.6m</div>
+      <div class="fixture">vs EVE (A)</div>
+      <div style="font-size:10px; color:var(--green)">Form: 6.2 — KEEP</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Iwobi</div>
+      <div class="team">FUL</div>
+      <div class="price">£6.4m</div>
+      <div class="fixture" style="color:var(--green)">vs BUR (H, FDR 1)</div>
+      <div style="font-size:10px; color:var(--green)">Form: 6.8 — IN ★</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Wilson</div>
+      <div class="team">FUL</div>
+      <div class="price">£6.0m</div>
+      <div class="fixture" style="color:var(--green)">vs BUR (H, FDR 1)</div>
+      <div style="font-size:10px; color:var(--green)">Form: 5.5 — IN</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Mac Allister</div>
+      <div class="team">LIV</div>
+      <div class="price">£6.3m</div>
+      <div class="fixture">vs BHA (A)</div>
+      <div style="font-size:10px; color:var(--green)">Form: 5.8 — IN</div>
+    </div>
+  </div>
+
+  <!-- FWD -->
+  <div style="text-align:center; margin:12px 0 6px; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:2px">Forwards</div>
+  <div class="pitch-row">
+    <div class="player-card">
+      <div class="name">João Pedro</div>
+      <div class="team">CHE</div>
+      <div class="price">£7.7m</div>
+      <div class="fixture">vs EVE (A)</div>
+      <div style="font-size:10px; color:var(--green)">Form: 9.5 — IN ★★</div>
+      <div class="captain-badge" style="background:var(--amber)">VICE CAPTAIN</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Ekitiké</div>
+      <div class="team">LIV</div>
+      <div class="price">£9.1m</div>
+      <div class="fixture">vs BHA (A)</div>
+      <div style="font-size:10px; color:var(--green)">KEEP</div>
+    </div>
+  </div>
+
+  <!-- BENCH -->
+  <div style="text-align:center; margin:16px 0 6px; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:2px; border-top:1px solid var(--accent); padding-top:12px">Bench</div>
+  <div class="pitch-row bench-row">
+    <div class="player-card">
+      <div class="name">Martinez</div>
+      <div class="team">AVL — GK</div>
+      <div class="price">£5.1m</div>
+      <div class="fixture">vs WHU (H)</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Truffert</div>
+      <div class="team">BOU — DEF</div>
+      <div class="price">£4.6m</div>
+      <div class="fixture">vs MUN (H)</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Šeško</div>
+      <div class="team">MUN — FWD</div>
+      <div class="price">£7.3m</div>
+      <div class="fixture">vs BOU (A)</div>
+    </div>
+    <div class="player-card">
+      <div class="name">Damsgaard</div>
+      <div class="team">BRE — MID</div>
+      <div class="price">£5.6m</div>
+      <div class="fixture">vs LEE (A)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TRANSFERS SUMMARY ==================== -->
+<h2>What Changes vs Your Real Squad</h2>
+
+<table>
+  <tr><th>Slot</th><th style="color:var(--red)">Out (Blanking/Weak)</th><th style="color:var(--green)">In (Free Hit)</th><th>Reason</th></tr>
+  <tr><td>DEF</td><td style="color:var(--red)">Gabriel (ARS)</td><td style="color:var(--green)">Virgil van Dijk (LIV)</td><td>ARS blank → Best-form DEF in the game (7.2), LIV CS potential</td></tr>
+  <tr><td>DEF</td><td style="color:var(--red)">Timber (ARS)</td><td style="color:var(--green)">Thiaw (NEW)</td><td>ARS blank → NEW home vs SUN (FDR 2), clean sheet favourite</td></tr>
+  <tr><td>DEF</td><td style="color:var(--red)">Mukiele (SUN)</td><td style="color:var(--green)">Truffert (BOU) [bench]</td><td>Injured + tough away → BOU home, form 6.2</td></tr>
+  <tr><td>MID</td><td style="color:var(--red)">O'Reilly (CRY)</td><td style="color:var(--green)">Iwobi (FUL)</td><td>CRY blank → Best form mid (6.8) + easiest fixture (FDR 1)</td></tr>
+  <tr><td>MID</td><td style="color:var(--red)">Semenyo (WOL)</td><td style="color:var(--green)">Wilson (FUL)</td><td>WOL blank → FUL vs BUR (FDR 1), high TP (140)</td></tr>
+  <tr><td>MID</td><td style="color:var(--red)">Enzo (CHE)</td><td style="color:var(--green)">Mac Allister (LIV)</td><td>Poor form (2.2) → Better form (5.8), LIV away at BHA</td></tr>
+  <tr><td>MID</td><td style="color:var(--red)">Scott (BOU)</td><td style="color:var(--green)">Damsgaard (BRE) [bench]</td><td>Low form (3.0) → Better option, budget allows upgrade</td></tr>
+  <tr><td>MID</td><td style="color:var(--red)">Rice (MUN)</td><td style="color:var(--green)">—</td><td>KEEP Rice — has fixture, plays for MUN</td></tr>
+  <tr><td>FWD</td><td style="color:var(--red)">Haaland (MCI)</td><td style="color:var(--green)">João Pedro (CHE)</td><td>MCI blank → Hottest FWD in the game (9.5 form)</td></tr>
+  <tr><td>GK (bench)</td><td style="color:var(--red)">Sánchez/backup</td><td style="color:var(--green)">Martinez (AVL)</td><td>FDR 2 home fixture, strong backup GK option</td></tr>
+  <tr><td>FWD (bench)</td><td style="color:var(--red)">—</td><td style="color:var(--green)">Šeško (MUN)</td><td>Form 6.5, pairs with Bruno in MUN attack</td></tr>
+</table>
+
+<!-- ==================== CAPTAINCY ==================== -->
+<h2>Captaincy Decision</h2>
+
+<div class="grid2">
+  <div class="card" style="border-left:4px solid var(--green)">
+    <h3 style="margin-top:0">Captain: Bruno Fernandes (MUN)</h3>
+    <p><strong>Form:</strong> 6.2 &bull; <strong>TP:</strong> 166 &bull; <strong>Fixture:</strong> vs BOU (A)</p>
+    <p>Top-10 managers captained Bruno 2:1 over Haaland in recent weeks. With Haaland blanking, Bruno is the clear #1 pick. Penalty taker, set piece threat, always involved. 40.5% ownership means massive EO — you can't afford to not captain him.</p>
+  </div>
+  <div class="card" style="border-left:4px solid var(--amber)">
+    <h3 style="margin-top:0">Vice Captain: João Pedro (CHE)</h3>
+    <p><strong>Form:</strong> 9.5 &bull; <strong>TP:</strong> 160 &bull; <strong>Fixture:</strong> vs EVE (A)</p>
+    <p>The best form in the entire game at 9.5. If Bruno somehow doesn't play (unlikely), João Pedro is the dream fallback against a leaky Everton defence.</p>
+  </div>
+</div>
+
+<!-- ==================== KEY PRINCIPLES ==================== -->
+<h2>Free Hit Principles to Remember</h2>
+
+<div class="card">
+<p><strong>1. Don't think long-term.</strong> Free Hit is a one-week rental. Pick purely on GW31 form + fixture. Don't worry about whether you'd normally own Iwobi or Thiaw.</p>
+<p><strong>2. Stack favourable fixtures.</strong> FUL vs BUR (FDR 1) is the standout — double up with Iwobi + Wilson. NEW vs SUN and AVL vs WHU (both FDR 2) are the next tier.</p>
+<p><strong>3. Keep your premiums who play.</strong> Bruno, Palmer, Ekitiké all have fixtures — no reason to drop them. Free Hit lets you keep them AND fill the gaps.</p>
+<p><strong>4. Bench still matters.</strong> Even on Free Hit, pick a strong bench. If one of your starters gets a late injury, you want Šeško or Truffert auto-subbing in, not a £4.0m benchwarmer.</p>
+<p><strong>5. Check news on deadline day.</strong> This squad is based on current data. Check for last-minute injuries/rotation before the GW31 deadline.</p>
+</div>
+
+<p style="font-size:11px; color:var(--muted); margin-top:24px; text-align:center;">
+  Free Hit Plan generated March 2026 &bull; Data: FPL API (live) &bull; SlowBuild
+</p>
+
+</body>
+</html>

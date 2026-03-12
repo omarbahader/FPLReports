@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FPL GW30 Strategic Review — SlowBuild</title>
+<style>
+  :root {
+    --bg: #1a1a2e;
+    --card: #16213e;
+    --accent: #0f3460;
+    --green: #01fc7a;
+    --red: #ff1751;
+    --dark-red: #800b2d;
+    --amber: #e7a000;
+    --grey: #e7e7e7;
+    --text: #f0f0f0;
+    --muted: #a0a0b8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.6; }
+  h1 { font-size: 28px; margin-bottom: 4px; color: var(--green); }
+  h2 { font-size: 20px; margin: 32px 0 16px; color: var(--green); border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+  h3 { font-size: 16px; margin: 20px 0 10px; color: #c0c0e0; }
+  .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .summary-card { background: var(--card); border-radius: 8px; padding: 16px; text-align: center; border: 1px solid var(--accent); }
+  .summary-card .label { font-size: 11px; text-transform: uppercase; color: var(--muted); letter-spacing: 1px; }
+  .summary-card .value { font-size: 24px; font-weight: 700; margin-top: 4px; }
+  .summary-card .value.green { color: var(--green); }
+  .summary-card .value.amber { color: var(--amber); }
+  .summary-card .value.red { color: var(--red); }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+  th { background: var(--accent); color: var(--green); padding: 10px 8px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 8px; border-bottom: 1px solid #2a2a4a; }
+  tr:hover { background: rgba(15, 52, 96, 0.4); }
+  .fdr-1 { background: #375523; color: #fff; }
+  .fdr-2 { background: #01fc7a; color: #000; }
+  .fdr-3 { background: #e7e7e7; color: #000; }
+  .fdr-4 { background: #ff1751; color: #fff; }
+  .fdr-5 { background: #800b2d; color: #fff; }
+  .fdr-cell { padding: 4px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; text-align: center; display: inline-block; min-width: 60px; }
+  .verdict-hold { color: var(--green); font-weight: 700; }
+  .verdict-sell { color: var(--red); font-weight: 700; }
+  .verdict-monitor { color: var(--amber); font-weight: 700; }
+  .chip-box { background: var(--card); border: 1px solid var(--accent); border-radius: 8px; padding: 16px; margin: 8px 0; }
+  .chip-box strong { color: var(--green); }
+  .flag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .flag-injury { background: var(--red); color: #fff; }
+  .flag-caution { background: var(--amber); color: #000; }
+  .flag-ok { background: var(--green); color: #000; }
+  .captain-badge { display: inline-block; background: var(--green); color: #000; font-weight: 800; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 11px; }
+  .section-card { background: var(--card); border-radius: 8px; padding: 20px; margin: 12px 0; border: 1px solid var(--accent); }
+  .transfer-arrow { color: var(--green); font-weight: 700; margin: 0 8px; }
+  p { margin: 8px 0; color: #d0d0e0; }
+  .highlight { color: var(--green); font-weight: 600; }
+  .warn { color: var(--amber); }
+  .danger { color: var(--red); }
+  .bench-label { font-size: 11px; color: var(--muted); text-transform: uppercase; }
+  ul { margin: 8px 0 8px 20px; }
+  li { margin: 4px 0; color: #d0d0e0; }
+</style>
+</head>
+<body>
+
+<h1>FPL GW30 Strategic Review</h1>
+<p class="subtitle">Team: <strong>SlowBuild</strong> (Omar B) &bull; Gameweek 30 &bull; Deadline: Sat 14 Mar, 09:30 &bull; Generated: 9 Mar 2026</p>
+
+<!-- ===== TEAM SNAPSHOT ===== -->
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="label">Overall Points</div>
+    <div class="value green">1,614</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Overall Rank</div>
+    <div class="value">1,614,733</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">GW29 Points</div>
+    <div class="value green">84</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Bank</div>
+    <div class="value amber">£0.1m</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Free Transfers</div>
+    <div class="value red">0</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Squad Value</div>
+    <div class="value">£95.3m</div>
+  </div>
+</div>
+
+<!-- ===== CHIPS STATUS ===== -->
+<h2>Chip Status</h2>
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="label">Wildcard</div>
+    <div class="value red">Used GW24</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Triple Captain</div>
+    <div class="value red">Used GW26</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Bench Boost</div>
+    <div class="value green">Available</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Free Hit</div>
+    <div class="value green">Available</div>
+  </div>
+</div>
+
+<!-- ===== STEP 2: PLAYER-BY-PLAYER ANALYSIS ===== -->
+<h2>Step 2 — Player-by-Player Analysis</h2>
+
+<h3>Goalkeepers</h3>
+<table>
+  <thead>
+    <tr><th>Player</th><th>Team</th><th>Sell £</th><th>TP</th><th>Form</th><th>PPG</th><th>GW30</th><th>FDR Next 6 (GW30–35)</th><th>Flags</th><th>Verdict</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Kelleher</strong></td>
+      <td>BRE</td>
+      <td>£4.6m</td>
+      <td>104</td>
+      <td>2.5</td>
+      <td>3.7</td>
+      <td><span class="fdr-cell fdr-2">WOL (H)</span></td>
+      <td>
+        <span class="fdr-cell fdr-2">WOL</span>
+        <span class="fdr-cell fdr-3">LEE</span>
+        <span class="fdr-cell fdr-3">EVE</span>
+        <span class="fdr-cell fdr-2">FUL</span>
+        <span class="fdr-cell fdr-4">MUN</span>
+        <span class="fdr-cell fdr-2">WHU</span>
+      </td>
+      <td><span class="flag flag-ok">Fit</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Excellent fixture run GW30–34 (FDR 2-3). Nailed starter.</small></td>
+    </tr>
+    <tr>
+      <td>Petrović</td>
+      <td>BOU</td>
+      <td>£4.5m</td>
+      <td>94</td>
+      <td>5.2</td>
+      <td>3.2</td>
+      <td><span class="fdr-cell fdr-2">BUR (A)</span></td>
+      <td>
+        <span class="fdr-cell fdr-2">BUR</span>
+        <span class="fdr-cell fdr-3">MUN</span>
+        <span class="fdr-cell fdr-5">ARS</span>
+        <span class="fdr-cell fdr-4">NEW</span>
+        <span class="fdr-cell fdr-2">LEE</span>
+        <span class="fdr-cell fdr-3">CRY</span>
+      </td>
+      <td><span class="flag flag-ok">Fit</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Good form (5.2). Fixtures worsen GW32-33 but serviceable backup GK.</small></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Defenders</h3>
+<table>
+  <thead>
+    <tr><th>Player</th><th>Team</th><th>Sell £</th><th>TP</th><th>Form</th><th>PPG</th><th>xG/xA</th><th>GW30</th><th>FDR Next 6</th><th>Flags</th><th>Verdict</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Gabriel</strong></td>
+      <td>ARS</td>
+      <td>£6.9m</td>
+      <td>164</td>
+      <td>5.8</td>
+      <td>6.8</td>
+      <td>1.87 / 1.59</td>
+      <td><span class="fdr-cell fdr-3">EVE (H)</span></td>
+      <td>
+        <span class="fdr-cell fdr-3">EVE</span>
+        <span class="fdr-cell fdr-3" style="background:#555;color:#fff">BLANK</span>
+        <span class="fdr-cell fdr-3">BOU</span>
+        <span class="fdr-cell fdr-5">MCI</span>
+        <span class="fdr-cell fdr-3">NEW</span>
+        <span class="fdr-cell fdr-2">FUL</span>
+      </td>
+      <td><span class="flag flag-ok">Fit</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Season-best DEF (164pts). Set-piece threat. Blank GW31 but essential long-term.</small></td>
+    </tr>
+    <tr>
+      <td><strong>J.Timber</strong></td>
+      <td>ARS</td>
+      <td>£6.3m</td>
+      <td>148</td>
+      <td>5.4</td>
+      <td>5.1</td>
+      <td>4.71 / 1.52</td>
+      <td><span class="fdr-cell fdr-3">EVE (H)</span></td>
+      <td>
+        <span class="fdr-cell fdr-3">EVE</span>
+        <span class="fdr-cell fdr-3" style="background:#555;color:#fff">BLANK</span>
+        <span class="fdr-cell fdr-3">BOU</span>
+        <span class="fdr-cell fdr-5">MCI</span>
+        <span class="fdr-cell fdr-3">NEW</span>
+        <span class="fdr-cell fdr-2">FUL</span>
+      </td>
+      <td><span class="flag flag-ok">Fit</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Outstanding xG (4.71) for a DEF — massive goal threat from set pieces. Blank GW31.</small></td>
+    </tr>
+    <tr>
+      <td><strong>O'Reilly</strong></td>
+      <td>MCI</td>
+      <td>£5.0m</td>
+      <td>123</td>
+      <td style="color: #01fc7a; font-weight:700">7.6</td>
+      <td>4.6</td>
+      <td>3.36 / 1.68</td>
+      <td><span class="fdr-cell fdr-2">WHU (A)</span></td>
+      <td>
+        <span class="fdr-cell fdr-2">WHU</span>
+        <span class="fdr-cell fdr-3" style="background:#555;color:#fff">BLANK</span>
+        <span class="fdr-cell fdr-4">CHE</span>
+        <span class="fdr-cell fdr-4">ARS</span>
+        <span class="fdr-cell fdr-2">BUR</span>
+        <span class="fdr-cell fdr-3">EVE</span>
+      </td>
+      <td><span class="flag flag-caution">Ankle — Monitor</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Top-form DEF (7.6). Ankle concern easing — FPL shows 100% chance. Blank GW31.</small></td>
+    </tr>
+    <tr>
+      <td>Mukiele</td>
+      <td>SUN</td>
+      <td>£4.5m</td>
+      <td>115</td>
+      <td style="color: var(--red)">0.8</td>
+      <td>4.6</td>
+      <td>1.02 / 2.01</td>
+      <td><span class="fdr-cell fdr-3">BHA (H)</span></td>
+      <td>
+        <span class="fdr-cell fdr-3">BHA</span>
+        <span class="fdr-cell fdr-4">NEW</span>
+        <span class="fdr-cell fdr-3">TOT</span>
+        <span class="fdr-cell fdr-4">AVL</span>
+        <span class="fdr-cell fdr-2">NFO</span>
+        <span class="fdr-cell fdr-2">WOL</span>
+      </td>
+      <td><span class="flag flag-injury">Calf — 50%</span></td>
+      <td><span class="verdict-sell">SELL</span><br><small>Calf injury, 0.8 form, 2–4 week est. absence. First transfer-out candidate post-GW30.</small></td>
+    </tr>
+    <tr>
+      <td>Justin</td>
+      <td>LEE</td>
+      <td>£3.9m</td>
+      <td>49</td>
+      <td>1.5</td>
+      <td>2.5</td>
+      <td>0.92 / 0.80</td>
+      <td><span class="fdr-cell fdr-3">CRY (A)</span></td>
+      <td>
+        <span class="fdr-cell fdr-3">CRY</span>
+        <span class="fdr-cell fdr-3">BRE</span>
+        <span class="fdr-cell fdr-4">MUN</span>
+        <span class="fdr-cell fdr-2">WOL</span>
+        <span class="fdr-cell fdr-3">BOU</span>
+        <span class="fdr-cell fdr-1">BUR</span>
+      </td>
+      <td><span class="flag flag-ok">Fit</span></td>
+      <td><span class="verdict-monitor">MONITOR</span><br><small>Bench fodder (£3.9m). Low returns but plays GW31 and has decent run GW34+.</small></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Midfielders</h3>
+<table>
+  <thead>
+    <tr><th>Player</th><th>Team</th><th>Sell £</th><th>TP</th><th>Form</th><th>PPG</th><th>xG / xA</th><th>Goals / Assists</th><th>GW30</th><th>Verdict</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Semenyo</strong></td>
+      <td>MCI</td>
+      <td>£8.2m</td>
+      <td>172</td>
+      <td style="color: #01fc7a; font-weight:700">7.0</td>
+      <td>6.1</td>
+      <td>9.81 / 2.31</td>
+      <td>15G / 6A</td>
+      <td><span class="fdr-cell fdr-2">WHU (A)</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Elite. 2nd highest scorer (172). Goals exceed xG (15 vs 9.81) — slight regression risk but premium asset. Blank GW31.</small></td>
+    </tr>
+    <tr>
+      <td><strong>B.Fernandes</strong> <span class="captain-badge">V</span></td>
+      <td>MUN</td>
+      <td>£9.7m</td>
+      <td>166</td>
+      <td>6.2</td>
+      <td>6.4</td>
+      <td>9.08 / 8.41</td>
+      <td>7G / 14A</td>
+      <td><span class="fdr-cell fdr-3">AVL (H)</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Underperforming xG (7 goals vs 9.08 xG) — goals owed. Huge assist numbers. Plays GW31.</small></td>
+    </tr>
+    <tr>
+      <td><strong>Anderson</strong></td>
+      <td>NFO</td>
+      <td>£5.4m</td>
+      <td>131</td>
+      <td>5.8</td>
+      <td>4.5</td>
+      <td>2.45 / 5.42</td>
+      <td>4G / 8A</td>
+      <td><span class="fdr-cell fdr-2">FUL (H)</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Great value at £5.4m. Overperforming xA slightly (8A vs 5.42) but solid form (5.8). Plays GW31.</small></td>
+    </tr>
+    <tr>
+      <td>Scott</td>
+      <td>BOU</td>
+      <td>£5.0m</td>
+      <td>101</td>
+      <td>3.8</td>
+      <td>3.5</td>
+      <td>3.26 / 1.63</td>
+      <td>2G / 2A</td>
+      <td><span class="fdr-cell fdr-2">BUR (A)</span></td>
+      <td><span class="verdict-monitor">MONITOR</span><br><small>Underperforming xG heavily (2 goals vs 3.26). Decent fixture this week. Plays GW31 — useful squad cover.</small></td>
+    </tr>
+    <tr>
+      <td>Enzo</td>
+      <td>CHE</td>
+      <td>£6.7m</td>
+      <td>125</td>
+      <td style="color: var(--red)">2.2</td>
+      <td>4.3</td>
+      <td>5.36 / 3.71</td>
+      <td>7G / 3A</td>
+      <td><span class="fdr-cell fdr-3">NEW (H)</span></td>
+      <td><span class="verdict-sell">SELL</span><br><small>Form collapsed (2.2). Overperformed xG (7 vs 5.36) — regression happening. £6.7m tied up in a benchable asset. Plays GW31.</small></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Forwards</h3>
+<table>
+  <thead>
+    <tr><th>Player</th><th>Team</th><th>Sell £</th><th>TP</th><th>Form</th><th>PPG</th><th>xG / xA</th><th>Goals / Assists</th><th>GW30</th><th>Verdict</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Haaland</strong> <span class="captain-badge">C</span></td>
+      <td>MCI</td>
+      <td>£14.3m</td>
+      <td>195</td>
+      <td style="color: var(--amber)">4.8</td>
+      <td>6.7</td>
+      <td>19.58 / 2.08</td>
+      <td>19G / 4A</td>
+      <td><span class="fdr-cell fdr-2">WHU (A)</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Season top scorer (195). Roughly matching xG. Form dipped but ceiling remains the highest in FPL. Blank GW31.</small></td>
+    </tr>
+    <tr>
+      <td><strong>Ekitiké</strong></td>
+      <td>LIV</td>
+      <td>£9.1m</td>
+      <td>123</td>
+      <td>4.6</td>
+      <td>4.7</td>
+      <td>9.60 / 2.41</td>
+      <td>11G / 4A</td>
+      <td><span class="fdr-cell fdr-3">TOT (H)</span></td>
+      <td><span class="verdict-hold">HOLD</span><br><small>Overperforming xG slightly (11 vs 9.60). Good home fixture. Plays GW31 (BHA A). Premium FWD option.</small></td>
+    </tr>
+    <tr>
+      <td><strong>Thiago</strong></td>
+      <td>BRE</td>
+      <td>£7.1m</td>
+      <td>143</td>
+      <td style="color: var(--red)">3.0</td>
+      <td>4.9</td>
+      <td>15.64 / 1.62</td>
+      <td>18G / 1A</td>
+      <td><span class="fdr-cell fdr-2">WOL (H)</span></td>
+      <td><span class="verdict-monitor">MONITOR</span><br><small>18 goals (3rd highest in PL!) but form dip to 3.0. Overperforming xG (18 vs 15.64). Good fixture this week. Plays GW31.</small></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ===== STEP 3: RECOMMENDATIONS ===== -->
+<h2>Step 3 — Recommended Actions</h2>
+
+<h3>1. Transfer Recommendations</h3>
+<div class="section-card">
+  <p><strong>Current situation:</strong> 0 FT and £0.1m in the bank means <span class="danger">no transfers are possible this week without taking a –4 hit</span>. You will roll to 1 FT for GW32 (since you're Free Hitting GW31).</p>
+
+  <p><strong>Do NOT take a hit for GW30.</strong> Your starting XI is strong and the fixtures are good. Save your transfer ammunition for the post-BGW31 restructure.</p>
+
+  <h3 style="margin-top:16px">Priority Transfers for GW32 (post-Free Hit)</h3>
+  <table>
+    <thead><tr><th>#</th><th>OUT</th><th>IN</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1st</td>
+        <td><span class="danger">Mukiele (£4.5m)</span></td>
+        <td><span class="highlight">Truffert — BOU DEF — £4.6m</span></td>
+        <td>Mukiele injured (calf, 2–4 weeks). Truffert in 6.2 form, plays for Bournemouth with decent GW32+ fixtures. Budget: £0.1m + £4.5m = £4.6m available. ✅ Exact fit.</td>
+      </tr>
+      <tr>
+        <td>Alt</td>
+        <td><span class="danger">Mukiele (£4.5m)</span></td>
+        <td><span class="highlight">Hill — BOU DEF — £4.2m</span></td>
+        <td>Same Bournemouth defence, even cheaper (£4.2m), also 6.2 form. Saves £0.4m for future moves.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:12px"><strong>Medium-term target (GW33+):</strong> Enzo (£6.7m sell) → <span class="highlight">João Pedro (CHE, £7.7m)</span> if form continues (9.5 form, 160pts). Would need an additional £1.0m freed up from elsewhere — the Hill transfer above could start building that fund.</p>
+</div>
+
+<h3>2. Chip Strategy</h3>
+<div class="section-card">
+  <div class="chip-box">
+    <strong>Free Hit → GW31 (BGW31) ✅ CONFIRMED</strong>
+    <p>Arsenal, Man City, Crystal Palace, and Wolves all blank. This wipes out <strong>4 of your 15 players</strong> (Gabriel, Timber, O'Reilly, Semenyo, Haaland). Free Hit is the correct play — you can field a full 11 of players who have fixtures. Target players from Liverpool, Man Utd, Chelsea, Bournemouth, Nottingham Forest, and Brentford.</p>
+  </div>
+  <div class="chip-box">
+    <strong>Bench Boost → GW33 (Expected DGW) 🎯 RECOMMENDED</strong>
+    <p>GW33 is shaping up as the season's biggest Double Gameweek, with postponed fixtures from BGW31 and BGW34 likely rescheduled here. Deploy Bench Boost when you have 15 playing assets with double fixtures. Use your GW32 transfer(s) to ensure your bench has DGW players. Monitor FA Cup quarter-final results (between GW31–32) to confirm which teams double.</p>
+  </div>
+</div>
+
+<h3>3. Captaincy Pick — GW30</h3>
+<div class="section-card">
+  <table>
+    <thead><tr><th>Role</th><th>Player</th><th>Fixture</th><th>FDR</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="captain-badge">C</span></td>
+        <td><strong>Haaland</strong></td>
+        <td>WHU (A)</td>
+        <td><span class="fdr-cell fdr-2">2</span></td>
+        <td>Top scorer (195pts), FDR 2 fixture, 19.58 xG. Despite form dip, he remains the highest-ceiling captain. West Ham have conceded the 5th-most goals at home.</td>
+      </tr>
+      <tr>
+        <td><span class="captain-badge" style="background:var(--muted)">V</span></td>
+        <td><strong>B.Fernandes</strong></td>
+        <td>AVL (H)</td>
+        <td><span class="fdr-cell fdr-3">3</span></td>
+        <td>166pts, underperforming xG (7 vs 9.08), home advantage. Critical safety net if Haaland is rested after his recent knock.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:8px"><strong>Alternative captain:</strong> Semenyo (WHU A, FDR 2, form 7.0) — if you want to gamble on the form horse over the premium. Same fixture as Haaland.</p>
+</div>
+
+<h3>4. Starting XI & Bench Order — GW30</h3>
+<div class="section-card">
+  <p><strong>Formation: 3-4-3</strong></p>
+  <table>
+    <thead><tr><th>Position</th><th>Player</th><th>Fixture</th><th>FDR</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td>GK</td><td><strong>Kelleher</strong></td><td>WOL (H)</td><td><span class="fdr-cell fdr-2">2</span></td><td>Home vs relegation-threatened Wolves. Strong CS potential.</td></tr>
+      <tr><td>DEF</td><td><strong>Gabriel</strong></td><td>EVE (H)</td><td><span class="fdr-cell fdr-3">3</span></td><td>Arsenal at home, set-piece threat. Everton poor travellers.</td></tr>
+      <tr><td>DEF</td><td><strong>J.Timber</strong></td><td>EVE (H)</td><td><span class="fdr-cell fdr-3">3</span></td><td>Doubles up Arsenal defence. 4.71 xG — goal threat.</td></tr>
+      <tr><td>DEF</td><td><strong>O'Reilly</strong></td><td>WHU (A)</td><td><span class="fdr-cell fdr-2">2</span></td><td>Top form (7.6). FPL shows 100% chance. Favourable fixture.</td></tr>
+      <tr><td>MID</td><td><strong>Semenyo</strong></td><td>WHU (A)</td><td><span class="fdr-cell fdr-2">2</span></td><td>Form 7.0, 172pts. City's chief creator in a green fixture.</td></tr>
+      <tr><td>MID</td><td><strong>B.Fernandes</strong> <span class="captain-badge" style="background:var(--muted);font-size:9px">V</span></td><td>AVL (H)</td><td><span class="fdr-cell fdr-3">3</span></td><td>Home advantage. Penalty taker. Goals owed vs xG.</td></tr>
+      <tr><td>MID</td><td><strong>Scott</strong></td><td>BUR (A)</td><td><span class="fdr-cell fdr-2">2</span></td><td>FDR 2 away at Burnley. Underperforming xG — bounce expected.</td></tr>
+      <tr><td>MID</td><td><strong>Anderson</strong></td><td>FUL (H)</td><td><span class="fdr-cell fdr-2">2</span></td><td>Form 5.8, home fixture. Forest solid defensively this season.</td></tr>
+      <tr><td>FWD</td><td><strong>Haaland</strong> <span class="captain-badge">C</span></td><td>WHU (A)</td><td><span class="fdr-cell fdr-2">2</span></td><td>Captain. Highest ceiling. Green fixture.</td></tr>
+      <tr><td>FWD</td><td><strong>Ekitiké</strong></td><td>TOT (H)</td><td><span class="fdr-cell fdr-3">3</span></td><td>Liverpool at home. Spurs defence leaky away.</td></tr>
+      <tr><td>FWD</td><td><strong>Thiago</strong></td><td>WOL (H)</td><td><span class="fdr-cell fdr-2">2</span></td><td>18 goals this season. Home vs relegation Wolves.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin-top: 16px">Bench Order</h3>
+  <table>
+    <thead><tr><th>Bench Slot</th><th>Player</th><th>Fixture</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td><span class="bench-label">GK</span></td><td>Petrović</td><td>BUR (A)</td><td>Backup GK. Decent form (5.2) if Kelleher misses.</td></tr>
+      <tr><td><span class="bench-label">1st Sub</span></td><td>Justin</td><td>CRY (A)</td><td>First auto-sub — covers if O'Reilly's ankle flares. FDR 3.</td></tr>
+      <tr><td><span class="bench-label">2nd Sub</span></td><td>Enzo</td><td>NEW (H)</td><td>Midfield cover. Poor form (2.2) but Chelsea home fixture ok.</td></tr>
+      <tr><td><span class="bench-label">3rd Sub</span></td><td>Mukiele</td><td>BHA (H)</td><td>Likely OUT (calf, 50%). Correctly placed last — won't be called upon.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== STEP 4: RISK FLAGS ===== -->
+<h2>Step 4 — Risk Flags</h2>
+<div class="section-card">
+  <table>
+    <thead><tr><th>Risk</th><th>Severity</th><th>Details</th><th>Action Required</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Haaland fitness</td>
+        <td><span class="flag flag-caution">MEDIUM</span></td>
+        <td>Returned from ankle knock vs Forest (GW29). Guardiola says he's training at "real pace." FPL didn't update his flag — but Guardiola's presser on Fri will be decisive.</td>
+        <td><strong>Monitor Friday presser.</strong> If declared fit, keep captain. If doubt emerges, Bruno (VC) auto-covers.</td>
+      </tr>
+      <tr>
+        <td>O'Reilly ankle</td>
+        <td><span class="flag flag-caution">MEDIUM</span></td>
+        <td>FPL shows 100% chance of playing — suggesting recovery is on track. But originally flagged for GW29 ankle issue.</td>
+        <td><strong>Justin (1st bench)</strong> covers cleanly if O'Reilly misses.</td>
+      </tr>
+      <tr>
+        <td>Mukiele calf</td>
+        <td><span class="flag flag-injury">HIGH</span></td>
+        <td>50% chance per FPL. 2–4 week estimated absence. Form was already 0.8.</td>
+        <td><strong>No action needed for GW30</strong> — he's bench slot 3. Priority sell for GW32.</td>
+      </tr>
+      <tr>
+        <td>Arsenal rotation</td>
+        <td><span class="flag flag-ok">LOW</span></td>
+        <td>Gabriel and Timber both predicted to start vs Everton (H). Arsenal in title race — unlikely to rotate key defenders.</td>
+        <td>No action needed.</td>
+      </tr>
+      <tr>
+        <td>BGW31 squad impact</td>
+        <td><span class="flag flag-injury">HIGH</span></td>
+        <td>5 of your 15 players blank in GW31 (Gabriel, Timber, O'Reilly, Semenyo, Haaland). Your Free Hit resolves this entirely.</td>
+        <td><strong>Free Hit confirmed for GW31.</strong> Plan your FH team midweek.</td>
+      </tr>
+      <tr>
+        <td>Price changes</td>
+        <td><span class="flag flag-ok">LOW</span></td>
+        <td>With 0 FT and no planned transfers, price rises/falls don't impact you this week.</td>
+        <td>No action needed until GW32 planning.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== FIXTURE DIFFICULTY LOOKAHEAD ===== -->
+<h2>Appendix — 6-Week FDR Lookahead (Your Squad's Teams)</h2>
+<table>
+  <thead>
+    <tr><th>Team</th><th>GW30</th><th>GW31</th><th>GW32</th><th>GW33</th><th>GW34</th><th>GW35</th><th>Avg FDR</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Arsenal (Gabriel, Timber)</td><td><span class="fdr-cell fdr-3">EVE H</span></td><td><span class="fdr-cell" style="background:#555;color:#fff">BLANK</span></td><td><span class="fdr-cell fdr-3">BOU H</span></td><td><span class="fdr-cell fdr-5">MCI A</span></td><td><span class="fdr-cell fdr-3">NEW H</span></td><td><span class="fdr-cell fdr-2">FUL H</span></td><td>3.2</td></tr>
+    <tr><td>Man City (Haaland, Semenyo, O'Reilly)</td><td><span class="fdr-cell fdr-2">WHU A</span></td><td><span class="fdr-cell" style="background:#555;color:#fff">BLANK</span></td><td><span class="fdr-cell fdr-4">CHE A</span></td><td><span class="fdr-cell fdr-4">ARS H</span></td><td><span class="fdr-cell fdr-2">BUR A</span></td><td><span class="fdr-cell fdr-3">EVE A</span></td><td>3.0</td></tr>
+    <tr><td>Man Utd (B.Fernandes)</td><td><span class="fdr-cell fdr-3">AVL H</span></td><td><span class="fdr-cell fdr-3">BOU A</span></td><td><span class="fdr-cell fdr-2">LEE H</span></td><td><span class="fdr-cell fdr-4">CHE A</span></td><td><span class="fdr-cell fdr-3">BRE H</span></td><td><span class="fdr-cell fdr-3">LIV H</span></td><td>3.0</td></tr>
+    <tr><td>Liverpool (Ekitiké)</td><td><span class="fdr-cell fdr-3">TOT H</span></td><td><span class="fdr-cell fdr-3">BHA A</span></td><td><span class="fdr-cell fdr-2">FUL H</span></td><td><span class="fdr-cell fdr-3">EVE A</span></td><td><span class="fdr-cell fdr-3">CRY H</span></td><td><span class="fdr-cell fdr-4">MUN A</span></td><td>3.0</td></tr>
+    <tr><td>Brentford (Kelleher, Thiago)</td><td><span class="fdr-cell fdr-2">WOL H</span></td><td><span class="fdr-cell fdr-3">LEE A</span></td><td><span class="fdr-cell fdr-3">EVE H</span></td><td><span class="fdr-cell fdr-2">FUL H</span></td><td><span class="fdr-cell fdr-4">MUN A</span></td><td><span class="fdr-cell fdr-2">WHU H</span></td><td>2.7</td></tr>
+    <tr><td>Bournemouth (Petrović, Scott)</td><td><span class="fdr-cell fdr-2">BUR A</span></td><td><span class="fdr-cell fdr-3">MUN H</span></td><td><span class="fdr-cell fdr-5">ARS A</span></td><td><span class="fdr-cell fdr-4">NEW A</span></td><td><span class="fdr-cell fdr-2">LEE H</span></td><td><span class="fdr-cell fdr-3">CRY H</span></td><td>3.2</td></tr>
+    <tr><td>Nott'm Forest (Anderson)</td><td><span class="fdr-cell fdr-2">FUL H</span></td><td><span class="fdr-cell fdr-3">TOT A</span></td><td><span class="fdr-cell fdr-3">AVL H</span></td><td><span class="fdr-cell fdr-1">BUR H</span></td><td><span class="fdr-cell fdr-4">SUN A</span></td><td><span class="fdr-cell fdr-4">CHE A</span></td><td>2.8</td></tr>
+    <tr><td>Chelsea (Enzo)</td><td><span class="fdr-cell fdr-3">NEW H</span></td><td><span class="fdr-cell fdr-3">EVE A</span></td><td><span class="fdr-cell fdr-4">MCI H</span></td><td><span class="fdr-cell fdr-3">MUN H</span></td><td><span class="fdr-cell fdr-3">BHA A</span></td><td><span class="fdr-cell fdr-2">NFO H</span></td><td>3.0</td></tr>
+    <tr><td>Sunderland (Mukiele)</td><td><span class="fdr-cell fdr-3">BHA H</span></td><td><span class="fdr-cell fdr-4">NEW A</span></td><td><span class="fdr-cell fdr-3">TOT H</span></td><td><span class="fdr-cell fdr-4">AVL A</span></td><td><span class="fdr-cell fdr-2">NFO H</span></td><td><span class="fdr-cell fdr-2">WOL A</span></td><td>3.0</td></tr>
+    <tr><td>Leeds (Justin)</td><td><span class="fdr-cell fdr-3">CRY A</span></td><td><span class="fdr-cell fdr-3">BRE H</span></td><td><span class="fdr-cell fdr-4">MUN A</span></td><td><span class="fdr-cell fdr-2">WOL H</span></td><td><span class="fdr-cell fdr-3">BOU A</span></td><td><span class="fdr-cell fdr-1">BUR H</span></td><td>2.7</td></tr>
+  </tbody>
+</table>
+
+<div style="margin-top:40px; padding:16px; background:var(--card); border-radius:8px; border-left:4px solid var(--green);">
+  <h3 style="margin-top:0; color:var(--green)">Bottom Line</h3>
+  <p>Your GW30 setup is <strong>strong</strong>. All 11 starters have FDR 2–3 fixtures. The bench is correctly ordered to protect against the O'Reilly ankle risk. Captain Haaland with Bruno VC is the right call. <strong>No hits, no changes needed this week.</strong></p>
+  <p style="margin-top:8px">Your two priority actions are: (1) Plan your <strong>Free Hit GW31 squad</strong> midweek, targeting players from non-blanking teams. (2) After GW31, use your 1 FT to swap <strong>Mukiele out</strong> for a Bournemouth defender ahead of the expected DGW33 Bench Boost window.</p>
+</div>
+
+<p style="margin-top:24px; font-size:11px; color:var(--muted);">Data sources: FPL Official API (bootstrap-static), FPL FDR Grid, FPL Statistics page. Injury news via Fantasy Football Scout, Hammers News. Generated 9 March 2026.</p>
+
+</body>
+</html>

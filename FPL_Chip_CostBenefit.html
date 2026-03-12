@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FPL Chip Cost-Benefit Analysis — Free Hit vs Bench Boost Deployment</title>
+<style>
+  :root { --bg:#1a1a2e; --card:#16213e; --accent:#0f3460; --green:#01fc7a; --red:#ff1751; --amber:#e7a000; --text:#f0f0f0; --muted:#a0a0b8; --blue:#4da6ff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.6; max-width:1060px; margin:0 auto; }
+  h1 { font-size:22px; color:var(--green); }
+  h2 { font-size:16px; margin:28px 0 10px; color:var(--green); border-bottom:2px solid var(--accent); padding-bottom:6px; }
+  h3 { font-size:14px; margin:16px 0 6px; color:var(--blue); }
+  .sub { color:var(--muted); font-size:12px; margin-bottom:20px; }
+  table { width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:12.5px; }
+  th { background:var(--accent); color:var(--green); padding:8px 6px; text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:.5px; }
+  td { padding:7px 6px; border-bottom:1px solid #2a2a4a; vertical-align:top; }
+  tr:hover { background:rgba(15,52,96,.3); }
+  .card { background:var(--card); border-radius:10px; padding:20px; margin:14px 0; border:1px solid var(--accent); }
+  .scenario { border-left:5px solid; }
+  .scenario-a { border-left-color:var(--green); }
+  .scenario-b { border-left-color:var(--amber); }
+  .badge { display:inline-block; padding:3px 12px; border-radius:20px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+  .badge-rec { background:var(--green); color:#000; }
+  .badge-alt { background:var(--amber); color:#000; }
+  .badge-warn { background:var(--red); color:#fff; }
+  .insight { background:var(--card); border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0; font-size:13px; }
+  .insight strong { color:var(--green); }
+  .insight.warn { border-left-color:var(--red); }
+  .insight.warn strong { color:var(--red); }
+  p { margin:6px 0; color:#d0d0e0; font-size:13px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .stat { text-align:center; padding:12px; background:rgba(15,52,96,.4); border-radius:8px; }
+  .stat-num { font-size:28px; font-weight:700; }
+  .stat-lbl { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+  .verdict-box { background:linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); border:2px solid var(--green); border-radius:12px; padding:20px; margin:20px 0; text-align:center; }
+  .verdict-box h2 { border:none; text-align:center; font-size:20px; }
+  .bar { height:28px; border-radius:4px; display:flex; margin:6px 0; overflow:hidden; }
+  .bar-fill { display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#000; }
+  .compare-row { display:flex; gap:12px; margin:8px 0; }
+  .compare-col { flex:1; }
+  .chip-icon { font-size:18px; margin-right:6px; }
+  .gw-tag { display:inline-block; padding:2px 8px; border-radius:3px; font-size:10px; font-weight:700; margin:2px; }
+  .gw-blank { background:var(--red); color:#fff; }
+  .gw-double { background:var(--green); color:#000; }
+  .gw-normal { background:var(--accent); color:var(--text); }
+</style>
+</head>
+<body>
+
+<h1>Chip Deployment Cost-Benefit Analysis</h1>
+<p class="sub">SlowBuild &bull; Available Chips: <span class="badge badge-rec">Free Hit</span> <span class="badge badge-alt">Bench Boost</span> &bull; Wildcard used GW24 &bull; Triple Captain used GW26</p>
+
+<!-- ==================== CHIP STATUS ==================== -->
+<div class="insight warn">
+  <strong>Important Clarification:</strong> Your Wildcard was already used in GW24. The two chips remaining are <strong>Free Hit</strong> (build a temporary squad for one GW) and <strong>Bench Boost</strong> (all 15 players score). This analysis compares where to deploy each one for maximum value.
+</div>
+
+<!-- ==================== GAMEWEEK MAP ==================== -->
+<h2>Gameweek Landscape: GW31 → GW34</h2>
+
+<table>
+  <tr>
+    <th>Gameweek</th>
+    <th>Type</th>
+    <th>Teams Affected</th>
+    <th>Your Squad Impact</th>
+    <th>Opportunity</th>
+  </tr>
+  <tr>
+    <td><span class="gw-tag gw-blank">GW31 — BLANK</span></td>
+    <td>Blank GW (EFL Cup Final)</td>
+    <td>Arsenal, Man City, Crystal Palace, Wolves</td>
+    <td><span style="color:var(--red);font-weight:700">5 players blank:</span> Gabriel, Timber, O'Reilly (CRY), Semenyo (CRY/Wolves link), Haaland</td>
+    <td>Only 10/15 play → massive disadvantage without a chip</td>
+  </tr>
+  <tr>
+    <td><span class="gw-tag gw-double">GW33 — DOUBLE</span></td>
+    <td>Double GW (FA Cup rescheduling)</td>
+    <td>Arsenal, Man City, Aston Villa, Crystal Palace (confirmed)</td>
+    <td><span style="color:var(--green);font-weight:700">4-6 players double:</span> Gabriel, Timber, Haaland + potential others</td>
+    <td>4 teams play twice → up to 6 of your players get 2 fixtures</td>
+  </tr>
+  <tr>
+    <td><span class="gw-tag gw-blank">GW34 — BLANK</span></td>
+    <td>Blank GW (FA Cup Semis)</td>
+    <td>Arsenal, Man City, Aston Villa, Crystal Palace (same 4)</td>
+    <td><span style="color:var(--red);font-weight:700">4-6 players blank</span></td>
+    <td>If Free Hit not used by now, could deploy here</td>
+  </tr>
+</table>
+
+<!-- ==================== SCENARIO A ==================== -->
+<h2>Scenario A: Free Hit GW31 + Bench Boost GW33 <span class="badge badge-rec">Recommended</span></h2>
+
+<div class="card scenario scenario-a">
+
+<h3>Free Hit in BGW31</h3>
+<p><strong>What it does:</strong> Temporarily replaces your entire squad for GW31 only. Your real squad returns automatically in GW32.</p>
+
+<table>
+  <tr><th>Factor</th><th>Analysis</th><th>Point Impact</th></tr>
+  <tr>
+    <td>Players rescued from blank</td>
+    <td>Gabriel, Timber, O'Reilly, Semenyo, Haaland — all replaced with players who have fixtures</td>
+    <td style="color:var(--green)">+25 to +35 pts recovered</td>
+  </tr>
+  <tr>
+    <td>Squad optimization</td>
+    <td>Build a full 15 from the 16 non-blanking teams. Can pick the best fixture matchups across entire league for one week.</td>
+    <td style="color:var(--green)">+8 to +12 pts vs a patched squad</td>
+  </tr>
+  <tr>
+    <td>No lasting damage</td>
+    <td>Your real squad returns GW32 — no wasted transfers. Haaland, Gabriel, Timber all come back.</td>
+    <td style="color:var(--green)">Saves 1-2 FTs (£8-16 pts equiv.)</td>
+  </tr>
+  <tr>
+    <td>Captain flexibility</td>
+    <td>Can pick the absolute best captain from all non-blanking players (e.g. Bruno, Salah, etc.)</td>
+    <td style="color:var(--green)">+3 to +8 pts vs constrained captain</td>
+  </tr>
+  <tr>
+    <td><strong>Estimated total uplift</strong></td>
+    <td><strong>vs. playing BGW31 with 10 starters</strong></td>
+    <td style="color:var(--green);font-weight:700">+35 to +55 pts</td>
+  </tr>
+</table>
+
+<h3>Bench Boost in DGW33</h3>
+<p><strong>What it does:</strong> All 15 of your squad score points (bench included). Best used when maximum players have double fixtures.</p>
+
+<table>
+  <tr><th>Factor</th><th>Analysis</th><th>Point Impact</th></tr>
+  <tr>
+    <td>DGW33 confirmed doubles</td>
+    <td>Arsenal (Gabriel, Timber), Man City (Haaland), Aston Villa, Crystal Palace all play twice</td>
+    <td style="color:var(--green)">4-6 of your 15 get double fixtures</td>
+  </tr>
+  <tr>
+    <td>Bench players score</td>
+    <td>Normally your 4 bench players score 0. In a DGW, even bench players can return 8-15 pts across 2 fixtures.</td>
+    <td style="color:var(--green)">+12 to +25 pts from bench alone</td>
+  </tr>
+  <tr>
+    <td>DGW captain synergy</td>
+    <td>Haaland (2 games), Gabriel (2 games) — captain gets double opportunity even without TC</td>
+    <td style="color:var(--green)">+4 to +10 pts extra captain value</td>
+  </tr>
+  <tr>
+    <td>Trade plan alignment</td>
+    <td>By GW33, Trade #1 (Mukiele→Hill) and Trade #2 (Enzo→Wilson) complete. Squad is stronger.</td>
+    <td style="color:var(--green)">Better bench quality = higher Bench Boost value</td>
+  </tr>
+  <tr>
+    <td><strong>Estimated total uplift</strong></td>
+    <td><strong>vs. playing DGW33 without Bench Boost</strong></td>
+    <td style="color:var(--green);font-weight:700">+15 to +30 pts</td>
+  </tr>
+</table>
+
+<div class="stat" style="margin:12px 0; background:rgba(1,252,122,.1); border:1px solid var(--green);">
+  <div class="stat-num" style="color:var(--green);">+50 to +85</div>
+  <div class="stat-lbl">Combined point uplift from Scenario A</div>
+</div>
+</div>
+
+<!-- ==================== SCENARIO B ==================== -->
+<h2>Scenario B: Bench Boost GW31 + Free Hit GW33 <span class="badge badge-alt">Alternative</span></h2>
+
+<div class="card scenario scenario-b">
+
+<h3>Bench Boost in BGW31</h3>
+<p><strong>What it does:</strong> All 15 score — but 5 of them have NO fixture and score 0 points regardless.</p>
+
+<table>
+  <tr><th>Factor</th><th>Analysis</th><th>Point Impact</th></tr>
+  <tr>
+    <td>Wasted bench slots</td>
+    <td>5 players blank (Gabriel, Timber, O'Reilly, Semenyo, Haaland). If any are benched, their Bench Boost contribution = 0 pts.</td>
+    <td style="color:var(--red)">0 pts from 1-3 bench players (complete waste)</td>
+  </tr>
+  <tr>
+    <td>Reduced effective squad</td>
+    <td>Only 10 players have fixtures. Bench Boost adds 4 bench players' points, but some of those bench players also blank.</td>
+    <td style="color:var(--red)">Bench Boost value: +5 to +12 pts (severely diminished)</td>
+  </tr>
+  <tr>
+    <td>Captain limitation</td>
+    <td>Captain must come from 10 available players — likely Bruno (MUN) or Palmer (CHE). No Haaland option.</td>
+    <td style="color:var(--amber)">±0 (still decent captain options)</td>
+  </tr>
+  <tr>
+    <td>Chip wasted on low-ceiling GW</td>
+    <td>BGWs have fewer fixtures = lower scoring ceilings across the board. A Bench Boost in a 7-fixture GW is historically wasteful.</td>
+    <td style="color:var(--red)">Opportunity cost: –15 to –25 pts vs using BB in DGW</td>
+  </tr>
+  <tr>
+    <td><strong>Estimated total uplift</strong></td>
+    <td><strong>vs. playing BGW31 without any chip</strong></td>
+    <td style="color:var(--amber);font-weight:700">+5 to +12 pts</td>
+  </tr>
+</table>
+
+<h3>Free Hit in DGW33</h3>
+<p><strong>What it does:</strong> Build an entirely new squad loaded with DGW players. Powerful but with a hidden cost.</p>
+
+<table>
+  <tr><th>Factor</th><th>Analysis</th><th>Point Impact</th></tr>
+  <tr>
+    <td>DGW squad optimization</td>
+    <td>Pick 15 players all from doubling teams (Arsenal, City, Villa, Palace). Maximum fixture exposure.</td>
+    <td style="color:var(--green)">+20 to +35 pts from full DGW squad</td>
+  </tr>
+  <tr>
+    <td>But you already own DGW assets</td>
+    <td>You already have Gabriel, Timber, Haaland (all DGW33 players). Free Hit replaces your <em>entire</em> squad — even the good parts you want to keep.</td>
+    <td style="color:var(--amber)">Marginal gain reduced: only +8 to +15 pts over your existing squad</td>
+  </tr>
+  <tr>
+    <td>No Bench Boost synergy</td>
+    <td>Without Bench Boost, your 4 bench players still score 0. Free Hit gets you a great XI but bench is wasted.</td>
+    <td style="color:var(--red)">–12 to –20 pts vs BB+FH combo in DGW</td>
+  </tr>
+  <tr>
+    <td>GW34 problem unsolved</td>
+    <td>After Free Hit, your real squad returns for GW34 — another blank week. Same 4-5 players blank again. No chip left to handle it.</td>
+    <td style="color:var(--red)">Stuck in BGW34 with no chip</td>
+  </tr>
+  <tr>
+    <td><strong>Estimated total uplift</strong></td>
+    <td><strong>vs. playing DGW33 with your current squad</strong></td>
+    <td style="color:var(--amber);font-weight:700">+8 to +15 pts</td>
+  </tr>
+</table>
+
+<div class="stat" style="margin:12px 0; background:rgba(231,160,0,.1); border:1px solid var(--amber);">
+  <div class="stat-num" style="color:var(--amber);">+13 to +27</div>
+  <div class="stat-lbl">Combined point uplift from Scenario B</div>
+</div>
+</div>
+
+<!-- ==================== SIDE-BY-SIDE ==================== -->
+<h2>Head-to-Head Comparison</h2>
+
+<table>
+  <tr>
+    <th style="width:30%">Criteria</th>
+    <th style="width:35%; color:var(--green)">Scenario A: FH31 + BB33</th>
+    <th style="width:35%; color:var(--amber)">Scenario B: BB31 + FH33</th>
+  </tr>
+  <tr>
+    <td>BGW31 solution</td>
+    <td style="color:var(--green)">Full 15-man squad with fixtures</td>
+    <td style="color:var(--red)">10 players play, 5 blank (BB wasted on 0-pt players)</td>
+  </tr>
+  <tr>
+    <td>DGW33 exploitation</td>
+    <td style="color:var(--green)">Bench Boost = all 15 score, 4-6 with double fixtures</td>
+    <td style="color:var(--amber)">Free Hit XI is strong but bench doesn't score</td>
+  </tr>
+  <tr>
+    <td>BGW34 preparedness</td>
+    <td style="color:var(--amber)">No chip left, but squad has DGW33 assets that return</td>
+    <td style="color:var(--red)">No chip left, real squad returns with same blank problem</td>
+  </tr>
+  <tr>
+    <td>Transfer efficiency</td>
+    <td style="color:var(--green)">Free Hit preserves squad — no transfers burned on BGW</td>
+    <td style="color:var(--red)">Need 1-2 transfers to patch BGW31 squad, then undo for DGW33</td>
+  </tr>
+  <tr>
+    <td>Captain ceiling</td>
+    <td style="color:var(--green)">GW31: any non-blank premium. GW33: DGW captain (Haaland 2 games)</td>
+    <td style="color:var(--amber)">GW31: constrained. GW33: FH captain is flexible but only 1 game counts for bench</td>
+  </tr>
+  <tr>
+    <td>Top-10 alignment</td>
+    <td style="color:var(--green)">Matches elite chip discipline — save chips for max value GWs</td>
+    <td style="color:var(--red)">Wastes Bench Boost on a diminished week</td>
+  </tr>
+  <tr>
+    <td style="font-weight:700">Est. combined uplift</td>
+    <td style="color:var(--green); font-weight:700">+50 to +85 pts</td>
+    <td style="color:var(--amber); font-weight:700">+13 to +27 pts</td>
+  </tr>
+  <tr>
+    <td style="font-weight:700">Net advantage</td>
+    <td style="color:var(--green); font-weight:700" colspan="2">Scenario A wins by +37 to +58 pts</td>
+  </tr>
+</table>
+
+<!-- ==================== WHY BB IN DGW ==================== -->
+<h2>Why Bench Boost Belongs in the Double Gameweek</h2>
+
+<div class="card">
+<p>The math is straightforward. Bench Boost turns your 4 bench players from 0 pts into active scorers. The value of this chip scales directly with how many points those bench players are expected to score:</p>
+
+<div class="grid2" style="margin:12px 0">
+  <div class="stat">
+    <div class="stat-num" style="color:var(--red);">~12 pts</div>
+    <div class="stat-lbl">Expected BB value in a normal GW</div>
+    <p style="font-size:11px;margin-top:4px">(4 bench players × ~3 pts avg)</p>
+  </div>
+  <div class="stat">
+    <div class="stat-num" style="color:var(--green);">~24 pts</div>
+    <div class="stat-lbl">Expected BB value in a DGW</div>
+    <p style="font-size:11px;margin-top:4px">(4 bench players × ~6 pts avg with doubles)</p>
+  </div>
+</div>
+
+<p>In BGW31, your BB is even worse than a normal GW because some bench players have 0 fixtures. You'd be activating a chip on players who literally cannot score.</p>
+</div>
+
+<!-- ==================== OPTIMAL EXECUTION ==================== -->
+<h2>Optimal Execution Plan</h2>
+
+<div class="card scenario scenario-a">
+<h3>GW31: Deploy Free Hit</h3>
+<table>
+  <tr><th>Action</th><th>Detail</th></tr>
+  <tr><td>Activate chip</td><td>Free Hit before GW31 deadline</td></tr>
+  <tr><td>Remove</td><td>Gabriel, Timber, O'Reilly, Semenyo, Haaland (all blanking)</td></tr>
+  <tr><td>Target teams</td><td>MUN, CHE, LIV, NEW, BOU, NOT, BRE — teams with favorable GW31 fixtures</td></tr>
+  <tr><td>Captain pick</td><td>Bruno Fernandes or Salah — premium playing in a reduced-field GW</td></tr>
+  <tr><td>Strategy</td><td>Don't worry about long-term value — pick purely on GW31 fixture + form</td></tr>
+</table>
+
+<h3>GW32: Trade #1 (from Priority Plan)</h3>
+<p>Real squad returns. Execute Mukiele → Hill (BOU, £4.2m). Your 1 FT from GW30 rollover.</p>
+
+<h3>GW33: Deploy Bench Boost</h3>
+<table>
+  <tr><th>Action</th><th>Detail</th></tr>
+  <tr><td>Activate chip</td><td>Bench Boost before GW33 deadline</td></tr>
+  <tr><td>Pre-condition</td><td>Trade #2 (Enzo → Wilson) should be done by GW33 to maximize bench quality</td></tr>
+  <tr><td>Your DGW assets</td><td>Gabriel (ARS×2), Timber (ARS×2), Haaland (MCI×2) — 3 premiums with double fixtures in your starting XI</td></tr>
+  <tr><td>Bench value</td><td>All 4 bench players score. Even a GW33-blanking bench player is fine if the other 3 have fixtures.</td></tr>
+  <tr><td>Captain pick</td><td>Haaland (2 MCI fixtures) — massive ceiling with DGW captain</td></tr>
+</table>
+
+<h3>GW34: Navigate the Blank</h3>
+<p>No chip left, but manageable. Arsenal + City blank again but your trades (#1, #2) brought in non-blanking players. Expect 10-11 of your 15 to have fixtures. Use your 1 FT to patch if needed.</p>
+</div>
+
+<!-- ==================== VERDICT ==================== -->
+<div class="verdict-box">
+  <h2 style="margin-bottom:8px;">VERDICT</h2>
+  <p style="font-size:16px; color:var(--text); margin:8px 0;"><strong>Free Hit in BGW31 + Bench Boost in DGW33</strong></p>
+  <p style="font-size:14px; color:var(--green); margin:4px 0; font-weight:700;">Estimated advantage: +37 to +58 points over the reverse</p>
+  <p style="font-size:12px; color:var(--muted); margin:10px 0 0;">
+    This is the consensus strategy among FPL experts and aligns with what the top-10 overall managers do: save value chips for maximum-fixture weeks, use Free Hit to solve blank gameweeks cleanly without burning transfers.
+  </p>
+</div>
+
+<div class="insight">
+  <strong>Key Takeaway:</strong> Bench Boost multiplies your bench output — it's only worth using when your bench players actually play (ideally twice). Using it in a BGW where some bench players have 0 fixtures is the single worst use case for the chip. Free Hit, by contrast, is designed exactly for BGW situations — it lets you sidestep the problem entirely for one week with no lasting damage to your squad.
+</div>
+
+<p style="font-size:11px; color:var(--muted); margin-top:24px; text-align:center;">Analysis generated March 2026 &bull; Sources: premierleague.com, fantasyfootballscout.co.uk, allaboutfpl.com</p>
+
+</body>
+</html>

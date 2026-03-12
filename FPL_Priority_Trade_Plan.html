@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FPL Priority Trade Plan — Based on Top-10 Intelligence</title>
+<style>
+  :root { --bg:#1a1a2e; --card:#16213e; --accent:#0f3460; --green:#01fc7a; --red:#ff1751; --amber:#e7a000; --text:#f0f0f0; --muted:#a0a0b8; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.6; max-width:1000px; margin:0 auto; }
+  h1 { font-size:24px; color:var(--green); }
+  h2 { font-size:17px; margin:28px 0 10px; color:var(--green); border-bottom:2px solid var(--accent); padding-bottom:6px; }
+  .sub { color:var(--muted); font-size:12px; margin-bottom:20px; }
+  table { width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:12.5px; }
+  th { background:var(--accent); color:var(--green); padding:8px 6px; text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:.5px; }
+  td { padding:7px 6px; border-bottom:1px solid #2a2a4a; vertical-align:top; }
+  tr:hover { background:rgba(15,52,96,.3); }
+  .trade-card { background:var(--card); border-radius:10px; padding:20px; margin:14px 0; border:1px solid var(--accent); position:relative; }
+  .trade-card.p1 { border-left:5px solid var(--red); }
+  .trade-card.p2 { border-left:5px solid var(--amber); }
+  .trade-card.p3 { border-left:5px solid var(--green); }
+  .trade-card.p4 { border-left:5px solid var(--muted); }
+  .priority-badge { position:absolute; top:12px; right:14px; padding:3px 12px; border-radius:20px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+  .priority-badge.p1 { background:var(--red); color:#fff; }
+  .priority-badge.p2 { background:var(--amber); color:#000; }
+  .priority-badge.p3 { background:var(--green); color:#000; }
+  .priority-badge.p4 { background:var(--muted); color:#000; }
+  .trade-header { font-size:16px; font-weight:700; margin-bottom:6px; }
+  .trade-arrow { color:var(--green); font-size:18px; margin:0 8px; }
+  .out { color:var(--red); font-weight:600; }
+  .in { color:var(--green); font-weight:600; }
+  .trade-meta { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin:10px 0; font-size:12px; }
+  .trade-meta div { background:rgba(15,52,96,.4); padding:6px 10px; border-radius:4px; }
+  .trade-meta .lbl { font-size:10px; color:var(--muted); text-transform:uppercase; }
+  .insight { background:var(--card); border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0; font-size:13px; }
+  .insight strong { color:var(--green); }
+  p { margin:6px 0; color:#d0d0e0; font-size:13px; }
+  .timeline { display:flex; gap:0; margin:16px 0; }
+  .tl-item { flex:1; text-align:center; padding:10px 6px; position:relative; }
+  .tl-item::after { content:''; position:absolute; top:50%; right:0; width:1px; height:60%; transform:translateY(-50%); background:var(--accent); }
+  .tl-item:last-child::after { display:none; }
+  .tl-gw { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .tl-action { font-size:12px; font-weight:600; margin-top:4px; }
+  .tl-item.active { background:var(--card); border-radius:6px; }
+  .tl-item.active .tl-gw { color:var(--green); }
+  .budget-row { display:flex; justify-content:space-between; padding:4px 0; font-size:12px; border-bottom:1px solid #2a2a4a; }
+  .budget-row:last-child { border:none; font-weight:700; color:var(--green); }
+</style>
+</head>
+<body>
+
+<h1>Priority Trade Plan</h1>
+<p class="sub">Based on Top-10 Overall Manager Intelligence &bull; Your Team: SlowBuild &bull; Bank: £0.1m &bull; FT: 0 (rolls to 1 after GW30)</p>
+
+<!-- ==================== TIMELINE ==================== -->
+<h2>Trade Timeline</h2>
+<div class="timeline">
+  <div class="tl-item active"><div class="tl-gw">GW30 (Now)</div><div class="tl-action" style="color:var(--muted)">No transfer<br><span style="font-size:10px;color:var(--muted)">0 FT — hold</span></div></div>
+  <div class="tl-item"><div class="tl-gw">GW31</div><div class="tl-action" style="color:var(--green)">FREE HIT<br><span style="font-size:10px;color:var(--muted)">Full reset</span></div></div>
+  <div class="tl-item"><div class="tl-gw">GW32</div><div class="tl-action" style="color:var(--amber)">1 FT → Trade #1<br><span style="font-size:10px;color:var(--muted)">Mukiele out</span></div></div>
+  <div class="tl-item"><div class="tl-gw">GW33 (DGW?)</div><div class="tl-action" style="color:var(--amber)">1 FT → Trade #2<br><span style="font-size:10px;color:var(--muted)">Enzo out</span></div></div>
+  <div class="tl-item"><div class="tl-gw">GW34</div><div class="tl-action" style="color:var(--green)">BENCH BOOST?<br><span style="font-size:10px;color:var(--muted)">If DGW confirmed</span></div></div>
+  <div class="tl-item"><div class="tl-gw">GW35+</div><div class="tl-action" style="color:var(--muted)">1 FT → Trade #3<br><span style="font-size:10px;color:var(--muted)">Scott out</span></div></div>
+</div>
+
+<!-- ==================== TRADE #1 ==================== -->
+<div class="trade-card p1">
+  <span class="priority-badge p1">Priority 1 — GW32</span>
+  <div class="trade-header">
+    <span class="out">Mukiele (SUN)</span>
+    <span class="trade-arrow">→</span>
+    <span class="in">Truffert (BOU)</span>
+  </div>
+  <p>Injured (calf, 50%, est. 2–4 weeks), form collapsed to 0.8. Immediate removal required.</p>
+
+  <div class="trade-meta">
+    <div><div class="lbl">Sell</div>£4.5m</div>
+    <div><div class="lbl">Buy</div>£4.6m</div>
+    <div><div class="lbl">Budget Needed</div>£0.1m ✅ (exact fit)</div>
+  </div>
+
+  <table>
+    <thead><tr><th></th><th>Mukiele (OUT)</th><th>Truffert (IN)</th><th>Advantage</th></tr></thead>
+    <tbody>
+      <tr><td>Total Points</td><td>115</td><td>107</td><td>Close, but Truffert trending up</td></tr>
+      <tr><td>Form</td><td style="color:var(--red)">0.8</td><td style="color:var(--green)">6.2</td><td style="color:var(--green)">+5.4 form swing</td></tr>
+      <tr><td>PPG</td><td>4.6</td><td>3.7</td><td>Mukiele had higher PPG but is now injured</td></tr>
+      <tr><td>Availability</td><td style="color:var(--red)">50% — calf</td><td style="color:var(--green)">100%</td><td>Truffert nailed starter</td></tr>
+      <tr><td>Fixtures GW32–35</td><td>NEW(A), TOT(H), AVL(A), NFO(H)</td><td>ARS(A), NEW(A), LEE(H), CRY(H)</td><td>Truffert better from GW34+</td></tr>
+      <tr><td>Top-10 Usage</td><td>Not used by top 10</td><td>Used by Ted Gondwe (#4)</td><td>Template-aligned</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight">
+    <strong>Why this is #1:</strong> This is the only forced move — Mukiele is injured and worth nothing on your bench. Truffert is the exact same price, in superior form (6.2 vs 0.8), and plays for Bournemouth who have a strong GW34+ run. Also: zero hits needed — use your 1 FT in GW32.
+  </div>
+</div>
+
+<!-- ==================== TRADE #2 ==================== -->
+<div class="trade-card p2">
+  <span class="priority-badge p2">Priority 2 — GW33</span>
+  <div class="trade-header">
+    <span class="out">Enzo (CHE)</span>
+    <span class="trade-arrow">→</span>
+    <span class="in">João Pedro (CHE)</span>
+  </div>
+  <p>The biggest gap vs the top-10 template. João Pedro is in 62% of elite lineups with 9.5 form.</p>
+
+  <div class="trade-meta">
+    <div><div class="lbl">Sell Enzo</div>£6.7m</div>
+    <div><div class="lbl">Buy João Pedro</div>£7.7m</div>
+    <div><div class="lbl">Budget Gap</div><span style="color:var(--red)">–£1.0m short</span></div>
+  </div>
+
+  <p style="color:var(--amber)"><strong>Budget solution:</strong> If you do Trade #1 as "Mukiele → Hill (£4.2m)" instead of Truffert (£4.6m), you save £0.4m. Bank becomes £0.5m. Then sell Enzo (£6.7m) + £0.5m = £7.2m. Still £0.5m short of João Pedro's £7.7m price.</p>
+
+  <p><strong>Alternative route:</strong> Use Enzo → Wilson (FUL, £6.0m) instead. This is budget-positive and Wilson is used by 34% of the top 10.</p>
+
+  <table>
+    <thead><tr><th></th><th>Enzo (OUT)</th><th>Wilson (IN — Alt)</th><th>João Pedro (IN — Ideal)</th></tr></thead>
+    <tbody>
+      <tr><td>Price</td><td>Sell £6.7m</td><td>Buy £6.0m ✅</td><td>Buy £7.7m ❌ (£1.0m short)</td></tr>
+      <tr><td>Total Points</td><td>125</td><td>140</td><td>160</td></tr>
+      <tr><td>Form</td><td style="color:var(--red)">2.2</td><td style="color:var(--green)">5.5</td><td style="color:var(--green)">9.5</td></tr>
+      <tr><td>PPG</td><td>4.3</td><td>5.2</td><td>5.5</td></tr>
+      <tr><td>xG / xA</td><td>5.36 / 3.71</td><td>4.69 / 3.92</td><td>13.18 / 1.72</td></tr>
+      <tr><td>Top-10 Usage</td><td>22% (declining)</td><td>34%</td><td>62%</td></tr>
+      <tr><td>Net Budget</td><td>—</td><td style="color:var(--green)">+£0.7m freed</td><td style="color:var(--red)">–£1.0m needed</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight">
+    <strong>Recommended path:</strong> Do <strong>Enzo → Wilson (£6.0m)</strong> in GW33. This frees £0.7m, gives you a form upgrade (+3.3), and aligns with the top-10 template (34% ownership). Bank grows to £0.8m, which opens future moves. João Pedro remains the dream target if you can free further funds later — but Wilson is the smart, budget-positive move now.
+  </div>
+</div>
+
+<!-- ==================== TRADE #3 ==================== -->
+<div class="trade-card p3">
+  <span class="priority-badge p3">Priority 3 — GW35+</span>
+  <div class="trade-header">
+    <span class="out">Scott (BOU)</span>
+    <span class="trade-arrow">→</span>
+    <span class="in">Rogers (AVL)</span>
+  </div>
+  <p>Rogers is in 40% of top-10 lineups. Scott is a bench player with declining minutes.</p>
+
+  <div class="trade-meta">
+    <div><div class="lbl">Sell Scott</div>£5.0m</div>
+    <div><div class="lbl">Buy Rogers</div>£7.5m</div>
+    <div><div class="lbl">Budget Gap</div><span style="color:var(--red)">–£2.5m short (without prior savings)</span></div>
+  </div>
+
+  <p><strong>Budget path (if Trades 1+2 done as recommended):</strong> After Trade #1 (Mukiele → Hill, save £0.4m) + Trade #2 (Enzo → Wilson, save £0.7m), bank = £0.1 + £0.4 + £0.7 = £1.2m. Sell Scott £5.0m + £1.2m = £6.2m. Still £1.3m short of Rogers at £7.5m.</p>
+
+  <p style="color:var(--amber)"><strong>Budget-realistic alternative:</strong></p>
+
+  <table>
+    <thead><tr><th></th><th>Scott (OUT)</th><th>Option A: Hold</th><th>Option B: Bowen (WHU, £7.5m)</th></tr></thead>
+    <tbody>
+      <tr><td>Price</td><td>Sell £5.0m</td><td>—</td><td>Too expensive without further sales</td></tr>
+      <tr><td>Form</td><td>3.8</td><td>—</td><td>5.0</td></tr>
+      <tr><td>Verdict</td><td></td><td style="color:var(--amber)"><strong>HOLD Scott for now.</strong> He plays GW31 (via FH anyway), has decent fixtures, and you can't afford any upgrade without selling a premium first.</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight">
+    <strong>Realistic verdict:</strong> Scott is a hold until you have enough banked funds from other trades. Your budget is tight (£0.1m), so the priority chain should be: fix Mukiele (forced) → upgrade Enzo (value unlocking) → reassess Scott when budget permits. Don't force this move.
+  </div>
+</div>
+
+<!-- ==================== TRADE #4 (LONGER TERM) ==================== -->
+<div class="trade-card p4">
+  <span class="priority-badge p4">Priority 4 — Watchlist</span>
+  <div class="trade-header">
+    <span class="out">Ekitiké (LIV)</span>
+    <span class="trade-arrow">→</span>
+    <span class="in">João Pedro (CHE)</span>
+  </div>
+  <p>Only if João Pedro continues his 9.5 form streak and Ekitiké's minutes become insecure.</p>
+
+  <div class="trade-meta">
+    <div><div class="lbl">Sell Ekitiké</div>£9.1m</div>
+    <div><div class="lbl">Buy João Pedro</div>£7.7m</div>
+    <div><div class="lbl">Budget Impact</div><span style="color:var(--green)">+£1.4m freed ✅</span></div>
+  </div>
+
+  <p>This is a sideways move on paper (both are FWDs at Chelsea and Liverpool) but João Pedro has wildly better form (9.5 vs 4.6) and is a top-10 staple (62% vs ~10%). The trade also <strong>frees £1.4m</strong> which could fund the Scott → Rogers upgrade.</p>
+
+  <div class="insight">
+    <strong>When to pull the trigger:</strong> Only if Ekitiké loses his starting spot or blanks 2+ consecutive GWs. Liverpool's fixtures are actually easier than Chelsea's through GW35, so there's no rush. Monitor and reassess at GW34.
+  </div>
+</div>
+
+<!-- ==================== BUDGET LEDGER ==================== -->
+<h2>Running Budget Ledger</h2>
+
+<div style="background:var(--card); border-radius:8px; padding:16px; border:1px solid var(--accent);">
+  <div class="budget-row"><span>Starting Bank</span><span>£0.1m</span></div>
+  <div class="budget-row"><span>After Trade #1: Mukiele (£4.5m) → Hill (£4.2m)</span><span>£0.4m</span></div>
+  <div class="budget-row"><span>After Trade #2: Enzo (£6.7m) → Wilson (£6.0m)</span><span>£1.1m</span></div>
+  <div class="budget-row"><span>After Trade #4 (if taken): Ekitiké (£9.1m) → João Pedro (£7.7m)</span><span>£2.5m</span></div>
+  <div class="budget-row"><span>After Trade #3 (now possible): Scott (£5.0m) → Rogers (£7.5m)</span><span>£0.0m</span></div>
+</div>
+
+<p style="margin-top:10px; font-size:12px; color:var(--muted);">Note: If you take Trade #4 before Trade #3, the budget chain unlocks Rogers. The full 4-trade sequence costs £0 in hits (1 FT per gameweek) and ends with £0.0m in the bank — every penny optimized.</p>
+
+<!-- ==================== MASTER PLAN ==================== -->
+<h2>The Master Plan (4-Trade Sequence)</h2>
+
+<table>
+  <thead><tr><th>GW</th><th>FT</th><th>Trade</th><th>Cost</th><th>Bank After</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td><strong>GW30</strong></td><td>0</td><td>None — hold</td><td>—</td><td>£0.1m</td><td>Good lineup, no FT, no reason to hit</td></tr>
+    <tr><td><strong>GW31</strong></td><td>—</td><td>FREE HIT</td><td>—</td><td>£0.1m</td><td>5 players blank. FH is essential.</td></tr>
+    <tr><td><strong>GW32</strong></td><td>1</td><td style="color:var(--red)">Mukiele → Hill</td><td>Free</td><td>£0.4m</td><td>Forced — injury. Hill in form (6.2)</td></tr>
+    <tr><td><strong>GW33</strong></td><td>1</td><td style="color:var(--amber)">Enzo → Wilson</td><td>Free</td><td>£1.1m</td><td>Form upgrade (2.2→5.5) + £0.7m freed. Potential DGW BB week.</td></tr>
+    <tr><td><strong>GW34</strong></td><td>1</td><td style="color:var(--green)">Ekitiké → João Pedro</td><td>Free</td><td>£2.5m</td><td>Top-10 template (62%). Form 9.5. Frees £1.4m for next move.</td></tr>
+    <tr><td><strong>GW35</strong></td><td>1</td><td style="color:var(--green)">Scott → Rogers</td><td>Free</td><td>£0.0m</td><td>Top-10 template (40%). Villa have green fixtures GW35+.</td></tr>
+  </tbody>
+</table>
+
+<div class="insight" style="border-left-color:var(--amber); margin-top:16px;">
+  <strong>Final Squad After All 4 Trades:</strong><br>
+  GKs: Kelleher, Petrović<br>
+  DEFs: Gabriel, J.Timber, O'Reilly, <span style="color:var(--green)">Hill</span>, Justin<br>
+  MIDs: Semenyo, B.Fernandes, <span style="color:var(--green)">Wilson</span>, Anderson, <span style="color:var(--green)">Rogers</span><br>
+  FWDs: Haaland, <span style="color:var(--green)">João Pedro</span>, Thiago<br><br>
+  <strong>Template alignment: 9/12 top-10 core picks owned</strong> (up from 7/12 today). You'd still be missing Rice, Raya, and Virgil — but those require selling premiums you want to keep.
+</div>
+
+<div class="insight" style="border-left-color:var(--red); margin-top:12px;">
+  <strong>Critical rule: ZERO HITS.</strong> Every trade above uses exactly 1 FT. The top 10 took zero hits in 5 gameweeks. Follow their discipline — if a trade doesn't fit in a free transfer, it waits.
+</div>
+
+<p style="margin-top:28px; font-size:11px; color:var(--muted);">Data: FPL Official API. Prices as of 9 March 2026. Top-10 ownership based on GW25–29 lineup analysis (50 snapshots). Trade plan assumes no price changes — monitor fplstatistics.com for price rise/fall alerts.</p>
+
+</body>
+</html>
