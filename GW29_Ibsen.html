@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GW29 Analysis – Ibsen | FPL Intelligence</title>
+<style>
+  :root {
+    --bg:#1a1a2e; --card:#16213e; --card2:#0f3460;
+    --green:#01fc7a; --red:#ff4757; --amber:#ffa502;
+    --blue:#4ecdc4; --purple:#a55eea; --text:#e0e0e0; --muted:#8899aa;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',sans-serif; padding:24px; }
+  h1 { font-size:1.6rem; color:var(--green); margin-bottom:4px; }
+  .subtitle { color:var(--muted); font-size:0.9rem; margin-bottom:24px; }
+  .meta-bar { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:28px; }
+  .meta-chip { background:var(--card); border:1px solid var(--card2); border-radius:8px; padding:10px 18px; }
+  .meta-chip .label { font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+  .meta-chip .value { font-size:1.2rem; font-weight:700; color:var(--green); }
+  .section-title { font-size:1rem; font-weight:700; color:var(--blue); text-transform:uppercase;
+    letter-spacing:.08em; border-bottom:2px solid var(--card2); padding-bottom:8px; margin:28px 0 14px; }
+  table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+  th { background:var(--card2); color:var(--muted); text-align:left; padding:8px 10px;
+       font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em; }
+  td { padding:9px 10px; border-bottom:1px solid #1e2d45; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:rgba(255,255,255,.03); }
+  .pos-GK  { color:#f9ca24; font-weight:700; }
+  .pos-DEF { color:#4ecdc4; font-weight:700; }
+  .pos-MID { color:#a55eea; font-weight:700; }
+  .pos-FWD { color:#ff6b6b; font-weight:700; }
+  .badge { display:inline-block; border-radius:4px; padding:2px 7px; font-size:0.7rem; font-weight:700; }
+  .keep  { background:rgba(1,252,122,.15); color:var(--green); }
+  .sell  { background:rgba(255,71,87,.15); color:var(--red); }
+  .watch { background:rgba(255,165,2,.15); color:var(--amber); }
+  .star  { color:#ffd700; }
+  .cap-badge { background:var(--green); color:#000; border-radius:4px; padding:1px 6px; font-size:0.7rem; font-weight:800; }
+  .vc-badge  { background:var(--blue); color:#000; border-radius:4px; padding:1px 6px; font-size:0.7rem; font-weight:800; }
+  .bench-row td { opacity:.65; }
+  .fdr1 { color:#00d084; font-weight:700; }
+  .fdr2 { color:#01fc7a; font-weight:700; }
+  .fdr3 { color:var(--amber); }
+  .fdr4 { color:#ff6348; }
+  .fdr5 { color:var(--red); font-weight:700; }
+  .alert-box { background:rgba(255,165,2,.1); border:1px solid var(--amber); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .alert-box h4 { color:var(--amber); font-size:.9rem; margin-bottom:6px; }
+  .alert-box p { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .warning-box { background:rgba(255,71,87,.1); border:1px solid var(--red); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .warning-box h4 { color:var(--red); font-size:.9rem; margin-bottom:6px; }
+  .warning-box p { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .info-box  { background:rgba(78,205,196,.1); border:1px solid var(--blue); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .info-box h4 { color:var(--blue); font-size:.9rem; margin-bottom:6px; }
+  .info-box p  { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .back-link { display:inline-block; margin-bottom:20px; color:var(--muted); text-decoration:none; font-size:.85rem; }
+  .back-link:hover { color:var(--green); }
+  .chips-used { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  .chip-tag { background:rgba(255,71,87,.2); color:var(--red); border-radius:4px; padding:3px 10px; font-size:.75rem; font-weight:700; text-decoration:line-through; }
+  .chip-avail { background:rgba(1,252,122,.15); color:var(--green); border-radius:4px; padding:3px 10px; font-size:.75rem; font-weight:700; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Hub</a>
+
+<h1>⚡ GW29 Squad Analysis — Ibsen</h1>
+<p class="subtitle">Post-GW29 review · State as of Gameweek 29 · 2025/26 Season</p>
+
+<div class="meta-bar">
+  <div class="meta-chip">
+    <div class="label">Total Points</div>
+    <div class="value">1,926</div>
+  </div>
+  <div class="meta-chip">
+    <div class="label">Overall Rank</div>
+    <div class="value" style="color:#ffd700">🥇 #1</div>
+  </div>
+  <div class="meta-chip">
+    <div class="label">Bank</div>
+    <div class="value">£0.6m</div>
+  </div>
+  <div class="meta-chip">
+    <div class="label">Team Value</div>
+    <div class="value">~£108.4m</div>
+  </div>
+</div>
+
+<div class="info-box">
+  <h4>🏆 Rank #1 in the World</h4>
+  <p>Ibsen sits at the very top of the global leaderboard with 1,926 points — an elite squad built on premium assets and surgical chip usage. The strategic challenge from here is <strong>protecting the lead</strong> while navigating GW31 blanks across 4 starting players. Every transfer decision carries enormous rank-risk.</p>
+</div>
+
+<!-- CHIPS -->
+<div class="section-title">Chip Status</div>
+<div class="chips-used">
+  <span class="chip-tag">Wildcard 1 (GW2)</span>
+  <span class="chip-tag">Triple Captain (GW6)</span>
+  <span class="chip-tag">Bench Boost (GW10)</span>
+  <span class="chip-tag">Free Hit (GW13)</span>
+  <span class="chip-avail">✓ Wildcard 2 Available</span>
+</div>
+
+<!-- SQUAD TABLE -->
+<div class="section-title">Starting XI · GW29</div>
+<table>
+  <thead>
+    <tr>
+      <th>Player</th><th>Club</th><th>Pos</th><th>Price</th><th>Form</th><th>Total Pts</th><th>GW30 Fix</th><th>Verdict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Pickford</td>
+      <td>EVE</td><td><span class="pos-GK">GK</span></td>
+      <td>£5.6m</td><td>2.5</td><td>117</td>
+      <td><span class="fdr3">ARS(h) FDR3</span></td>
+      <td><span class="badge watch">MONITOR</span></td>
+    </tr>
+    <tr>
+      <td>Tarkowski</td>
+      <td>EVE</td><td><span class="pos-DEF">DEF</span></td>
+      <td>£5.7m</td><td>5.0</td><td>136</td>
+      <td><span class="fdr5">ARS(h) FDR5</span></td>
+      <td><span class="badge watch">MONITOR</span></td>
+    </tr>
+    <tr>
+      <td>Gabriel</td>
+      <td>ARS</td><td><span class="pos-DEF">DEF</span></td>
+      <td>£7.2m</td><td>5.8</td><td>164</td>
+      <td><span class="fdr3">EVE(h) FDR3</span> <strong style="color:var(--red)"> ⚠ BLANK GW31</strong></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Virgil <span class="star">★</span></td>
+      <td>LIV</td><td><span class="pos-DEF">DEF</span></td>
+      <td>£6.2m</td><td>9.0</td><td>130</td>
+      <td><span class="fdr4">TOT(h) FDR4</span></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Rice</td>
+      <td>ARS</td><td><span class="pos-MID">MID</span></td>
+      <td>£7.4m</td><td>5.2</td><td>160</td>
+      <td><span class="fdr3">EVE(h) FDR3</span> <strong style="color:var(--red)"> ⚠ BLANK GW31</strong></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Semenyo <span class="star">★</span> <span class="cap-badge">C</span></td>
+      <td>MCI</td><td><span class="pos-MID">MID</span></td>
+      <td>£8.3m</td><td>8.2</td><td>172</td>
+      <td><span class="fdr2">WHU(a) FDR2</span> <strong style="color:var(--red)"> ⚠ BLANK GW31</strong></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>B. Fernandes <span class="vc-badge">VC</span></td>
+      <td>MUN</td><td><span class="pos-MID">MID</span></td>
+      <td>£10.1m</td><td>6.2</td><td>166</td>
+      <td><span class="fdr3">AVL(h) FDR3</span></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Szoboszlai</td>
+      <td>LIV</td><td><span class="pos-MID">MID</span></td>
+      <td>£6.9m</td><td>3.0</td><td>109</td>
+      <td><span class="fdr4">TOT(h) FDR4</span></td>
+      <td><span class="badge sell">SELL</span></td>
+    </tr>
+    <tr>
+      <td>Thiago</td>
+      <td>BRE</td><td><span class="pos-FWD">FWD</span></td>
+      <td>£7.2m</td><td>3.0</td><td>143</td>
+      <td><span class="fdr2">WOL(h) FDR2</span></td>
+      <td><span class="badge sell">SELL</span></td>
+    </tr>
+    <tr>
+      <td>João Pedro <span class="star">★</span></td>
+      <td>CHE</td><td><span class="pos-FWD">FWD</span></td>
+      <td>£7.7m</td><td>9.5</td><td>160</td>
+      <td><span class="fdr3">NEW(h) FDR3</span></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Haaland <span class="star">★</span></td>
+      <td>MCI</td><td><span class="pos-FWD">FWD</span></td>
+      <td>£14.6m</td><td>3.2</td><td>195</td>
+      <td><span class="fdr2">WHU(a) FDR2</span> <strong style="color:var(--red)"> ⚠ BLANK GW31</strong></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-title">Bench</div>
+<table>
+  <thead>
+    <tr><th>Player</th><th>Club</th><th>Pos</th><th>Price</th><th>Form</th><th>Note</th></tr>
+  </thead>
+  <tbody>
+    <tr class="bench-row">
+      <td>Raya</td><td>ARS</td><td><span class="pos-GK">GK</span></td><td>£6.0m</td><td>3.2</td>
+      <td><strong style="color:var(--red)">⚠ BLANK GW31</strong></td>
+    </tr>
+    <tr class="bench-row">
+      <td>Wilson</td><td>FUL</td><td><span class="pos-MID">MID</span></td><td>£6.0m</td><td>5.5</td>
+      <td><strong style="color:var(--amber)">⚠ DOUBTFUL</strong> — monitor fitness</td>
+    </tr>
+    <tr class="bench-row">
+      <td>Guéhi</td><td>MCI</td><td><span class="pos-DEF">DEF</span></td><td>£5.2m</td><td>4.0</td>
+      <td><strong style="color:var(--red)">⚠ BLANK GW31</strong></td>
+    </tr>
+    <tr class="bench-row">
+      <td>Hill</td><td>BOU</td><td><span class="pos-DEF">DEF</span></td><td>£4.2m</td><td>6.2</td>
+      <td>Cheap coverage, plays GW31</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- CAPTAIN -->
+<div class="section-title">GW30 Captain Recommendation</div>
+<div class="alert-box">
+  <h4>⭐ Recommended: Haaland (MCI) — WHU away FDR2</h4>
+  <p>Both MCI players face West Ham away — FDR2, one of the easiest GW30 fixtures on the board. Haaland (TP:195) is the must-captain despite modest form; his ceiling vs soft opposition is unmatched. Semenyo (F:8.2) is an excellent VC or alternative captain if you prefer the higher-form option at the same fixture.</p>
+</div>
+
+<!-- KEY ISSUES -->
+<div class="section-title">Key Issues</div>
+<div class="warning-box">
+  <h4>🚨 GW31 Blank Crisis — 4 Starting Players</h4>
+  <p>Gabriel, Rice, Semenyo, and Haaland all blank in GW31 (ARS + MCI not playing). Bench adds Raya and Guéhi to the list — that's 6 of 15 players affected. With only £0.6m in the bank, using the Wildcard 2 for GW32 activation (post-blank) is worth serious consideration. See the <a href="Trades_Ibsen.html" style="color:var(--blue)">Transfer Strategy report</a> for the full plan.</p>
+</div>
+<div class="alert-box">
+  <h4>⚠ Two Low-Form Liabilities</h4>
+  <p><strong>Szoboszlai</strong> (F:3.0, £6.9m) and <strong>Thiago</strong> (F:3.0, £7.2m BRE) are both dragging on returns. The bank is too thin to fix both immediately — prioritise Szoboszlai first as a sideways move can recycle budget into a non-blanking, high-form MID (e.g. Iwobi £6.3m FUL, no GW31 blank).</p>
+</div>
+<div class="info-box">
+  <h4>💡 Wilson Doubtful — Bench Risk</h4>
+  <p>Wilson (FUL, bench 1) is listed as Doubtful. If he misses GW30, bench cover shifts to Guéhi/Hill. Monitor the fitness news before the deadline and consider moving him up or swapping if he's ruled out.</p>
+</div>
+
+<!-- GW30 FIXTURES -->
+<div class="section-title">GW30 Full Fixture Guide</div>
+<table>
+  <thead>
+    <tr><th>Team</th><th>Opponent</th><th>Venue</th><th>FDR</th><th>FPL Assets in Squad</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>MCI</td><td>WHU</td><td>Away</td><td><span class="fdr2">2 ★★</span></td><td>Semenyo, Haaland, Guéhi(b)</td></tr>
+    <tr><td>ARS</td><td>EVE</td><td>Home</td><td><span class="fdr3">3</span></td><td>Gabriel, Rice, Raya(b)</td></tr>
+    <tr><td>LIV</td><td>TOT</td><td>Home</td><td><span class="fdr4">4</span></td><td>Virgil, Szoboszlai</td></tr>
+    <tr><td>MUN</td><td>AVL</td><td>Home</td><td><span class="fdr3">3</span></td><td>B. Fernandes</td></tr>
+    <tr><td>CHE</td><td>NEW</td><td>Home</td><td><span class="fdr3">3</span></td><td>João Pedro</td></tr>
+    <tr><td>BRE</td><td>WOL</td><td>Home</td><td><span class="fdr2">2</span></td><td>Thiago</td></tr>
+    <tr><td>EVE</td><td>ARS</td><td>Away</td><td><span class="fdr5">5</span></td><td>Pickford, Tarkowski</td></tr>
+    <tr><td>BOU</td><td>BUR</td><td>Away</td><td><span class="fdr2">2</span></td><td>Hill(b)</td></tr>
+    <tr><td>FUL</td><td>NFO</td><td>Away</td><td><span class="fdr3">3</span></td><td>Wilson(b)</td></tr>
+  </tbody>
+</table>
+
+<p style="color:var(--muted); font-size:.78rem; margin-top:20px;">Generated after GW29 · Data sourced from FPL API · omarbahader.github.io/FPLReports</p>
+</body>
+</html>

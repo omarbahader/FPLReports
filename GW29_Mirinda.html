@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GW29 Analysis – mirinda | FPL Intelligence</title>
+<style>
+  :root {
+    --bg:#1a1a2e; --card:#16213e; --card2:#0f3460;
+    --green:#01fc7a; --red:#ff4757; --amber:#ffa502;
+    --blue:#4ecdc4; --purple:#a55eea; --text:#e0e0e0; --muted:#8899aa;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',sans-serif; padding:24px; }
+  h1 { font-size:1.6rem; color:var(--green); margin-bottom:4px; }
+  .subtitle { color:var(--muted); font-size:0.9rem; margin-bottom:24px; }
+  .meta-bar { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:28px; }
+  .meta-chip { background:var(--card); border:1px solid var(--card2); border-radius:8px; padding:10px 18px; }
+  .meta-chip .label { font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+  .meta-chip .value { font-size:1.2rem; font-weight:700; color:var(--green); }
+  .section-title { font-size:1rem; font-weight:700; color:var(--blue); text-transform:uppercase;
+    letter-spacing:.08em; border-bottom:2px solid var(--card2); padding-bottom:8px; margin:28px 0 14px; }
+  table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+  th { background:var(--card2); color:var(--muted); text-align:left; padding:8px 10px;
+       font-size:0.72rem; text-transform:uppercase; letter-spacing:.05em; }
+  td { padding:9px 10px; border-bottom:1px solid #1e2d45; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:rgba(255,255,255,.03); }
+  .pos-GK  { color:#f9ca24; font-weight:700; }
+  .pos-DEF { color:#4ecdc4; font-weight:700; }
+  .pos-MID { color:#a55eea; font-weight:700; }
+  .pos-FWD { color:#ff6b6b; font-weight:700; }
+  .badge { display:inline-block; border-radius:4px; padding:2px 7px; font-size:0.7rem; font-weight:700; }
+  .keep  { background:rgba(1,252,122,.15); color:var(--green); }
+  .sell  { background:rgba(255,71,87,.15); color:var(--red); }
+  .watch { background:rgba(255,165,2,.15); color:var(--amber); }
+  .star  { color:#ffd700; }
+  .cap-badge { background:var(--green); color:#000; border-radius:4px; padding:1px 6px; font-size:0.7rem; font-weight:800; }
+  .vc-badge  { background:var(--blue); color:#000; border-radius:4px; padding:1px 6px; font-size:0.7rem; font-weight:800; }
+  .bench-row td { opacity:.65; }
+  .fdr1 { color:#00d084; font-weight:700; }
+  .fdr2 { color:#01fc7a; font-weight:700; }
+  .fdr3 { color:var(--amber); }
+  .fdr4 { color:#ff6348; }
+  .fdr5 { color:var(--red); font-weight:700; }
+  .alert-box { background:rgba(255,165,2,.1); border:1px solid var(--amber); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .alert-box h4 { color:var(--amber); font-size:.9rem; margin-bottom:6px; }
+  .alert-box p { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .warning-box { background:rgba(255,71,87,.1); border:1px solid var(--red); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .warning-box h4 { color:var(--red); font-size:.9rem; margin-bottom:6px; }
+  .warning-box p { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .info-box  { background:rgba(78,205,196,.1); border:1px solid var(--blue); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .info-box h4 { color:var(--blue); font-size:.9rem; margin-bottom:6px; }
+  .info-box p  { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .back-link { display:inline-block; margin-bottom:20px; color:var(--muted); text-decoration:none; font-size:.85rem; }
+  .back-link:hover { color:var(--green); }
+  .chips-used { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  .chip-tag { background:rgba(255,71,87,.2); color:var(--red); border-radius:4px; padding:3px 10px; font-size:.75rem; font-weight:700; text-decoration:line-through; }
+  .chip-avail { background:rgba(1,252,122,.15); color:var(--green); border-radius:4px; padding:3px 10px; font-size:.75rem; font-weight:700; }
+  .bench-note { color:var(--amber); font-size:.8rem; font-weight:700; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Hub</a>
+
+<h1>⚡ GW29 Squad Analysis — mirinda</h1>
+<p class="subtitle">Post-GW29 review · State as of Gameweek 29 · 2025/26 Season</p>
+
+<div class="meta-bar">
+  <div class="meta-chip">
+    <div class="label">Total Points</div>
+    <div class="value">1,925</div>
+  </div>
+  <div class="meta-chip">
+    <div class="label">Overall Rank</div>
+    <div class="value" style="color:#c0c0c0">🥈 #2</div>
+  </div>
+  <div class="meta-chip">
+    <div class="label">Bank</div>
+    <div class="value" style="color:#ffd700">£7.0m</div>
+  </div>
+  <div class="meta-chip">
+    <div class="label">Team Value</div>
+    <div class="value">~£106.0m</div>
+  </div>
+</div>
+
+<div class="info-box">
+  <h4>🥈 Rank #2 in the World — War Chest Loaded</h4>
+  <p>mirinda sits 1 point behind the global leader with an enormous £7.0m in the bank — the highest spending power of all five squads. Four players are clearly underperforming (Schade, Kroupi Jr, Thiago, Mbeumo) and can be systematically replaced without spending a single hit. This is a squad positioned to leapfrog to #1 with smart transfers over GW30–33.</p>
+</div>
+
+<!-- CHIPS -->
+<div class="section-title">Chip Status</div>
+<div class="chips-used">
+  <span class="chip-tag">Wildcard 1 (GW4)</span>
+  <span class="chip-tag">Triple Captain (GW6)</span>
+  <span class="chip-tag">Bench Boost (GW9)</span>
+  <span class="chip-tag">Free Hit (GW13)</span>
+  <span class="chip-avail">✓ Wildcard 2 Available</span>
+</div>
+
+<!-- SQUAD TABLE -->
+<div class="section-title">Starting XI · GW29</div>
+<table>
+  <thead>
+    <tr>
+      <th>Player</th><th>Club</th><th>Pos</th><th>Price</th><th>Form</th><th>Total Pts</th><th>GW30 Fix</th><th>Verdict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Raya</td>
+      <td>ARS</td><td><span class="pos-GK">GK</span></td>
+      <td>£6.0m</td><td>3.2</td><td>122</td>
+      <td><span class="fdr3">EVE(h) FDR3</span> <strong style="color:var(--red)"> ⚠ BLANK GW31</strong></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Virgil <span class="star">★</span></td>
+      <td>LIV</td><td><span class="pos-DEF">DEF</span></td>
+      <td>£6.2m</td><td>9.0</td><td>130</td>
+      <td><span class="fdr4">TOT(h) FDR4</span></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Gabriel</td>
+      <td>ARS</td><td><span class="pos-DEF">DEF</span></td>
+      <td>£7.2m</td><td>5.8</td><td>164</td>
+      <td><span class="fdr3">EVE(h) FDR3</span> <strong style="color:var(--red)"> ⚠ BLANK GW31</strong></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Tarkowski</td>
+      <td>EVE</td><td><span class="pos-DEF">DEF</span></td>
+      <td>£5.7m</td><td>5.0</td><td>136</td>
+      <td><span class="fdr5">ARS(a) FDR5</span></td>
+      <td><span class="badge watch">MONITOR</span></td>
+    </tr>
+    <tr>
+      <td>Muñoz</td>
+      <td>CRY</td><td><span class="pos-DEF">DEF</span></td>
+      <td>£5.9m</td><td>3.0</td><td>109</td>
+      <td><span class="fdr2">LEE(h) FDR2</span> <strong style="color:var(--red)"> ⚠ BLANK GW31 + DOUBTFUL</strong></td>
+      <td><span class="badge sell">SELL</span></td>
+    </tr>
+    <tr>
+      <td>Mbeumo</td>
+      <td>MUN</td><td><span class="pos-MID">MID</span></td>
+      <td>£8.7m</td><td>3.8</td><td>118</td>
+      <td><span class="fdr3">AVL(h) FDR3</span></td>
+      <td><span class="badge sell">SELL</span></td>
+    </tr>
+    <tr>
+      <td>Schade</td>
+      <td>BRE</td><td><span class="pos-MID">MID</span></td>
+      <td>£6.9m</td><td>2.8</td><td>97</td>
+      <td><span class="fdr2">WOL(h) FDR2</span></td>
+      <td><span class="badge sell">SELL</span></td>
+    </tr>
+    <tr>
+      <td>B. Fernandes <span class="cap-badge">C</span></td>
+      <td>MUN</td><td><span class="pos-MID">MID</span></td>
+      <td>£10.1m</td><td>6.2</td><td>166</td>
+      <td><span class="fdr3">AVL(h) FDR3</span></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Thiago</td>
+      <td>BRE</td><td><span class="pos-FWD">FWD</span></td>
+      <td>£7.2m</td><td>3.0</td><td>143</td>
+      <td><span class="fdr2">WOL(h) FDR2</span></td>
+      <td><span class="badge sell">SELL</span></td>
+    </tr>
+    <tr>
+      <td>Ekitiké</td>
+      <td>LIV</td><td><span class="pos-FWD">FWD</span></td>
+      <td>£9.1m</td><td>5.2</td><td>123</td>
+      <td><span class="fdr4">TOT(h) FDR4</span></td>
+      <td><span class="badge keep">HOLD</span></td>
+    </tr>
+    <tr>
+      <td>Kroupi Jr</td>
+      <td>BOU</td><td><span class="pos-FWD">FWD</span></td>
+      <td>£4.7m</td><td>1.5</td><td>72</td>
+      <td><span class="fdr2">BUR(a) FDR2</span></td>
+      <td><span class="badge sell">SELL</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-title">Bench</div>
+<table>
+  <thead>
+    <tr><th>Player</th><th>Club</th><th>Pos</th><th>Price</th><th>Form</th><th>Note</th></tr>
+  </thead>
+  <tbody>
+    <tr class="bench-row">
+      <td>Dúbravka</td><td>BUR</td><td><span class="pos-GK">GK</span></td><td>£4.0m</td><td>1.2</td>
+      <td>Cheap backup GK — fine for now</td>
+    </tr>
+    <tr class="bench-row">
+      <td>Wilson</td><td>FUL</td><td><span class="pos-MID">MID</span></td><td>£6.0m</td><td>5.5</td>
+      <td><strong style="color:var(--amber)">⚠ DOUBTFUL</strong> — fitness concern</td>
+    </tr>
+    <tr class="bench-row">
+      <td>Rice <span class="star">★</span></td><td>ARS</td><td><span class="pos-MID">MID</span></td><td>£7.4m</td><td>5.2</td>
+      <td><span class="bench-note">⚠ £7.4m STAR BENCHED</span> — restructure XI to include <strong style="color:var(--red)">⚠ BLANK GW31</strong></td>
+    </tr>
+    <tr class="bench-row">
+      <td>Senesi</td><td>BOU</td><td><span class="pos-DEF">DEF</span></td><td>£5.0m</td><td>5.5</td>
+      <td>Solid bench cover</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- CAPTAIN -->
+<div class="section-title">GW30 Captain Recommendation</div>
+<div class="alert-box">
+  <h4>⭐ Recommended: B. Fernandes (MUN) — AVL home FDR3</h4>
+  <p>Without MCI assets in the XI, B. Fernandes is the clear captaincy choice — he has shown the ability to rack up big hauls at Old Trafford. If you bring in Semenyo or Haaland before GW30 (which the Transfer Strategy recommends), armband priority shifts decisively to the MCI asset facing WHU away (FDR2).</p>
+</div>
+
+<!-- KEY ISSUES -->
+<div class="section-title">Key Issues</div>
+<div class="warning-box">
+  <h4>🚨 Rice (£7.4m) Sitting on the Bench</h4>
+  <p>Rice has 160 total points and is one of the best-value premiums in the game — yet he's glued to the bench. The starting XI formation (4-3-3 using Mbeumo/Schade/B.Fernandes as MIDs, Thiago/Ekitiké/Kroupi Jr as FWDs) needs restructuring. Selling Schade + Kroupi Jr opens the path to a formation that starts Rice automatically.</p>
+</div>
+<div class="warning-box">
+  <h4>🚨 Four Dead-Weight Assets</h4>
+  <p>Schade (F:2.8, BRE), Kroupi Jr (F:1.5, BOU), Thiago (F:3.0, BRE), and Mbeumo (F:3.8, MUN) are all returning below expectation. With £7.0m in the bank, all four can be replaced across 3–4 free transfers over the coming gameweeks with zero hits.</p>
+</div>
+<div class="alert-box">
+  <h4>⚠ Muñoz — Doubtful + Blank GW31</h4>
+  <p>Muñoz (CRY) is both flagged as Doubtful AND faces a GW31 blank. This is a double problem. He should be the first transfer target given both the fitness risk and the blank exposure. Senesi is already on the bench as a ready-made replacement.</p>
+</div>
+<div class="info-box">
+  <h4>💡 GW31 Blank Exposure (Manageable)</h4>
+  <p>Only 3 starting players blank in GW31: Raya (ARS GK), Gabriel (ARS DEF), and Muñoz (CRY DEF). Compared to other squads this is relatively contained. Note that GK blanks count as ~1pt typically. The bigger risk is if you haven't yet offloaded Muñoz before GW31.</p>
+</div>
+
+<!-- GW30 FIXTURES -->
+<div class="section-title">GW30 Full Fixture Guide</div>
+<table>
+  <thead>
+    <tr><th>Team</th><th>Opponent</th><th>Venue</th><th>FDR</th><th>FPL Assets in Squad</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>ARS</td><td>EVE</td><td>Home</td><td><span class="fdr3">3</span></td><td>Gabriel, Raya, Rice(b)</td></tr>
+    <tr><td>MUN</td><td>AVL</td><td>Home</td><td><span class="fdr3">3</span></td><td>Mbeumo, B. Fernandes</td></tr>
+    <tr><td>LIV</td><td>TOT</td><td>Home</td><td><span class="fdr4">4</span></td><td>Virgil, Ekitiké</td></tr>
+    <tr><td>EVE</td><td>ARS</td><td>Away</td><td><span class="fdr5">5</span></td><td>Tarkowski</td></tr>
+    <tr><td>CRY</td><td>LEE</td><td>Home</td><td><span class="fdr2">2</span></td><td>Muñoz (DOUBT)</td></tr>
+    <tr><td>BRE</td><td>WOL</td><td>Home</td><td><span class="fdr2">2</span></td><td>Schade, Thiago</td></tr>
+    <tr><td>BOU</td><td>BUR</td><td>Away</td><td><span class="fdr2">2</span></td><td>Kroupi Jr, Senesi(b)</td></tr>
+    <tr><td>FUL</td><td>NFO</td><td>Away</td><td><span class="fdr3">3</span></td><td>Wilson(b, DOUBT)</td></tr>
+  </tbody>
+</table>
+
+<p style="color:var(--muted); font-size:.78rem; margin-top:20px;">Generated after GW29 · Data sourced from FPL API · omarbahader.github.io/FPLReports</p>
+</body>
+</html>

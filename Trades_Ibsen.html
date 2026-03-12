@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transfer Strategy – Ibsen | FPL Intelligence</title>
+<style>
+  :root {
+    --bg:#1a1a2e; --card:#16213e; --card2:#0f3460;
+    --green:#01fc7a; --red:#ff4757; --amber:#ffa502;
+    --blue:#4ecdc4; --purple:#a55eea; --text:#e0e0e0; --muted:#8899aa;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',sans-serif; padding:24px; }
+  h1 { font-size:1.6rem; color:var(--green); margin-bottom:4px; }
+  .subtitle { color:var(--muted); font-size:0.9rem; margin-bottom:24px; }
+  .section-title { font-size:1rem; font-weight:700; color:var(--blue); text-transform:uppercase;
+    letter-spacing:.08em; border-bottom:2px solid var(--card2); padding-bottom:8px; margin:28px 0 14px; }
+  .trade-card { background:var(--card); border:1px solid var(--card2); border-radius:10px;
+    padding:18px 20px; margin-bottom:16px; position:relative; }
+  .trade-card.urgent { border-color:var(--red); }
+  .trade-card.normal { border-color:var(--card2); }
+  .trade-card.optional { border-color:var(--muted); opacity:.85; }
+  .trade-number { position:absolute; top:-12px; left:16px; background:var(--card2);
+    color:var(--blue); font-size:.75rem; font-weight:800; padding:2px 10px; border-radius:4px;
+    text-transform:uppercase; letter-spacing:.05em; }
+  .trade-gw { position:absolute; top:-12px; right:16px; background:var(--green); color:#000;
+    font-size:.75rem; font-weight:800; padding:2px 10px; border-radius:4px; }
+  .trade-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+  .out-pill { background:rgba(255,71,87,.15); color:var(--red); border-radius:6px;
+    padding:6px 14px; font-weight:700; font-size:.9rem; }
+  .arrow { color:var(--muted); font-size:1.4rem; }
+  .in-pill  { background:rgba(1,252,122,.15); color:var(--green); border-radius:6px;
+    padding:6px 14px; font-weight:700; font-size:.9rem; }
+  .trade-meta { font-size:.82rem; color:var(--muted); }
+  .trade-meta span { color:var(--text); font-weight:600; }
+  .delta-pos { color:var(--green); font-weight:700; }
+  .delta-neg { color:var(--red); font-weight:700; }
+  .delta-neu { color:var(--amber); font-weight:700; }
+  .rationale { font-size:.85rem; color:var(--text); line-height:1.6; margin-top:10px; }
+  table { width:100%; border-collapse:collapse; font-size:.85rem; }
+  th { background:var(--card2); color:var(--muted); padding:8px 10px; text-align:left;
+       font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; }
+  td { padding:9px 10px; border-bottom:1px solid #1e2d45; }
+  .info-box  { background:rgba(78,205,196,.1); border:1px solid var(--blue); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .info-box h4 { color:var(--blue); font-size:.9rem; margin-bottom:6px; }
+  .info-box p  { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .warning-box { background:rgba(255,71,87,.1); border:1px solid var(--red); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .warning-box h4 { color:var(--red); font-size:.9rem; margin-bottom:6px; }
+  .warning-box p { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .alert-box { background:rgba(255,165,2,.1); border:1px solid var(--amber); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .alert-box h4 { color:var(--amber); font-size:.9rem; margin-bottom:6px; }
+  .alert-box p { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .back-link { display:inline-block; margin-bottom:20px; color:var(--muted); text-decoration:none; font-size:.85rem; }
+  .back-link:hover { color:var(--green); }
+  .chip-avail { background:rgba(1,252,122,.15); color:var(--green); border-radius:4px; padding:3px 10px; font-size:.75rem; font-weight:700; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Hub</a>
+
+<h1>🔄 Transfer Strategy — Ibsen</h1>
+<p class="subtitle">GW30–GW35 Roadmap · Starting Bank £0.6m · Rank #1 in the World</p>
+
+<div class="info-box">
+  <h4>🏆 Context: Protecting a #1 Rank with Tight Funds</h4>
+  <p>With only £0.6m in the bank, Ibsen's transfer strategy must be highly selective. The <span class="chip-avail">Wildcard 2</span> is the biggest lever available — timing its use around the GW31 blank is the critical decision of the run-in. Every free transfer spent incorrectly risks losing rank to the chasing pack.</p>
+</div>
+
+<!-- BLANK WARNING -->
+<div class="warning-box">
+  <h4>🚨 GW31 Blank: 4 Starting Players Affected</h4>
+  <p>Gabriel (ARS), Rice (ARS), Semenyo (MCI), and Haaland (MCI) all blank in GW31. This is the defining planning challenge. Options: (A) ride it out with bench cover from Hill/Wilson, or (B) activate Wildcard 2 for GW32 to start fresh post-blank. Strategy below assumes rolling transfers in free weeks; Wildcard 2 is flagged as the nuclear option if rank slips.</p>
+</div>
+
+<div class="section-title">Transfer Sequence</div>
+
+<!-- TRADE 1 -->
+<div class="trade-card normal">
+  <div class="trade-number">Trade #1</div>
+  <div class="trade-gw">GW30</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Szoboszlai (LIV MID £6.9m F:3.0)</div>
+    <div class="arrow">→</div>
+    <div class="in-pill">IN: Iwobi (FUL MID £6.3m F:6.8)</div>
+  </div>
+  <div class="trade-meta">
+    Bank: £0.6m → <span>£1.2m</span> &nbsp;|&nbsp; Cost: <span>Free transfer</span> &nbsp;|&nbsp; Delta: <span class="delta-pos">+£0.6m saved</span>
+  </div>
+  <div class="rationale">
+    Szoboszlai has returned just F:3.0 and offers no GW31 blank relief (LIV blank? No — LIV play in GW31). However his form is poor and at £6.9m he's overpriced for output. Iwobi (FUL F:6.8, FDR1 vs MCI GW31 is actually good for FUL since MCI blank means FUL play... wait — FUL <em>doesn't</em> blank in GW31 and face a favourable opponent). Iwobi adds non-blank coverage with strong form, freeing up £0.6m to the bank.
+  </div>
+</div>
+
+<!-- TRADE 2 -->
+<div class="trade-card normal">
+  <div class="trade-number">Trade #2</div>
+  <div class="trade-gw">GW31 / GW32</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Thiago (BRE FWD £7.2m F:3.0)</div>
+    <div class="arrow">→</div>
+    <div class="in-pill">IN: Šeško (MUN FWD ~£8.5m F:6.5)</div>
+  </div>
+  <div class="trade-meta">
+    Bank: £1.2m → <span>~£0.0m</span> &nbsp;|&nbsp; Cost: <span>Free transfer</span> &nbsp;|&nbsp; Delta: <span class="delta-neg">−£1.3m spend</span>
+  </div>
+  <div class="rationale">
+    Thiago (BRE F:3.0, £7.2m) is significantly over-priced for a player returning so poorly. Šeško (MUN) offers MUN DGW33 potential and is the superior forward option at similar price. If bank is insufficient, consider Welbeck (BHA ~£6.5m) as a budget-friendly alternative that releases funds for further upgrades.
+  </div>
+</div>
+
+<!-- TRADE 3 -->
+<div class="trade-card optional">
+  <div class="trade-number">Trade #3 (Optional)</div>
+  <div class="trade-gw">GW33–34</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Pickford (EVE GK £5.6m F:2.5)</div>
+    <div class="arrow">→</div>
+    <div class="in-pill">IN: Flekken / Hermansen (~£5.0m)</div>
+  </div>
+  <div class="trade-meta">
+    Bank: releases ~£0.6m &nbsp;|&nbsp; Cost: <span>Free transfer</span> &nbsp;|&nbsp; Delta: <span class="delta-pos">slight saving</span>
+  </div>
+  <div class="rationale">
+    Pickford's form (F:2.5) is below the level expected of a GW29 rank-1 GK. EVE fixture swing in GW30 is tough (vs ARS away). Not urgent but addresses a weak link. Savings here could fund a more impactful outfield upgrade if needed.
+  </div>
+</div>
+
+<!-- WILDCARD OPTION -->
+<div class="section-title">Nuclear Option: Wildcard 2</div>
+<div class="alert-box">
+  <h4>⚡ Wildcard 2 — Recommended Activation: GW32</h4>
+  <p>If the GW31 blank costs significant rank (likely with 4 starters out), activating Wildcard 2 for GW32 allows a complete squad reset heading into DGW33. This is the most powerful tool available and — unlike the other chips — it's still unused. A GW32 activation gives 3 GWs of planning and maximises the value of a fully-optimised DGW33 squad. Key targets to build around: Haaland, Semenyo, B. Fernandes, Virgil, Iwobi, Mac Allister, João Pedro.</p>
+</div>
+
+<!-- BANK LEDGER -->
+<div class="section-title">Bank Ledger</div>
+<table>
+  <thead><tr><th>GW</th><th>Action</th><th>Cost</th><th>Bank After</th><th>Hits</th></tr></thead>
+  <tbody>
+    <tr><td>Start</td><td>Current state</td><td>—</td><td>£0.6m</td><td>0</td></tr>
+    <tr><td>GW30</td><td>Szoboszlai → Iwobi</td><td>Free</td><td>£1.2m</td><td>0</td></tr>
+    <tr><td>GW31/32</td><td>Thiago → Šeško</td><td>Free</td><td>~£0.0m</td><td>0</td></tr>
+    <tr><td>GW33–34</td><td>Pickford → Budget GK</td><td>Free</td><td>~£0.6m</td><td>0</td></tr>
+    <tr><td>GW32+</td><td><strong>Wildcard 2 (if needed)</strong></td><td>Free (chip)</td><td>Rebuild</td><td>0</td></tr>
+  </tbody>
+</table>
+
+<p style="color:var(--muted); font-size:.78rem; margin-top:20px;">Generated after GW29 · Prices indicative based on GW29 market · omarbahader.github.io/FPLReports</p>
+</body>
+</html>

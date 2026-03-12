@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transfer Strategy – mirinda | FPL Intelligence</title>
+<style>
+  :root {
+    --bg:#1a1a2e; --card:#16213e; --card2:#0f3460;
+    --green:#01fc7a; --red:#ff4757; --amber:#ffa502;
+    --blue:#4ecdc4; --purple:#a55eea; --text:#e0e0e0; --muted:#8899aa;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',sans-serif; padding:24px; }
+  h1 { font-size:1.6rem; color:var(--green); margin-bottom:4px; }
+  .subtitle { color:var(--muted); font-size:0.9rem; margin-bottom:24px; }
+  .section-title { font-size:1rem; font-weight:700; color:var(--blue); text-transform:uppercase;
+    letter-spacing:.08em; border-bottom:2px solid var(--card2); padding-bottom:8px; margin:28px 0 14px; }
+  .trade-card { background:var(--card); border:1px solid var(--card2); border-radius:10px;
+    padding:18px 20px; margin-bottom:16px; position:relative; }
+  .trade-card.urgent { border-color:var(--red); }
+  .trade-card.normal { border-color:var(--card2); }
+  .trade-card.optional { border-color:var(--muted); opacity:.85; }
+  .trade-number { position:absolute; top:-12px; left:16px; background:var(--card2);
+    color:var(--blue); font-size:.75rem; font-weight:800; padding:2px 10px; border-radius:4px;
+    text-transform:uppercase; letter-spacing:.05em; }
+  .trade-gw { position:absolute; top:-12px; right:16px; background:var(--green); color:#000;
+    font-size:.75rem; font-weight:800; padding:2px 10px; border-radius:4px; }
+  .trade-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+  .out-pill { background:rgba(255,71,87,.15); color:var(--red); border-radius:6px;
+    padding:6px 14px; font-weight:700; font-size:.9rem; }
+  .arrow { color:var(--muted); font-size:1.4rem; }
+  .in-pill  { background:rgba(1,252,122,.15); color:var(--green); border-radius:6px;
+    padding:6px 14px; font-weight:700; font-size:.9rem; }
+  .trade-meta { font-size:.82rem; color:var(--muted); }
+  .trade-meta span { color:var(--text); font-weight:600; }
+  .delta-pos { color:var(--green); font-weight:700; }
+  .delta-neg { color:var(--red); font-weight:700; }
+  .delta-neu { color:var(--amber); font-weight:700; }
+  .rationale { font-size:.85rem; color:var(--text); line-height:1.6; margin-top:10px; }
+  table { width:100%; border-collapse:collapse; font-size:.85rem; }
+  th { background:var(--card2); color:var(--muted); padding:8px 10px; text-align:left;
+       font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; }
+  td { padding:9px 10px; border-bottom:1px solid #1e2d45; }
+  .info-box  { background:rgba(78,205,196,.1); border:1px solid var(--blue); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .info-box h4 { color:var(--blue); font-size:.9rem; margin-bottom:6px; }
+  .info-box p  { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .warning-box { background:rgba(255,71,87,.1); border:1px solid var(--red); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .warning-box h4 { color:var(--red); font-size:.9rem; margin-bottom:6px; }
+  .warning-box p { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .alert-box { background:rgba(255,165,2,.1); border:1px solid var(--amber); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
+  .alert-box h4 { color:var(--amber); font-size:.9rem; margin-bottom:6px; }
+  .alert-box p { color:var(--text); font-size:.85rem; line-height:1.5; }
+  .back-link { display:inline-block; margin-bottom:20px; color:var(--muted); text-decoration:none; font-size:.85rem; }
+  .back-link:hover { color:var(--green); }
+  .chip-avail { background:rgba(1,252,122,.15); color:var(--green); border-radius:4px; padding:3px 10px; font-size:.75rem; font-weight:700; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Hub</a>
+
+<h1>🔄 Transfer Strategy — mirinda</h1>
+<p class="subtitle">GW30–GW35 Roadmap · Starting Bank £7.0m · Rank #2 in the World</p>
+
+<div class="info-box">
+  <h4>💰 Context: War Chest Available — 4 Upgrades Incoming</h4>
+  <p>mirinda has £7.0m in the bank — the largest spending power of all five squads analysed. Four players (Schade, Kroupi Jr, Thiago, Mbeumo) need replacing, and the budget comfortably covers this over 4 free transfers without any hits. Executing cleanly here should push mirinda from #2 towards #1 during the run-in. The <span class="chip-avail">Wildcard 2</span> is held in reserve for DGW33 optimisation.</p>
+</div>
+
+<div class="section-title">Transfer Sequence</div>
+
+<!-- TRADE 1 -->
+<div class="trade-card urgent">
+  <div class="trade-number">Trade #1 — PRIORITY</div>
+  <div class="trade-gw">GW30</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Muñoz (CRY DEF £5.9m DOUBT+BLANK)</div>
+    <div class="arrow">→</div>
+    <div class="in-pill">IN: Truffert / Digne / Semenyo (upgrade)</div>
+  </div>
+  <div class="trade-meta">
+    Bank: £7.0m → <span>~£7.1m+</span> &nbsp;|&nbsp; Cost: <span>Free transfer</span> &nbsp;|&nbsp; Delta: <span class="delta-pos">Removes DOUBT + BLANK risk</span>
+  </div>
+  <div class="rationale">
+    Muñoz is doubtful AND faces a GW31 blank. He is both a fitness risk for GW30 and a guaranteed non-scorer in GW31. Senesi is already on the bench as solid BOU cover. Best upgrade: if budget allows after Trade #2 math, route this into a high-value MID upgrade (e.g. Semenyo MCI F:8.2) while moving Senesi into the DEF slot via formation change. Alternatively take a cheap defensive cover to preserve funds.
+  </div>
+</div>
+
+<!-- TRADE 2 -->
+<div class="trade-card normal">
+  <div class="trade-number">Trade #2</div>
+  <div class="trade-gw">GW30</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Schade (BRE MID £6.9m F:2.8)</div>
+    <div class="arrow">→</div>
+    <div class="in-pill">IN: Semenyo (MCI MID £8.3m F:8.2)</div>
+  </div>
+  <div class="trade-meta">
+    Bank: depends on Trade #1 route &nbsp;|&nbsp; Cost: <span>Free transfer</span> &nbsp;|&nbsp; Delta: <span class="delta-neg">−£1.4m spend</span>
+  </div>
+  <div class="rationale">
+    Schade (F:2.8) is the worst performing starter and should go immediately. Semenyo (F:8.2) faces WHU away in GW30 (FDR2) and Wolves away in GW32 — elite fixtures. This also brings MCI representation into the XI, unlocking the best captaincy option. Note: if bank is tight after Trade #1, Mac Allister (LIV ~£7.5m, F:5.5) is a cheaper non-blank alternative.
+  </div>
+</div>
+
+<!-- TRADE 3 -->
+<div class="trade-card normal">
+  <div class="trade-number">Trade #3</div>
+  <div class="trade-gw">GW32</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Kroupi Jr (BOU FWD £4.7m F:1.5)</div>
+    <div class="arrow">→</div>
+    <div class="in-pill">IN: Šeško (MUN FWD ~£8.5m F:6.5)</div>
+  </div>
+  <div class="trade-meta">
+    Bank: rolls from GW30 &nbsp;|&nbsp; Cost: <span>Free transfer</span> &nbsp;|&nbsp; Delta: <span class="delta-neg">−£3.8m spend</span>
+  </div>
+  <div class="rationale">
+    Kroupi Jr (F:1.5) is the worst forward in the game by form. Šeško brings MUN DGW33 potential (MUN play twice in GW33). This trade consumes the most bank, so execute it in GW32 after confirming the GW31 blank damage. Welbeck (BHA ~£6.5m) is the budget fallback if bank is insufficient.
+  </div>
+</div>
+
+<!-- TRADE 4 -->
+<div class="trade-card normal">
+  <div class="trade-number">Trade #4</div>
+  <div class="trade-gw">GW33–34</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Thiago (BRE FWD £7.2m F:3.0)</div>
+    <div class="arrow">→</div>
+    <div class="in-pill">IN: João Pedro / Mbeumo upgrade / Watkins</div>
+  </div>
+  <div class="trade-meta">
+    Bank: variable &nbsp;|&nbsp; Cost: <span>Free transfer</span> &nbsp;|&nbsp; Delta: depends on target
+  </div>
+  <div class="rationale">
+    Thiago (BRE F:3.0) is the final low-form asset to clear. By GW33/34 you'll have a much clearer picture of the run-in fixtures. João Pedro (CHE F:9.5) is the dream target here given sustained elite form, but if he's risen in price, consider a DGW33-specific pick (AVL or ARS doubling). Check DGW33 doubles: Arsenal and Man City play twice — Semenyo may already cover MCI.
+  </div>
+</div>
+
+<!-- FORMATION NOTE -->
+<div class="section-title">Formation / Lineup Fix</div>
+<div class="alert-box">
+  <h4>⚠ Rice Must Start — Restructure the XI</h4>
+  <p>Rice (£7.4m, TP:160) is wasted on the bench. Once Kroupi Jr is sold (Trade #3), shift to a <strong>4-4-2</strong> or <strong>4-3-3</strong> formation that starts Rice, Semenyo, and B. Fernandes in midfield. With Thiago also gone (Trade #4), the XI becomes structurally sound: 4 DEF, 4 MID (incl. Rice), 2 FWD (Ekitiké + Šeško). This change alone could add 20–30 pts across the run-in from Rice's baseline returns.</p>
+</div>
+
+<!-- WILDCARD OPTION -->
+<div class="section-title">Wildcard 2 — Timing</div>
+<div class="info-box">
+  <h4>⚡ Wildcard 2 — Reserve for GW32 or DGW33</h4>
+  <p>With 4 free transfers to make over GW30–34, the Wildcard 2 is best held as insurance. If the rolling transfers leave squad imbalances entering DGW33, activate the Wildcard for GW33 to field a perfectly optimised 15-man double-gameweek squad — especially with ARS and MCI both playing twice and £7.0m initial bank providing excellent rebuild capital.</p>
+</div>
+
+<!-- BANK LEDGER -->
+<div class="section-title">Bank Ledger</div>
+<table>
+  <thead><tr><th>GW</th><th>Action</th><th>Cost</th><th>Bank (approx)</th><th>Hits</th></tr></thead>
+  <tbody>
+    <tr><td>Start</td><td>Current state</td><td>—</td><td>£7.0m</td><td>0</td></tr>
+    <tr><td>GW30</td><td>Muñoz → cover/upgrade</td><td>Free</td><td>~£7.1m</td><td>0</td></tr>
+    <tr><td>GW30</td><td>Schade → Semenyo</td><td>Free</td><td>~£5.7m</td><td>0</td></tr>
+    <tr><td>GW32</td><td>Kroupi Jr → Šeško</td><td>Free</td><td>~£1.9m</td><td>0</td></tr>
+    <tr><td>GW33–34</td><td>Thiago → João Pedro / target</td><td>Free</td><td>~£1.6m</td><td>0</td></tr>
+    <tr><td>Any GW</td><td><strong>Wildcard 2 (if needed)</strong></td><td>Free (chip)</td><td>Rebuild</td><td>0</td></tr>
+  </tbody>
+</table>
+
+<p style="color:var(--muted); font-size:.78rem; margin-top:20px;">Generated after GW29 · Prices indicative based on GW29 market · omarbahader.github.io/FPLReports</p>
+</body>
+</html>
