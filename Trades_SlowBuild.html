@@ -11,7 +11,7 @@
     --blue:#4ecdc4; --purple:#a55eea; --text:#e0e0e0; --muted:#8899aa;
   }
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',sans-serif; padding:24px; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',sans-serif; padding:24px; max-width:1100px; margin:0 auto; }
   h1 { font-size:1.6rem; color:var(--green); margin-bottom:4px; }
   .subtitle { color:var(--muted); font-size:0.9rem; margin-bottom:24px; }
   .section-title { font-size:1rem; font-weight:700; color:var(--blue); text-transform:uppercase;
@@ -21,6 +21,7 @@
   .trade-card.urgent { border-color:var(--red); }
   .trade-card.chip   { border-color:var(--green); }
   .trade-card.optional { border-color:var(--muted); opacity:.85; }
+  .trade-card.primary { border-color:var(--green); }
   .trade-number { position:absolute; top:-12px; left:16px; background:var(--card2);
     color:var(--blue); font-size:.75rem; font-weight:800; padding:2px 10px; border-radius:4px;
     text-transform:uppercase; letter-spacing:.05em; }
@@ -44,6 +45,7 @@
   th { background:var(--card2); color:var(--muted); padding:8px 10px; text-align:left;
        font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; }
   td { padding:9px 10px; border-bottom:1px solid #1e2d45; }
+  tr:hover td { background:rgba(255,255,255,.03); }
   .info-box  { background:rgba(78,205,196,.1); border:1px solid var(--blue); border-radius:8px; padding:14px 18px; margin-bottom:18px; }
   .info-box h4 { color:var(--blue); font-size:.9rem; margin-bottom:6px; }
   .info-box p  { color:var(--text); font-size:.85rem; line-height:1.5; }
@@ -56,130 +58,263 @@
   .back-link { display:inline-block; margin-bottom:20px; color:var(--muted); text-decoration:none; font-size:.85rem; }
   .back-link:hover { color:var(--green); }
   .chip-avail { background:rgba(1,252,122,.15); color:var(--green); border-radius:4px; padding:3px 10px; font-size:.75rem; font-weight:700; }
+  .verified-tag { background:rgba(1,252,122,.2); color:var(--green); border-radius:4px; padding:2px 8px; font-size:.7rem; font-weight:700; margin-left:6px; }
+  .option-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:12px; margin:12px 0; }
+  .option-card { background:var(--card2); border-radius:8px; padding:14px; border:1px solid transparent; }
+  .option-card.recommended { border-color:var(--green); }
+  .option-card.alt { border-color:var(--amber); }
+  .option-card.dead { border-color:var(--red); opacity:.6; }
+  .option-card h5 { font-size:.95rem; margin-bottom:6px; }
+  .option-card p { font-size:.8rem; color:var(--muted); line-height:1.5; }
+  .tbc-badge { background:rgba(255,165,2,.15); color:var(--amber); padding:2px 6px; border-radius:3px; font-size:.7rem; font-weight:700; }
+  .no-dgw { background:rgba(255,71,87,.12); color:var(--red); padding:2px 6px; border-radius:3px; font-size:.7rem; font-weight:700; }
+  .correction { background:rgba(255,71,87,.08); border-left:3px solid var(--red); padding:6px 12px; margin:6px 0; font-size:.82rem; }
 </style>
 </head>
 <body>
 
-<a href="index.html" class="back-link">← Back to Hub</a>
+<a href="index.html" class="back-link">&larr; Back to Hub</a>
 
-<h1>🔄 Transfer Strategy — SlowBuild</h1>
-<p class="subtitle">Omar B · GW30–GW35 Roadmap · Bank £0.1m · Chips: <span style="color:var(--green)">BB ✓ FH ✓</span></p>
+<h1>Transfer Strategy &mdash; SlowBuild</h1>
+<p class="subtitle">Omar B &middot; GW31&ndash;GW35 Roadmap &middot; Updated 14 Mar 2026 <span class="verified-tag">v3 — ROSTER VERIFIED</span><br>
+All prices &amp; stats sourced from <code>fpl_rosters_GW29.json</code> (bootstrap-static, integrity-checked)</p>
 
-<div class="info-box">
-  <h4>🎯 Context: Two Chips + Zero Bank = Chip-Led Strategy</h4>
-  <p>SlowBuild has the unique advantage of both <span class="chip-avail">Free Hit</span> and <span class="chip-avail">Bench Boost</span> still available. With only £0.1m in the bank, cash transfers are extremely limited — but the chips can substitute for expensive squad surgery. The plan: Free Hit absorbs the GW31 blank, rolling free transfers fix the 2 weak spots (Scott, Thiago), and the Bench Boost fires in DGW33 with a fully optimised squad.</p>
+<!-- ========== DATA CORRECTIONS ========== -->
+<div class="warning-box">
+  <h4>What v3 corrects from v2</h4>
+  <p>
+    The v2 report used estimated prices that were significantly wrong. The roster collector script has now verified every number against the FPL API. Key corrections:<br><br>
+    <span class="correction"><strong>Scott (BOU):</strong> v2 said ~&pound;7.0m sell &rarr; actual price <strong>&pound;5.1m</strong>. Scott &rarr; Iwobi does NOT save money &mdash; it <strong>costs ~&pound;1.3m</strong>. The entire &ldquo;cash unlock&rdquo; logic was backwards.</span>
+    <span class="correction"><strong>Thiago (BRE):</strong> v2 said ~&pound;6.5m &rarr; actual price <strong>&pound;7.2m</strong>. Selling him frees far more cash than assumed. He's the cash-unlock trade, not Scott.</span>
+    <span class="correction"><strong>&Scaron;e&scaron;ko (MUN):</strong> v2 said ~&pound;8.5m &rarr; actual price <strong>&pound;7.3m</strong>. Actually reachable from Thiago&rsquo;s sale without any sequencing tricks.</span>
+    <span class="correction"><strong>Mateta (CRY):</strong> v2 recommended as primary target &rarr; actual form is <strong>0</strong> (injured/dropped, 0 recent returns). Not viable.</span>
+    <span class="correction"><strong>Duran (AVL):</strong> v2 recommended as value pick &rarr; <strong>does not exist</strong> in the FPL player database.</span>
+    <span class="correction"><strong>Gu&eacute;hi:</strong> v2 listed as CRY DEF target &rarr; Gu&eacute;hi transferred to <strong>Man City</strong> in summer 2025. Not a CRY asset.</span>
+    <span class="correction"><strong>DGW33:</strong> v2 assumed ARS/MCI/AVL/CRY double &rarr; <strong>no doubles are scheduled</strong> in the fixture API as of GW29. BGW31 rescheduled matches will create a DGW somewhere, but the GW is TBC.</span>
+  </p>
 </div>
 
-<div class="section-title">Chip Strategy Overview</div>
+<!-- ========== VERIFIED SQUAD ========== -->
+<div class="info-box">
+  <h4>Current Squad &mdash; Verified Prices <span class="verified-tag">API-CONFIRMED</span></h4>
+  <p>
+    <strong>GK:</strong> Petrovi&cacute; (BOU &pound;4.5m F:6.0), Kelleher (BRE &pound;4.8m F:2.5)<br>
+    <strong>DEF:</strong> Gabriel (ARS &pound;7.2m F:5.8), J.Timber (ARS &pound;6.3m F:5.4), O'Reilly (MCI &pound;5.1m F:7.7), Justin (LEE &pound;3.9m F:2.0), Mukiele (SUN &pound;4.5m F:0.3)<br>
+    <strong>MID:</strong> B.Fernandes (MUN &pound;10.1m F:7.7), Anderson (NFO &pound;5.5m F:6.0), Enzo (CHE &pound;6.6m F:2.3), Scott (BOU &pound;5.1m F:3.7), Bruno G. (NEW &pound;6.8m F:0.0)<br>
+    <strong>FWD:</strong> Haaland (MCI &pound;14.6m F:2.7), Jo&atilde;o Pedro (CHE &pound;7.7m F:9.3), Thiago (BRE &pound;7.2m F:3.0)<br>
+    <strong>Bank:</strong> ~&pound;0.1m &nbsp;|&nbsp; <strong>Total value:</strong> ~&pound;102.0m &nbsp;|&nbsp; <strong>Chips:</strong> <span class="chip-avail">Free Hit</span> <span class="chip-avail">Bench Boost</span>
+  </p>
+</div>
 
-<!-- FREE HIT GW31 -->
+<!-- ========== CHIP STRATEGY ========== -->
+<div class="section-title">Chip Strategy</div>
+
 <div class="trade-card chip">
   <div class="trade-number">Chip #1</div>
-  <div class="trade-gw chip-gw">GW31 — BGW</div>
+  <div class="trade-gw chip-gw">GW31 &mdash; BGW</div>
   <div class="trade-row">
-    <div class="chip-pill">⚡ FREE HIT</div>
-    <div class="arrow">→</div>
+    <div class="chip-pill">&#9889; FREE HIT</div>
+    <div class="arrow">&rarr;</div>
     <div class="in-pill">15-man non-blank squad</div>
   </div>
   <div class="trade-meta">
-    Cost: <span>Free (chip)</span> &nbsp;|&nbsp; Squad reverts to original for GW32 &nbsp;|&nbsp; Hits: <span>0</span>
+    Cost: <span>Free (chip)</span> &nbsp;|&nbsp; Squad reverts for GW32 &nbsp;|&nbsp; Hits: <span>0</span>
   </div>
   <div class="rationale">
-    GW31 blanks 5 of your 11 starters (Gabriel, J.Timber, O'Reilly, Semenyo, Haaland — ARS + MCI don't play). Using the Free Hit here is the correct call. Build a 15-man squad entirely from non-blanking teams: LIV, MUN, CHE, BOU, BRE, NFO, FUL, EVE, WHU, SUN, LEE, BHA. After GW31 the game reverts to your original squad automatically — no permanent changes.
+    BGW31 blanks ARS, CRY, MCI, WOL. You lose <strong>3 starters</strong> (Gabriel, J.Timber, Haaland) and <strong>1 bench player</strong> (O'Reilly). Free Hit builds a full 15-man squad from non-blanking teams for one week, then reverts automatically.
     <br><br>
-    <strong>Key Free Hit targets:</strong> Virgil (LIV DEF F:9.0), Iwobi (FUL MID F:6.8), João Pedro (CHE FWD F:9.5), B.Fernandes (MUN MID — already in your squad), Mac Allister (LIV MID), Šeško (MUN FWD). See the shared <a href="FPL_FreeHit_GW31_Plan.html" style="color:var(--blue)">Free Hit GW31 Squad</a> report for full 15-man recommendations.
+    <strong>Key FH targets (verified prices):</strong> Virgil (LIV DEF &pound;7.4m F:7.8), Wilson (FUL MID &pound;6.0m F:6.7 &mdash; 140 TP, best mid-price MID in the game), Iwobi (FUL MID &pound;6.4m F:8.3), &Scaron;e&scaron;ko (MUN FWD &pound;7.3m F:6.0), Welbeck (BHA FWD &pound;6.1m F:6.3). See <a href="FPL_FreeHit_GW31_Plan.html" style="color:var(--blue)">Free Hit GW31 Squad</a> for full recommendations.
   </div>
 </div>
 
-<!-- BENCH BOOST GW33 -->
 <div class="trade-card chip">
   <div class="trade-number">Chip #2</div>
-  <div class="trade-gw chip-gw">GW33 — DGW</div>
+  <div class="trade-gw chip-gw">DGW TBC &mdash; <span class="tbc-badge">DATE UNCONFIRMED</span></div>
   <div class="trade-row">
-    <div class="chip-pill">🚀 BENCH BOOST</div>
-    <div class="arrow">→</div>
+    <div class="chip-pill">&#128640; BENCH BOOST</div>
+    <div class="arrow">&rarr;</div>
     <div class="in-pill">All 15 players score</div>
   </div>
   <div class="trade-meta">
-    Cost: <span>Free (chip)</span> &nbsp;|&nbsp; ARS + MCI play twice &nbsp;|&nbsp; Hits: <span>0</span>
+    Cost: <span>Free (chip)</span> &nbsp;|&nbsp; BGW31 teams (ARS, MCI, CRY, WOL) will get a DGW &mdash; GW TBC
   </div>
   <div class="rationale">
-    GW33 is a Double Gameweek for Arsenal and Man City — both of which are heavily represented in your squad (Gabriel, J.Timber, O'Reilly, Semenyo, Haaland). Using Bench Boost here means all 15 players score including your bench. By GW33 you should have 2 free transfers done (see below) to ensure the bench is also strong. Target: clean bench with Petrović (BOU GK, solid), and upgrade Mukiele/Justin with players who also feature in GW33.
+    The GW31 blank for ARS, CRY, MCI, and WOL will be rescheduled, creating a Double Gameweek. <strong>As of 14 Mar 2026, no doubles appear in the fixture API.</strong> The old assumption of &ldquo;DGW33&rdquo; was based on pre-season forecasts, not confirmed data. Your ARS/MCI assets (Gabriel, Timber, Haaland, O'Reilly, Semenyo/Gu&eacute;hi at MCI) will play twice whenever it lands.
+    <br><br>
+    <strong>Action:</strong> Hold the Bench Boost chip until the DGW is officially scheduled. Once confirmed, use the next available FTs to load the bench with doublers, then activate BB. The trade sequence below prepares the squad regardless of which GW the double falls in.
   </div>
 </div>
 
-<div class="section-title">Free Transfer Sequence (GW30–GW32)</div>
+<!-- ========== TRADE SEQUENCE ========== -->
+<div class="section-title">Free Transfer Sequence (GW32+) &mdash; Verified Prices</div>
 
-<!-- TRADE 1 -->
-<div class="trade-card urgent">
-  <div class="trade-number">Trade #1 — Priority</div>
-  <div class="trade-gw">GW30</div>
-  <div class="trade-row">
-    <div class="out-pill">OUT: Thiago (BRE FWD F:3.0 GWP:2)</div>
-    <div class="arrow">→</div>
-    <div class="in-pill">IN: Šeško (MUN FWD ~£8.5m)</div>
-  </div>
-  <div class="trade-meta">
-    Bank: £0.1m — <span style="color:var(--red)">may cost a hit if Šeško price > sell value</span> &nbsp;|&nbsp; Check exact sell price first
-  </div>
-  <div class="rationale">
-    Thiago (BRE F:3.0, GWP:2) is the worst performing starter. Šeško (MUN) brings DGW33 potential — MUN play twice in GW33. This is the highest-priority transfer to make. If the price gap requires a hit, consider Welbeck (BHA ~£6.5m) instead as a cost-neutral or budget option, freeing money for Trade #2.
-  </div>
-</div>
-
-<!-- TRADE 2 -->
-<div class="trade-card">
-  <div class="trade-number">Trade #2</div>
-  <div class="trade-gw">GW31 / GW32</div>
-  <div class="trade-row">
-    <div class="out-pill">OUT: Scott (BOU MID F:3.8 GWP:3)</div>
-    <div class="arrow">→</div>
-    <div class="in-pill">IN: Iwobi (FUL MID ~£6.3m F:6.8)</div>
-  </div>
-  <div class="trade-meta">
-    Delta: <span class="delta-pos">~+£0.7m saving depending on Scott sell price</span> &nbsp;|&nbsp; Cost: <span>Free transfer</span>
-  </div>
-  <div class="rationale">
-    Scott (F:3.8) is the weakest midfielder. Iwobi (FUL F:6.8) has no GW31 blank and excellent form — ideal bridge player during the blank week. Note: if you're playing the Free Hit in GW31, hold this transfer until GW32 as it won't matter for GW31 anyway. Use it as an insurance move entering GW32 with your full squad back.
-  </div>
-</div>
-
-<!-- BENCH UPGRADE -->
-<div class="trade-card optional">
-  <div class="trade-number">Trade #3 (Optional)</div>
-  <div class="trade-gw">GW32–33</div>
-  <div class="trade-row">
-    <div class="out-pill">OUT: Mukiele (SUN DEF F:0.8)</div>
-    <div class="arrow">→</div>
-    <div class="in-pill">IN: DGW33-ready bench DEF</div>
-  </div>
-  <div class="trade-meta">
-    Purpose: <span>Bench Boost GW33 optimisation</span> &nbsp;|&nbsp; Cost: <span>Free transfer</span>
-  </div>
-  <div class="rationale">
-    Mukiele (F:0.8, GWP:0) is dead weight on the bench and will drag the Bench Boost score down in GW33. Before activating BB, replace him with a budget DEF from a GW33 doubling team (e.g. White/Saliba from ARS bench, or a cheap MCI DEF). This ensures all 15 bench players contribute points during the DGW.
-  </div>
-</div>
-
-<div class="section-title">Final Squad Vision for DGW33 (Bench Boost)</div>
 <div class="alert-box">
-  <h4>🎯 Target XI for Bench Boost in GW33</h4>
-  <p>After free transfers: <strong>GK</strong> Kelleher (BRE) · <strong>DEF</strong> Gabriel (ARS★), J.Timber (ARS★), O'Reilly (MCI★) · <strong>MID</strong> Semenyo (MCI★), B.Fernandes (MUN), Iwobi (FUL), Anderson (NFO) · <strong>FWD</strong> Haaland (MCI★), Ekitiké (LIV), Šeško (MUN★) · <strong>Bench</strong> Petrović (BOU), ARS/MCI bench DEF, Enzo (CHE), Justin (LEE). ★ = DGW33 double. This gives 6 doubling starters plus bench players — strong BB candidate.</p>
+  <h4>The correct economics (verified)</h4>
+  <p>
+    With verified prices, the math flips from v2. <strong>Thiago (&pound;7.2m) is the expensive asset to sell first</strong> &mdash; not Scott (&pound;5.1m). Selling Thiago and replacing with a cheaper FWD banks the difference, which then funds the Scott &rarr; MID upgrade second. This is the opposite of what v2 recommended.
+  </p>
 </div>
 
+<!-- TRADE 1 — Thiago out FIRST (cash unlock) -->
+<div class="trade-card primary">
+  <div class="trade-number">Trade #1 &mdash; Cash Unlock</div>
+  <div class="trade-gw">GW32</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Thiago (BRE FWD &pound;7.2m F:3.0)</div>
+    <div class="arrow">&rarr;</div>
+    <div class="in-pill">IN: Welbeck (BHA FWD &pound;6.1m F:6.3)</div>
+  </div>
+  <div class="trade-meta">
+    Thiago sell: <span>&pound;7.2m (or lower depending on purchase price)</span> &nbsp;|&nbsp; Welbeck buy: <span>&pound;6.1m</span> &nbsp;|&nbsp;
+    Delta: <span class="delta-pos">+~&pound;1.1m freed to bank</span> &nbsp;|&nbsp;
+    Bank after: <span class="delta-pos">~&pound;1.2m</span> &nbsp;|&nbsp; Cost: <span>Free transfer</span>
+  </div>
+  <div class="rationale">
+    Thiago (F:3.0, 18G but only 2pts in GW29) is in poor form despite a strong season. Welbeck (BHA, &pound;6.1m, F:6.3, 10G, 92 TP) is a direct upgrade in current form and <strong>saves ~&pound;1.1m</strong> that funds Trade 2. Brighton play in all remaining GWs and face manageable fixtures: LEE(H), BRE(A), MUN(H) in GW32&ndash;34.
+    <br><br>
+    <strong>Why Welbeck over &Scaron;e&scaron;ko?</strong> &Scaron;e&scaron;ko (&pound;7.3m, F:6.0, 89 TP) is a strong player but costs &pound;0.1m <em>more</em> than Thiago, leaving no room for Trade 2. Welbeck has comparable form (F:6.3 vs F:6.0), more goals (10 vs 8), and frees the cash needed to upgrade Scott.
+  </div>
+</div>
+
+<h3 style="color:var(--amber); margin:20px 0 12px;">FWD Shortlist &mdash; Verified (&pound;7.3m max budget)</h3>
+<div class="option-grid">
+  <div class="option-card recommended">
+    <h5 style="color:var(--green);">Welbeck (BHA) &pound;6.1m</h5>
+    <p>
+      F:6.3 &middot; 92 TP &middot; 10G 0A &middot; 1645 min<br>
+      Best form-per-pound in the bracket. Saves &pound;1.1m for Trade 2. Plays every week. <strong>Recommended.</strong>
+    </p>
+  </div>
+  <div class="option-card alt">
+    <h5 style="color:var(--amber);">Ra&uacute;l (FUL) &pound;6.2m</h5>
+    <p>
+      F:4.7 &middot; 97 TP &middot; 8G 5A &middot; 1903 min<br>
+      Higher total points (97 vs 92), more assists. FUL have FDR2 fixtures in GW33+. Saves ~&pound;1.0m. Strong alternative.
+    </p>
+  </div>
+  <div class="option-card alt">
+    <h5 style="color:var(--amber);">&Scaron;e&scaron;ko (MUN) &pound;7.3m</h5>
+    <p>
+      F:6.0 &middot; 89 TP &middot; 8G 2A &middot; MUN<br>
+      Excellent form but <strong>costs &pound;0.1m more than Thiago</strong> &mdash; blocks Trade 2 entirely. Only choose if you want to skip the Scott upgrade and hold him long-term.
+    </p>
+  </div>
+  <div class="option-card alt">
+    <h5 style="color:var(--amber);">Bowen (WHU) &pound;7.5m</h5>
+    <p>
+      F:5.0 &middot; 135 TP &middot; 8G 6A &middot; WHU<br>
+      Highest total points of any mid-price FWD. But &pound;0.3m over budget &mdash; only possible if Thiago sells above current price.
+    </p>
+  </div>
+  <div class="option-card dead">
+    <h5 style="color:var(--red);">Mateta (CRY) &pound;7.5m <span class="no-dgw">FORM 0</span></h5>
+    <p>
+      84 TP &middot; 8G but <strong>form is 0</strong> &mdash; injured or dropped. Not viable. Eliminated.
+    </p>
+  </div>
+</div>
+
+<!-- TRADE 2 — Scott out SECOND (funded by Trade 1 savings) -->
+<div class="trade-card primary">
+  <div class="trade-number">Trade #2 &mdash; MID Upgrade (funded by Trade 1)</div>
+  <div class="trade-gw">GW33</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Scott (BOU MID &pound;5.1m F:3.7)</div>
+    <div class="arrow">&rarr;</div>
+    <div class="in-pill">IN: Wilson (FUL MID &pound;6.0m F:6.7)</div>
+  </div>
+  <div class="trade-meta">
+    Scott sell: <span>~&pound;5.0&ndash;5.1m</span> &nbsp;|&nbsp; Wilson buy: <span>&pound;6.0m</span> &nbsp;|&nbsp;
+    Delta: <span class="delta-neg">&minus;~&pound;1.0m from bank</span> &nbsp;|&nbsp;
+    Bank after: <span>~&pound;0.2m</span> &nbsp;|&nbsp; Cost: <span>Free transfer</span>
+  </div>
+  <div class="rationale">
+    This trade is <strong>only possible because Trade 1 banked ~&pound;1.1m</strong>. Scott (&pound;5.1m, F:3.7, 101 TP) is a budget midfielder putting up budget returns. Wilson (FUL, &pound;6.0m, F:6.7, <strong>140 TP, 9G 8A</strong>) is arguably the best value player in the entire game &mdash; top-20 in total points at a fraction of the price.
+    <br><br>
+    Fulham fixtures from GW33+: BRE(H) FDR2 &rarr; good run. Wilson plays every week and is an assist machine.
+    <br><br>
+    <strong>Alternative:</strong> Iwobi (FUL &pound;6.4m F:8.3, 91 TP) &mdash; higher form but fewer total points and costs &pound;0.4m more. Wilson is the better season-long asset; Iwobi is the form pick. Both are Fulham so you can only have one.
+  </div>
+</div>
+
+<!-- TRADE 3 — Mukiele out -->
+<div class="trade-card optional">
+  <div class="trade-number">Trade #3 &mdash; Bench Cleanup</div>
+  <div class="trade-gw">GW34 or pre-DGW</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Mukiele (SUN DEF &pound;4.5m F:0.3)</div>
+    <div class="arrow">&rarr;</div>
+    <div class="in-pill">IN: DGW bench DEF (once DGW confirmed)</div>
+  </div>
+  <div class="trade-meta">
+    Budget: <span>~&pound;4.5&ndash;4.7m (Mukiele sell + remaining bank)</span> &nbsp;|&nbsp; Cost: <span>Free transfer</span>
+  </div>
+  <div class="rationale">
+    Mukiele (F:0.3, 0 mins recently) is dead weight. Replace once the DGW is officially confirmed so you can target a defender from the doubling teams. <strong>Verified CRY DEF options:</strong> Mitchell (&pound;5.0m, F:4.7, 108 TP &mdash; tight on budget), Richards (&pound;4.4m, F:3.7, 104 TP &mdash; affordable). <strong>Note:</strong> Gu&eacute;hi is at Man City, NOT Crystal Palace.
+    <br><br>
+    If the DGW lands for ARS/MCI, you already have Gabriel, Timber, O'Reilly and Haaland covering those teams. A CRY doubler on the bench would add a 5th doubler for Bench Boost.
+  </div>
+</div>
+
+<!-- TRADE 4 — Justin out -->
+<div class="trade-card optional">
+  <div class="trade-number">Trade #4 &mdash; Post-BB Cleanup</div>
+  <div class="trade-gw">GW35+</div>
+  <div class="trade-row">
+    <div class="out-pill">OUT: Justin (LEE DEF &pound;3.9m F:2.0)</div>
+    <div class="arrow">&rarr;</div>
+    <div class="in-pill">IN: Best available DEF for run-in</div>
+  </div>
+  <div class="trade-meta">
+    Budget: <span>~&pound;4.1m (Justin sell + bank)</span> &nbsp;|&nbsp; Cost: <span>Free transfer</span>
+  </div>
+  <div class="rationale">
+    Justin (49 TP, F:2.0, &pound;3.9m) is the weakest outfield player. Low priority &mdash; only matters once the chip sequence is done. Target a nailed bench DEF with good GW35&ndash;38 fixtures.
+  </div>
+</div>
+
+<!-- ========== PLAN SUMMARY ========== -->
 <div class="section-title">Plan Summary</div>
 <table>
-  <thead><tr><th>GW</th><th>Action</th><th>Type</th><th>Bank After</th><th>Hits</th></tr></thead>
+  <thead><tr><th>GW</th><th>Action</th><th>Type</th><th>Bank After</th><th>Hits</th><th>Key Benefit</th></tr></thead>
   <tbody>
-    <tr><td>Start</td><td>Current state</td><td>—</td><td>£0.1m</td><td>0</td></tr>
-    <tr><td>GW30</td><td>Thiago → Šeško / Welbeck</td><td>Free (check prices)</td><td>~£0.1m</td><td>0</td></tr>
-    <tr><td>GW31</td><td><strong>FREE HIT chip</strong></td><td>Chip</td><td>Temp squad</td><td>0</td></tr>
-    <tr><td>GW32</td><td>Scott → Iwobi (roll from GW31)</td><td>Free</td><td>~£0.8m</td><td>0</td></tr>
-    <tr><td>GW32–33</td><td>Mukiele → DGW33 bench DEF</td><td>Free</td><td>~£0.8m</td><td>0</td></tr>
-    <tr><td>GW33</td><td><strong>BENCH BOOST chip</strong></td><td>Chip</td><td>—</td><td>0</td></tr>
+    <tr><td>Now</td><td>Current state</td><td>&mdash;</td><td>&pound;0.1m</td><td>0</td><td>&mdash;</td></tr>
+    <tr><td><strong>GW30</strong></td><td>No transfer &mdash; roll FT</td><td>&mdash;</td><td>&pound;0.1m</td><td>0</td><td>Accumulate 2nd FT if possible</td></tr>
+    <tr><td><strong>GW31</strong></td><td><strong>FREE HIT chip</strong></td><td>Chip</td><td>(temp squad)</td><td>0</td><td>Dodge ARS/MCI/CRY/WOL blank</td></tr>
+    <tr><td><strong>GW32</strong></td><td>Thiago (&pound;7.2m) &rarr; Welbeck (&pound;6.1m)</td><td>Free</td><td><span class="delta-pos">&pound;1.2m</span></td><td>0</td><td>FWD upgrade + bank &pound;1.1m</td></tr>
+    <tr><td><strong>GW33</strong></td><td>Scott (&pound;5.1m) &rarr; Wilson (&pound;6.0m)</td><td>Free</td><td>&pound;0.2m</td><td>0</td><td>MID upgrade (funded by Trade 1)</td></tr>
+    <tr><td>Pre-DGW</td><td>Mukiele &rarr; DGW DEF (once scheduled)</td><td>Free</td><td>~&pound;0.2m</td><td>0</td><td>Bench Boost preparation</td></tr>
+    <tr><td><strong>DGW</strong></td><td><strong>BENCH BOOST chip</strong></td><td>Chip</td><td>&mdash;</td><td>0</td><td>All 15 score in double fixtures</td></tr>
+    <tr><td>GW35+</td><td>Justin &rarr; run-in DEF</td><td>Free</td><td>TBD</td><td>0</td><td>Squad cleanup</td></tr>
   </tbody>
 </table>
 
-<p style="color:var(--muted); font-size:.78rem; margin-top:20px;">Generated from saved FPL team page · Prices indicative · omarbahader.github.io/FPLReports</p>
+<!-- ========== FINAL SQUAD VISION ========== -->
+<div class="section-title">Target Squad After Trades 1&ndash;3</div>
+<div class="alert-box">
+  <h4>Post-Trade Squad Vision</h4>
+  <p>
+    <strong>GK:</strong> Petrovi&cacute; (BOU &pound;4.5m) &middot; Kelleher (BRE &pound;4.8m)<br>
+    <strong>DEF:</strong> Gabriel (ARS &pound;7.2m), J.Timber (ARS &pound;6.3m), O'Reilly (MCI &pound;5.1m), DGW DEF (TBD ~&pound;4.5m), Justin (LEE &pound;3.9m)<br>
+    <strong>MID:</strong> B.Fernandes (MUN &pound;10.1m F:7.7), Anderson (NFO &pound;5.5m F:6.0), <strong>Wilson (FUL &pound;6.0m F:6.7)</strong>, Enzo (CHE &pound;6.6m), Bruno G. (NEW &pound;6.8m)<br>
+    <strong>FWD:</strong> Haaland (MCI &pound;14.6m), Jo&atilde;o Pedro (CHE &pound;7.7m F:9.3), <strong>Welbeck (BHA &pound;6.1m F:6.3)</strong><br><br>
+    <strong>Net upgrades vs current squad:</strong><br>
+    &bull; Thiago (F:3.0, 2pts GW29) &rarr; Welbeck (F:6.3, 10G) — form doubles<br>
+    &bull; Scott (F:3.7, 101 TP) &rarr; Wilson (F:6.7, 140 TP, 9G 8A) — best mid-price MID in the game<br>
+    &bull; Mukiele (F:0.3, dead weight) &rarr; DGW DEF — Bench Boost ready<br>
+    &bull; Total cost: 0 hits, 3 free transfers across 3 GWs
+  </p>
+</div>
+
+<div class="info-box" style="margin-top:20px;">
+  <h4>Alternative Path: &Scaron;e&scaron;ko over Welbeck</h4>
+  <p>
+    If you prefer &Scaron;e&scaron;ko (&pound;7.3m, F:6.0) over Welbeck, the move costs &pound;0.1m <em>more</em> than Thiago &mdash; bank drops to &pound;0.0m and Trade 2 (Scott &rarr; Wilson) becomes <strong>impossible</strong>. You'd be locked into Scott as your 5th midfielder for the rest of the season. The Welbeck path trades a marginal FWD downgrade (F:6.3 vs F:6.0) for a <strong>massive MID upgrade</strong> (Scott F:3.7 &rarr; Wilson F:6.7). Wilson&rsquo;s 140 TP suggests the two-trade path creates far more total value.
+  </p>
+</div>
+
+<p style="color:var(--muted); font-size:.78rem; margin-top:20px;">
+  v3 &middot; 14 Mar 2026 &middot; All prices from <code>fpl_rosters_GW29.json</code> (bootstrap-static API, integrity-checked) &middot; Selling prices may differ from current market price depending on purchase timing &middot; <a href="index.html" style="color:var(--blue);">omarbahader.github.io/FPLReports</a>
+</p>
 </body>
 </html>
